@@ -54,7 +54,7 @@
   },
   "engineStrict": true,
   "engines": {
-    "node": ">=8.11.2",
+    "node": ">=8.11.2 < 11.0.0",
     "npm": ">=3.0"
   },
   "browserslist": [
@@ -237,7 +237,7 @@
     "path": "0.12.7",
     "postcss-flexbugs-fixes": "4.1.0",
     "postcss-loader": "3.0.0",
-    "prettier": "1.12.1",
+    "prettier": "1.19.1",
     "relay-compiler": "1.6.0",
     "sass-loader": "8.0.2",
     "selenium-webdriver": "4.0.0-alpha.1",
