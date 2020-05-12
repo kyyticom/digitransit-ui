@@ -31,10 +31,7 @@ import { dtLocationShape } from '../util/shapes';
 import Icon from './Icon';
 import NearbyRoutesPanel from './NearbyRoutesPanel';
 import FavouritesPanel from './FavouritesPanel';
-import SelectMapLayersDialog from './SelectMapLayersDialog';
-import SelectStreetModeDialog from './SelectStreetModeDialog';
 import events from '../util/events';
-import * as ModeUtils from '../util/modeUtils';
 import withBreakpoint from '../util/withBreakpoint';
 import ComponentUsageExample from './ComponentUsageExample';
 import { addAnalyticsEvent } from '../util/analyticsUtils';
@@ -189,26 +186,9 @@ class IndexPage extends React.Component {
     );
   };
 
-  renderStreetModeSelector = (config, router) => (
-    <SelectStreetModeDialog
-      selectedStreetMode={ModeUtils.getStreetMode(router.location, config)}
-      selectStreetMode={(streetMode, isExclusive) => {
-        addAnalyticsEvent({
-          category: 'ItinerarySettings',
-          action: 'SelectTravelingModeFromIndexPage',
-          name: streetMode,
-        });
-        ModeUtils.setStreetMode(streetMode, config, router, isExclusive);
-      }}
-      streetModeConfigs={ModeUtils.getAvailableStreetModeConfigs(config)}
-    />
-  );
-
-  renderMapLayerSelector = () => <SelectMapLayersDialog />;
-
   /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
   render() {
-    const { config, router } = this.context;
+    const { config } = this.context;
     const { breakpoint, destination, origin, routes, tab } = this.props;
     const { mapExpanded } = this.state;
 
@@ -251,12 +231,6 @@ class IndexPage extends React.Component {
           showScaleBar
           origin={origin}
           destination={destination}
-          renderCustomButtons={() => (
-            <React.Fragment>
-              {this.renderStreetModeSelector(config, router)}
-              {this.renderMapLayerSelector()}
-            </React.Fragment>
-          )}
         />
         {(this.props.showSpinner && <OverlayWithSpinner />) || null}
         {!footerOptions.hidden && (
@@ -285,12 +259,6 @@ class IndexPage extends React.Component {
             showStops
             origin={origin}
             destination={destination}
-            renderCustomButtons={() => (
-              <React.Fragment>
-                {this.renderStreetModeSelector(config, router)}
-                {this.renderMapLayerSelector()}
-              </React.Fragment>
-            )}
           >
             {(this.props.showSpinner && <OverlayWithSpinner />) || null}
             <DTAutosuggestPanel
