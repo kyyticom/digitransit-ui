@@ -1034,6 +1034,13 @@ const translations = {
       '{number, plural, =0 {0 minutes} one {1 minute} other {{number} minutes}}',
     'off-canvas-info':
       'Log in to the service to save your favorites and utilize them on other devices',
+    'open-in-app': 'Buy ticket',
+    'open-in-app-desktop': 'Buy ticket on your phone',
+    'open-in-app-mh-desktop-info':
+      "You can buy the route in Matkahuolto's mobile app.",
+    'open-in-app-mh-mobile-info':
+      'You can buy the route in the Matkahuolto app.',
+    'open-in-app-send-link-to-phone': 'Send link to your phone',
     'option-default': 'Default',
     'option-least': 'Least',
     'option-less': 'Less',
@@ -1834,6 +1841,13 @@ const translations = {
       '{number, plural, =0 {0 minuuttia} one {1 minuutti} other {{number} minuuttia}}',
     'off-canvas-info':
       'Kirjautumalla palveluun saat suosikit talteen ja voit hyödyntää niitä muillakin laitteillasi',
+    'open-in-app': 'Osta lippu',
+    'open-in-app-desktop': 'Osta lippu puhelimella',
+    'open-in-app-mh-desktop-info':
+      'Voit ostaa reitin Matkahuollon mobiilisovelluksella.',
+    'open-in-app-mh-mobile-info':
+      'Voit ostaa reitin Matkahuollon sovelluksesta.',
+    'open-in-app-send-link-to-phone': 'Lähetä linkki puhelimeesi',
     'option-default': 'Oletusarvo',
     'option-least': 'Vähiten',
     'option-less': 'Vähemmän',
@@ -3443,6 +3457,12 @@ const translations = {
       '{number, plural, =0 {0 minuter} one {1 minut} other {{number} minuter}}',
     'off-canvas-info':
       'Genom att logga in kan du spara dina favoriter och använda dem med dina andra enheter.',
+    'open-in-app': 'Köp biljett',
+    'open-in-app-desktop': 'Köp biljett på din telefon',
+    'open-in-app-mh-desktop-info':
+      'Du kan köpa rutten från Matkahuoltos mobilapplikation.',
+    'open-in-app-mh-mobile-info': 'Du kan köpa rutten från Matkahuoltos app.',
+    'open-in-app-send-link-to-phone': 'Skicka länk till din telefon',
     'option-default': 'Standard',
     'option-least': 'Minst',
     'option-less': 'Mindre',

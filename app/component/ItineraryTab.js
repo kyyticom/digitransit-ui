@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Relay from 'react-relay/classic';
 import cx from 'classnames';
-import { routerShape, locationShape } from 'react-router';
-import { FormattedMessage } from 'react-intl';
+import { locationShape, routerShape } from 'react-router';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import _ from 'lodash';
 
 import Icon from './Icon';
 import TicketInformation from './TicketInformation';
@@ -23,13 +24,39 @@ import { BreakpointConsumer } from '../util/withBreakpoint';
 import ComponentUsageExample from './ComponentUsageExample';
 
 import exampleData from './data/ItineraryTab.exampleData.json';
-import { getFares, shouldShowFareInfo } from '../util/fareUtils';
+import {
+  getFares,
+  shouldShowAppDeepLink,
+  shouldShowAppSMSLink,
+  shouldShowFareInfo,
+} from '../util/fareUtils';
 import { addAnalyticsEvent } from '../util/analyticsUtils';
+import SMSlinkModal from './SMSLinkModal';
+
+const getFrom = itinerary => _.get(itinerary, 'legs[0].from.name');
+
+const getTo = itinerary =>
+  _.chain(itinerary.legs)
+    .last()
+    .get('to.name')
+    .value();
+
+const getFromStartTime = itinerary => _.get(itinerary, 'legs[0].startTime');
+
+export const getDeepLinkUrl = (routeAppDeepLink, itinerary) =>
+  `${routeAppDeepLink}?from=${encodeURIComponent(
+    getFrom(itinerary),
+  )}&to=${encodeURIComponent(getTo(itinerary))}&startTime=${getFromStartTime(
+    itinerary,
+  )}`;
+
 /* eslint-disable prettier/prettier */
 class ItineraryTab extends React.Component {
   static propTypes = {
     searchTime: PropTypes.number.isRequired,
+    // eslint-disable-next-line react/forbid-prop-types
     itinerary: PropTypes.object.isRequired,
+    // eslint-disable-next-line react/forbid-prop-types,react/require-default-props
     location: PropTypes.object,
     focus: PropTypes.func.isRequired,
   };
@@ -43,6 +70,7 @@ class ItineraryTab extends React.Component {
   state = {
     lat: undefined,
     lon: undefined,
+    appLinkSMSModalOpen: false,
   };
 
   getState = () => ({
@@ -76,6 +104,16 @@ class ItineraryTab extends React.Component {
     });
   };
 
+  openInApp = e => {
+    e.stopPropagation();
+    window.open(getDeepLinkUrl(this.context.config.routeAppDeepLink, this.props.itinerary));
+  };
+
+  openAppSMSModal = e => {
+    e.stopPropagation();
+    this.setState({ appLinkSMSModalOpen: true });
+  };
+
   render() {
     const { itinerary, searchTime } = this.props;
     const { config } = this.context;
@@ -105,7 +143,6 @@ class ItineraryTab extends React.Component {
                   'bp-large': breakpoint === 'large',
                 })}
               >
-
                 {shouldShowFareInfo(config) &&
                   fares.some(fare => fare.isUnknown) && (
                     <div className="disclaimer-container unknown-fare-disclaimer__top">
@@ -143,7 +180,31 @@ class ItineraryTab extends React.Component {
                 )}
                 {config.showRouteInformation && <RouteInformation />}
               </div>
-              <div className="row print-itinerary-button-container">
+              <div className="row">
+                {shouldShowAppDeepLink(config, itinerary.legs) && (
+                  <div style={{ flexDirection: 'row' }}>
+                    <FormattedMessage id="open-in-app-mh-mobile-info" defaultMessage="You can buy the route from Matkahuolto's app."/>
+                    <SecondaryButton
+                      ariaLabel="open-in-app"
+                      buttonName="open-in-app"
+                      buttonClickAction={this.openInApp}
+                      buttonIcon="icon-icon_ticket"
+                    />
+                  </div>
+                )}
+                {shouldShowAppSMSLink(config, itinerary.legs) && (
+                  <div style={{ flexDirection: 'row' }}>
+                    <FormattedMessage id="open-in-app-mh-desktop-info" defaultMessage="You can buy the route using Matkahuolto's mobile app."/>
+                    <SecondaryButton
+                      ariaLabel="open-in-app"
+                      buttonName="open-in-app-send-link-to-phone"
+                      buttonClickAction={this.openAppSMSModal}
+                      buttonIcon="icon-icon_arrow-right"
+                    />
+                  </div>
+                )}
+              </div>
+              <div className="row">
                 <SecondaryButton
                   ariaLabel="print"
                   buttonName="print"
@@ -162,6 +223,15 @@ class ItineraryTab extends React.Component {
             </div>,
           ]}
         </BreakpointConsumer>
+        <SMSlinkModal
+          open={this.state.appLinkSMSModalOpen}
+          toggleVisibility={() =>
+            this.setState(({ appLinkSMSModalOpen }) => ({
+              appLinkSMSModalOpen: !appLinkSMSModalOpen,
+            }))
+          }
+          itinerary={this.props.itinerary}
+        />
       </div>
     );
   }
@@ -178,8 +248,8 @@ ItineraryTab.description = (
     </div>
   </ComponentUsageExample>
 );
-
-const withRelay = Relay.createContainer(ItineraryTab, {
+const withIntl = injectIntl(ItineraryTab);
+const withIntlAndRelay = Relay.createContainer(withIntl, {
   fragments: {
     searchTime: () => Relay.QL`
       fragment on Plan {
@@ -308,4 +378,4 @@ const withRelay = Relay.createContainer(ItineraryTab, {
   },
 });
 
-export { ItineraryTab as Component, withRelay as default };
+export { ItineraryTab as Component, withIntlAndRelay as default };

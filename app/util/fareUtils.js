@@ -100,3 +100,16 @@ export const shouldShowFareInfo = config =>
   config.availableTickets &&
   Array.isArray(config.feedIds) &&
   config.feedIds.some(feedId => config.availableTickets[feedId]);
+
+const hasNonHumanPoweredLeg = legs =>
+  legs.some(leg => leg.mode !== 'WALK' && leg.mode !== 'BIKE');
+const mobileDevice = /Mobi|Android/i.test(navigator.userAgent);
+export const shouldShowAppDeepLink = (config, legs) => {
+  return mobileDevice && hasNonHumanPoweredLeg(legs) && config.routeAppDeepLink;
+};
+
+export const shouldShowAppSMSLink = (config, legs) => {
+  return (
+    !mobileDevice && hasNonHumanPoweredLeg(legs) && config.routeAppDeepLink
+  );
+};

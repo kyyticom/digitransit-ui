@@ -46,7 +46,11 @@ class Modal extends React.Component {
       <div
         className={cx('modal-overlay', 'cursor-pointer', isActive)}
         onClick={toggleVisibility}
-        onKeyPress={e => isKeyboardSelectionEvent(e) && toggleVisibility()}
+        onKeyPress={e =>
+          e.target.tagName !== 'INPUT' &&
+          isKeyboardSelectionEvent(e) &&
+          toggleVisibility()
+        }
         role="button"
         style={overlayStyle}
         tabIndex="0"
@@ -56,7 +60,9 @@ class Modal extends React.Component {
           className={cx('modal', isActive)}
           onClick={this.stopClickPropagation}
           onKeyPress={e =>
-            isKeyboardSelectionEvent(e) && this.stopClickPropagation(e)
+            e.target.tagName !== 'INPUT' &&
+            isKeyboardSelectionEvent(e) &&
+            this.stopClickPropagation(e)
           }
           role="button"
           tabIndex="0"
