@@ -1,0 +1,36 @@
+@import 'theme';
+@import '../../main';
+.navi-icons .icon {
+  color: white;
+}
+
+.external-top-bar {
+  .external-link-container {
+    background-color: $primary-color;
+    color: white;
+  }
+
+  .external-link-decoration {
+    top: 2px;
+    right: 2px;
+  }
+}
+
+.front-page.bp-large div.leaflet-bottom.leaflet-left div.leaflet-control-zoom {
+  margin-bottom: 40px;
+}
+
+.top-bar {
+  background: white;
+}
+
+#lang-select {
+  color: $primary-color;
+  .offcanvas-section & {
+    color: white;
+  }
+}
+
+.main-menu-toggle .icon {
+  fill: $accent-color;
+}
