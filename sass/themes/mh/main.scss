@@ -22,6 +22,13 @@
 
 .top-bar {
   background: white;
+
+  &.bp-large {
+    height: $nav-logo-height + 8px;
+  }
+  &.bp-small {
+    height: $nav-logo-height/2;
+  }
 }
 
 #lang-select {
