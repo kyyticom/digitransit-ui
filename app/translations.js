@@ -1147,6 +1147,9 @@ const translations = {
     'select-map-layers-header': 'What should be shown on the map?',
     'select-position': 'Select your location from your previous searches',
     send: 'Send',
+    'send-sms-modal-input-label': 'Phone number',
+    'send-sms-modal-input-placeholder': 'Enter number...',
+    'send-sms-modal-title': 'Send link to buy route on your phone',
     'separate-ticket-required':
       'A separate ticket is required for this part of the itinerary.',
     'separate-ticket-required-disclaimer':
@@ -1955,6 +1958,9 @@ const translations = {
     'select-map-layers-header': 'Mitä haluat näyttää kartalla?',
     'select-position': 'Valitse sijaintisi edellisistä hauistasi',
     send: 'Lähetä',
+    'send-sms-modal-input-label': 'Puhelinnumero',
+    'send-sms-modal-input-placeholder': 'Syötä numero...',
+    'send-sms-modal-title': 'Lähetä linkki ostaaksesi reitin puhelimeesi',
     'separate-ticket-required':
       'Tälle matkan osuudelle tarvitaan erillinen lippu.',
     'separate-ticket-required-disclaimer':
@@ -3569,6 +3575,9 @@ const translations = {
     'select-map-layers-header': 'Vad vill du visa på kartan?',
     'select-position': 'Välj din position bland tidigare sökningar',
     send: 'Skicka',
+    'send-sms-modal-input-label': 'Telefonnummer',
+    'send-sms-modal-input-placeholder': 'Ange nummer...',
+    'send-sms-modal-title': 'Skicka länk för att köpa rutten på din telefon',
     'separate-ticket-required':
       'Denna etapp av resan kräver en separat biljett.',
     'separate-ticket-required-disclaimer':

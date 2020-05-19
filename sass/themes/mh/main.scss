@@ -41,3 +41,7 @@
 .main-menu-toggle .icon {
   fill: $accent-color;
 }
+
+.dynamic-height-modal .modal {
+  height: unset !important;
+}

@@ -32,6 +32,7 @@ function SMSlinkModal(props, context) {
   return (
     <PortalModal
       key="sms-modal"
+      className="dynamic-height-modal"
       disableScrolling
       open={props.open}
       title={
