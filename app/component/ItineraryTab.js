@@ -5,7 +5,6 @@ import Relay from 'react-relay/classic';
 import cx from 'classnames';
 import { locationShape, routerShape } from 'react-router';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import _ from 'lodash';
 
 import Icon from './Icon';
 import TicketInformation from './TicketInformation';
@@ -24,31 +23,14 @@ import { BreakpointConsumer } from '../util/withBreakpoint';
 import ComponentUsageExample from './ComponentUsageExample';
 
 import exampleData from './data/ItineraryTab.exampleData.json';
-import {
-  getFares,
-  shouldShowAppDeepLink,
-  shouldShowAppSMSLink,
-  shouldShowFareInfo,
-} from '../util/fareUtils';
+import { getFares, shouldShowFareInfo } from '../util/fareUtils';
 import { addAnalyticsEvent } from '../util/analyticsUtils';
-import SMSlinkModal from './SMSLinkModal';
-
-const getFrom = itinerary => _.get(itinerary, 'legs[0].from.name');
-
-const getTo = itinerary =>
-  _.chain(itinerary.legs)
-    .last()
-    .get('to.name')
-    .value();
-
-const getFromStartTime = itinerary => _.get(itinerary, 'legs[0].startTime');
-
-export const getDeepLinkUrl = (routeAppDeepLink, itinerary) =>
-  `${routeAppDeepLink}?from=${encodeURIComponent(
-    getFrom(itinerary),
-  )}&to=${encodeURIComponent(getTo(itinerary))}&startTime=${getFromStartTime(
-    itinerary,
-  )}`;
+import EmailLinkModal from './EmailLinkModal';
+import {
+  getDeepLinkUrl,
+  shouldShowAppDeepLink,
+  shouldShowAppEmailLink,
+} from '../util/routeDeepLinkUtils';
 
 /* eslint-disable prettier/prettier */
 class ItineraryTab extends React.Component {
@@ -70,7 +52,7 @@ class ItineraryTab extends React.Component {
   state = {
     lat: undefined,
     lon: undefined,
-    appLinkSMSModalOpen: false,
+    appLinkEmailModalOpen: false,
   };
 
   getState = () => ({
@@ -97,6 +79,8 @@ class ItineraryTab extends React.Component {
       name: null,
     });
 
+    // https://matkahuolto.page.link/?link=https%3A%2F%2Fmatkahuolto.kyyti.com%2Froute-search%2F%3Ffrom%3DLallukankuja%25201%252C%2520Helsinki%26to%3DLotinkuja%25201%252C%2520Hattula%26startTime%3D1590415082000&ibi=com.kyyti.ride.matkahuolto&apn=com.kyyti.ride.matkahuolto&d=1
+
     const printPath = `${this.props.location.pathname}/tulosta`;
     this.context.router.push({
       ...this.props.location,
@@ -106,12 +90,13 @@ class ItineraryTab extends React.Component {
 
   openInApp = e => {
     e.stopPropagation();
-    window.open(getDeepLinkUrl(this.context.config.routeAppDeepLink, this.props.itinerary));
+    const link = getDeepLinkUrl(this.context.config, this.props.itinerary);
+    window.open(link);
   };
 
-  openAppSMSModal = e => {
+  openAppEmailModal = e => {
     e.stopPropagation();
-    this.setState({ appLinkSMSModalOpen: true });
+    this.setState({ appLinkEmailModalOpen: true });
   };
 
   render() {
@@ -179,38 +164,46 @@ class ItineraryTab extends React.Component {
                   />
                 )}
                 {config.showRouteInformation && <RouteInformation />}
-              </div>
-              <div className="row">
-                {shouldShowAppDeepLink(config, itinerary.legs) && (
-                  <div style={{ flexDirection: 'row' }}>
-                    <FormattedMessage id="open-in-app-mh-mobile-info" defaultMessage="You can buy the route from Matkahuolto's app."/>
-                    <SecondaryButton
-                      ariaLabel="open-in-app"
-                      buttonName="open-in-app"
-                      buttonClickAction={this.openInApp}
-                      buttonIcon="icon-icon_ticket"
-                    />
-                  </div>
-                )}
-                {shouldShowAppSMSLink(config, itinerary.legs) && (
-                  <div style={{ flexDirection: 'row' }}>
-                    <FormattedMessage id="open-in-app-mh-desktop-info" defaultMessage="You can buy the route using Matkahuolto's mobile app."/>
-                    <SecondaryButton
-                      ariaLabel="open-in-app"
-                      buttonName="open-in-app-send-link-to-phone"
-                      buttonClickAction={this.openAppSMSModal}
-                      buttonIcon="icon-icon_arrow-right"
-                    />
-                  </div>
-                )}
-              </div>
-              <div className="row">
-                <SecondaryButton
-                  ariaLabel="print"
-                  buttonName="print"
-                  buttonClickAction={e => this.printItinerary(e)}
-                  buttonIcon="icon-icon_print"
-                />
+                <div className="row">
+                  {shouldShowAppDeepLink(config, itinerary.legs) && (
+                    <div style={{ flexDirection: 'row' }}>
+                      <FormattedMessage
+                        id="open-in-app-mh-mobile-info"
+                        defaultMessage="You can buy the route from Matkahuolto's app."
+                      />
+                      <SecondaryButton
+                        ariaLabel="open-in-app"
+                        buttonName="open-in-app"
+                        buttonClickAction={this.openInApp}
+                        buttonIcon="icon-icon_ticket"
+                      />
+                      <br />
+                      <br />
+                    </div>
+                  )}
+                  {shouldShowAppEmailLink(config, itinerary.legs) && (
+                    <div style={{ flexDirection: 'row' }}>
+                      <FormattedMessage
+                        id="open-in-app-mh-desktop-info"
+                        defaultMessage="You can buy the route using Matkahuolto's mobile app."
+                      />
+                      <SecondaryButton
+                        ariaLabel="open-in-app"
+                        buttonName="open-in-app-send-link-to-phone"
+                        buttonClickAction={this.openAppEmailModal}
+                        buttonIcon="icon-icon_arrow-right"
+                      />
+                    </div>
+                  )}
+                </div>
+                <div className="row">
+                  <SecondaryButton
+                    ariaLabel="print"
+                    buttonName="print"
+                    buttonClickAction={e => this.printItinerary(e)}
+                    buttonIcon="icon-icon_print"
+                  />
+                </div>
               </div>
               {config.showDisclaimer && (
                 <div className="itinerary-disclaimer">
@@ -223,11 +216,11 @@ class ItineraryTab extends React.Component {
             </div>,
           ]}
         </BreakpointConsumer>
-        <SMSlinkModal
-          open={this.state.appLinkSMSModalOpen}
+        <EmailLinkModal
+          open={this.state.appLinkEmailModalOpen}
           toggleVisibility={() =>
-            this.setState(({ appLinkSMSModalOpen }) => ({
-              appLinkSMSModalOpen: !appLinkSMSModalOpen,
+            this.setState(({ appLinkEmailModalOpen }) => ({
+              appLinkEmailModalOpen: !appLinkEmailModalOpen,
             }))
           }
           itinerary={this.props.itinerary}
