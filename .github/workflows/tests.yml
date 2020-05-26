@@ -3,7 +3,7 @@ name: Run tests
 on:
   push:
     branches-ignore:
-      - master
+      - mh
   pull_request:
     branches: [ master ]
 
