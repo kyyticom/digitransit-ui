@@ -29,6 +29,18 @@
   &.bp-small {
     height: $nav-logo-height/2;
   }
+
+  section.title {
+    color: $primary-color;
+  }
+
+  svg.icon.back.cursor-pointer {
+    color: $primary-color;
+    fill: $primary-color !important;
+  }
+  .main-menu-toggle .icon {
+    fill: $accent-color !important;
+  }
 }
 
 #lang-select {
@@ -36,10 +48,6 @@
   .offcanvas-section & {
     color: white;
   }
-}
-
-.main-menu-toggle .icon {
-  fill: $accent-color;
 }
 
 .dynamic-height-modal .modal {
