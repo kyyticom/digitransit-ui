@@ -3579,6 +3579,7 @@ const translations = {
     send: 'Skicka',
     'send-email-modal-input-label': 'Telefonnummer',
     'send-email-modal-input-placeholder': 'Ange nummer...',
+    'send-email-modal-submit': 'Skicka',
     'send-email-modal-title': 'Skicka länk för att köpa rutten på din telefon',
     'separate-ticket-required':
       'Denna etapp av resan kräver en separat biljett.',
