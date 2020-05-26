@@ -17,7 +17,9 @@ export default configMerger(walttiConfig, {
   appBarLink: { name: 'Matkahuolto', href: 'http://www.matkahuolto.fi/' },
 
   URL: {
-    OTP: `https://otp.matkahuolto.kyyti.com/otp/routers/default/`,
+    // OTP: `https://otp.matkahuolto.kyyti.com/otp/routers/default/`,
+    OTP: 'https://otp.dev.kyyti.io/otp/routers/default/'
+    // OTP: 'https://dev-api.digitransit.fi/routing/v1/routers/finland/'
   },
 
   colors: {
@@ -132,8 +134,8 @@ export default configMerger(walttiConfig, {
   shortName: 'Reittihaku',
 
   appInstallDeepLinkBase: 'https://matkahuolto.page.link/',
-  routeSearchDeepLinkBase: 'https://matkahuolto.kyyti.com/route-search/',
-  appBundleId: 'com.kyyti.ride.matkahuolto',
+  routeSearchDeepLinkBase: 'https://matkahuolto.kyyti.com/devroute-search/',
+  appBundleId: 'com.kyyti.ride.matkahuolto.dev',
   appStoreId: '1496304929',
   sendAppLinkEmailRequestEndpoint: false,
 

@@ -751,6 +751,7 @@ export default {
     hameenlinna: 'hameenlinna',
     matka: 'matka',
     mh: 'mh',
+    'mh-dev': 'mh',
     salo: 'salo',
     rovaniemi: 'rovaniemi',
     kouvola: 'kouvola',
