@@ -41,7 +41,7 @@ jobs:
       - name: Publish to Registry
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
-          name: kyyticom/digitransit-ui
+          name: open-trip-planner-260813/digitransit-ui
           username: ${{ steps.gcloud.outputs.username }}
           password: ${{ steps.gcloud.outputs.password }}
           registry: eu.gcr.io
