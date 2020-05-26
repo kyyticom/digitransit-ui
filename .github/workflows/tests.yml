@@ -23,5 +23,7 @@ jobs:
         run: yarn install
       - name: eslint
         run: yarn lint
+      - name: Set timezone
+        run: sudo timedatectl set-timezone Europe/Helsinki
       - name: Unit tests
         run: yarn test-unit
