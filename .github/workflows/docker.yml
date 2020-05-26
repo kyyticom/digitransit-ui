@@ -1,0 +1,49 @@
+name: Run tests and build docker image
+
+on:
+  push:
+    branches:
+      - mh
+
+jobs:
+  test:
+    name: Run tests
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10'
+      - name: Install dependencies
+        run: yarn install
+      - name: eslint
+        run: yarn lint
+      - name: Set timezone
+        run: sudo timedatectl set-timezone Europe/Helsinki
+      - name: Unit tests
+        run: yarn test-unit
+
+  docker:
+    name: Build docker image
+    needs: test
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Login to gcloud registry
+        id: gcloud
+        uses: elgohr/gcloud-login-action@master
+        with:
+          account_key: ${{ secrets.GCLOUD_KEY }}
+      - name: Publish to Registry
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: open-trip-planner-260813/digitransit-ui
+          username: ${{ steps.gcloud.outputs.username }}
+          password: ${{ steps.gcloud.outputs.password }}
+          registry: eu.gcr.io
+          tags: "latest,${{ github.sha }}"
+
