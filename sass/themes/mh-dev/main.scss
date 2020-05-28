@@ -1,0 +1,55 @@
+@import 'theme';
+@import '../../main';
+.navi-icons .icon {
+  color: white;
+}
+
+.external-top-bar {
+  .external-link-container {
+    background-color: $primary-color;
+    color: white;
+  }
+
+  .external-link-decoration {
+    top: 2px;
+    right: 2px;
+  }
+}
+
+.front-page.bp-large div.leaflet-bottom.leaflet-left div.leaflet-control-zoom {
+  margin-bottom: 40px;
+}
+
+.top-bar {
+  background: white;
+
+  &.bp-large {
+    height: $nav-logo-height + 8px;
+  }
+  &.bp-small {
+    height: $nav-logo-height/2;
+  }
+
+  section.title {
+    color: $primary-color;
+  }
+
+  svg.icon.back.cursor-pointer {
+    color: $primary-color;
+    fill: $primary-color !important;
+  }
+  .main-menu-toggle .icon {
+    fill: $accent-color !important;
+  }
+}
+
+#lang-select {
+  color: $primary-color;
+  .offcanvas-section & {
+    color: white;
+  }
+}
+
+.dynamic-height-modal .modal {
+  height: unset !important;
+}

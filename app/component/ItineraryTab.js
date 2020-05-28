@@ -53,6 +53,7 @@ class ItineraryTab extends React.Component {
     lat: undefined,
     lon: undefined,
     appLinkEmailModalOpen: false,
+    deepLink: undefined,
   };
 
   getState = () => ({
@@ -96,13 +97,13 @@ class ItineraryTab extends React.Component {
 
   openAppEmailModal = e => {
     e.stopPropagation();
-    this.setState({ appLinkEmailModalOpen: true });
+    const deepLink = getDeepLinkUrl(this.context.config, this.props.itinerary)
+    this.setState({ appLinkEmailModalOpen: true, deepLink });
   };
 
   render() {
     const { itinerary, searchTime } = this.props;
     const { config } = this.context;
-
     const fares = getFares(itinerary.fares, getRoutes(itinerary.legs), config);
     return (
       <div className="itinerary-tab">
@@ -177,8 +178,6 @@ class ItineraryTab extends React.Component {
                         buttonClickAction={this.openInApp}
                         buttonIcon="icon-icon_ticket"
                       />
-                      <br />
-                      <br />
                     </div>
                   )}
                   {shouldShowAppEmailLink(config, itinerary.legs) && (
@@ -223,6 +222,7 @@ class ItineraryTab extends React.Component {
               appLinkEmailModalOpen: !appLinkEmailModalOpen,
             }))
           }
+          deepLink={this.state.deepLink}
           itinerary={this.props.itinerary}
         />
       </div>

@@ -20,7 +20,9 @@ const secondaryButton = (props, context) => {
       })}
       onClick={e => props.buttonClickAction(e)}
     >
-      {props.buttonIcon && <Icon img={props.buttonIcon} />}
+      {props.buttonIcon && (
+        <Icon img={props.buttonIcon} viewBox={props.iconViewBox} />
+      )}
       <FormattedMessage
         id={props.buttonName}
         defaultMessage={props.buttonName}
@@ -33,6 +35,7 @@ secondaryButton.propTypes = {
   ariaLabel: PropTypes.string.isRequired,
   buttonName: PropTypes.string.isRequired,
   buttonClickAction: PropTypes.func.isRequired,
+  iconViewBox: PropTypes.string,
   buttonIcon: PropTypes.string,
   smallSize: PropTypes.bool,
 };

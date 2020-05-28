@@ -3,9 +3,12 @@ import PropTypes from 'prop-types';
 import { FormattedMessage, intlShape, injectIntl } from 'react-intl';
 import { locationShape, routerShape } from 'react-router';
 import PortalModal from './PortalModal';
+import SecondaryButton from './SecondaryButton';
+import Icon from './Icon';
 
 function EmailLinkModal(props /* context */) {
   const [email, setEmail] = useState('');
+  const [copySuccess, setCopySuccess] = useState(false);
 
   // const requestDeepLinkEmail = async (requestUrl, options) => {
   //   await fetch(requestUrl, {
@@ -13,6 +16,11 @@ function EmailLinkModal(props /* context */) {
   //     body: JSON.stringify({ ...options }),
   //   });
   // };
+
+  const copyLinkToClipboard = () => {
+    navigator.clipboard.writeText(props.deepLink);
+    setCopySuccess(true);
+  };
 
   const emailValid = () => /^.+@.+\..{2,}/.test(email);
 
@@ -43,7 +51,44 @@ function EmailLinkModal(props /* context */) {
       toggleVisibility={props.toggleVisibility}
     >
       <div style={{ padding: '0.5em' }}>
-        <label htmlFor="input-deep-link-email">
+        <div
+          style={{
+            flexDirection: 'row',
+            display: 'flex',
+            alignItems: 'center',
+          }}
+        >
+          <SecondaryButton
+            ariaLabel="copy-link"
+            buttonClickAction={copyLinkToClipboard}
+            buttonName="copy-link-to-clipboard"
+            buttonIcon="icon-icon_clipboard"
+            iconViewBox="0 0 24 24"
+          />
+
+          {copySuccess && (
+            <div
+              style={{
+                marginLeft: '5px',
+                flexDirection: 'row',
+                marginBottom: '20px',
+              }}
+            >
+              <Icon
+                img="icon-icon_thumb-up"
+                viewBox="0 0 24 24"
+                color="green"
+                style={{ marginRight: '5px' }}
+              />
+              <FormattedMessage
+                id="copy-link-to-clipboard-copied"
+                defaultMessage="Copied!"
+              />
+            </div>
+          )}
+        </div>
+
+        <label htmlFor="input-deep-link-email" className="email-modal-label">
           <FormattedMessage
             id="send-email-modal-input-label"
             defaultMessage="Email address"
@@ -76,6 +121,7 @@ EmailLinkModal.propTypes = {
   open: PropTypes.bool.isRequired,
   toggleVisibility: PropTypes.func.isRequired,
   intl: intlShape.isRequired,
+  deepLink: PropTypes.string.isRequired,
   // eslint-disable-next-line
   itinerary: PropTypes.object.isRequired,
 };
