@@ -1,4 +1,4 @@
-name: Run tests and build docker image
+name: Build docker image and rollout update
 
 on:
   push:
@@ -8,7 +8,6 @@ on:
 jobs:
   docker:
     name: Build docker image
-    needs: test
 
     runs-on: ubuntu-latest
     env:
