@@ -12,22 +12,24 @@ jobs:
 
     runs-on: ubuntu-latest
     env:
+      GCR_REGISTRY: eu.gcr.io
       GCLOUD_PROJECT: open-trip-planner-260813
       GCLOUD_ZONE: europe-north1-a
       KUBE_CLUSTER_NAME: otp-dev
     steps:
       - uses: actions/checkout@v2
-      - name: Login to gcloud registry
+      - name: Build and publish to Registry
+        run: |
+          echo "${{ secrets.GCLOUD_SERVICE_KEY }}" | base64 --decode --ignore-garbage | docker login -u _json_key https://${GCR_REGISTRY} --password-stdin
+          docker build --pull -t "${GCR_REGISTRY}/${GCLOUD_PROJECT}/digitransit-ui:${{ github.sha }}" -t "${GCR_REGISTRY}/${GCLOUD_PROJECT}/digitransit-ui:latest" .
+          docker push "${GCR_REGISTRY}/${GCLOUD_PROJECT}/digitransit-ui:latest"
+          docker push "${GCR_REGISTRY}/${GCLOUD_PROJECT}/digitransit-ui:${{ github.sha }}"
+
+      - name: Rollout update
         run: |
           echo "${{ secrets.GCLOUD_SERVICE_KEY }}" | base64 --decode --ignore-garbage > /tmp/gcloud-svc-key.json
           gcloud auth activate-service-account --key-file /tmp/gcloud-svc-key.json --project "${GCLOUD_PROJECT}"
           echo ::add-mask::$(gcloud auth print-access-token)
           gcloud container clusters get-credentials "${KUBE_CLUSTER_NAME}" --zone "${GCLOUD_ZONE}" --project "${GCLOUD_PROJECT}"
-      - name: Build and publish to Registry
-        run: |
-          docker build --pull -t "eu.gcr.io/${GCLOUD_PROJECT}/digitransit-ui:${{ github.sha }}" -t "eu.gcr.io/${GCLOUD_PROJECT}/digitransit-ui:latest" .
-          docker push "eu.gcr.io/${GCLOUD_PROJECT}/digitransit-ui:${{ github.sha }}"
-          docker push "eu.gcr.io/${GCLOUD_PROJECT}/digitransit-ui:latest"
-      - name: Rollout update
-        run: |
+
           kubectl -n dev-otp rollout restart deployment/reittiopas-mh-test
