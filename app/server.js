@@ -300,12 +300,14 @@ export default function(req, res, next) {
         })),
       ];
 
-      preloads.forEach(({ as, href, crossorigin }) =>
-        res.write(
-          `<link rel="preload" as="${as}" ${
-            crossorigin ? 'crossorigin' : ''
-          } href="${href}">\n`,
-        ),
+      preloads.forEach(
+        ({ as, href, crossorigin }) =>
+          href &&
+          res.write(
+            `<link rel="preload" as="${as}" ${
+              crossorigin ? 'crossorigin' : ''
+            } href="${href}">\n`,
+          ),
       );
 
       const preconnects = [
@@ -314,8 +316,10 @@ export default function(req, res, next) {
         config.staticMessagesUrl,
       ];
 
-      preconnects.forEach(href =>
-        res.write(`<link rel="preconnect" crossorigin href="${href}">\n`),
+      preconnects.forEach(
+        href =>
+          href &&
+          res.write(`<link rel="preconnect" crossorigin href="${href}">\n`),
       );
 
       res.write(
