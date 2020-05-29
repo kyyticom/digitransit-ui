@@ -31,22 +31,22 @@ jobs:
     needs: test
 
     runs-on: ubuntu-latest
+    env:
+      GCLOUD_PROJECT: open-trip-planner-260813
+      GCLOUD_ZONE: europe-north1-a
+      KUBE_CLUSTER_NAME: otp-dev
     steps:
       - uses: actions/checkout@v2
       - name: Login to gcloud registry
-        id: gcloud
-        uses: elgohr/gcloud-login-action@master
-        with:
-          account_key: ${{ secrets.GCLOUD_SERVICE_KEY }}
-      - name: Publish to Registry
-        uses: elgohr/Publish-Docker-Github-Action@master
-        with:
-          name: open-trip-planner-260813/digitransit-ui
-          username: ${{ steps.gcloud.outputs.username }}
-          password: ${{ steps.gcloud.outputs.password }}
-          registry: eu.gcr.io
-          tags: "latest,${{ github.sha }}"
+        run: |
+          echo "$GCLOUD_SERVICE_KEY" | base64 --decode --ignore-garbage > /tmp/gcloud-svc-key.json
+          gcloud auth activate-service-account --key-file /tmp/gcloud-svc-key.json --project "${GCLOUD_PROJECT}"
+          gcloud container clusters get-credentials "${KUBE_CLUSTER_NAME}" --zone "${GCLOUD_ZONE}" --project "${GCLOUD_PROJECT}"
+      - name: Build and publish to Registry
+        run: |
+          docker build --pull -t "eu.gcr.io/${GCLOUD_PROJECT}/digitransit-ui:${{ github.sha }}" -t "eu.gcr.io/${GCLOUD_PROJECT}/digitransit-ui:latest" .
+          docker push "eu.gcr.io/${GCLOUD_PROJECT}/digitransit-ui:${{ github.sha }}"
+          docker push "eu.gcr.io/${GCLOUD_PROJECT}/digitransit-ui:latest"
       - name: Rollout update
         run: |
-          gcloud container clusters get-credentials otp-dev
           kubectl -n dev-otp rollout restart deployment/reittiopas-mh-test
