@@ -37,7 +37,7 @@ jobs:
         id: gcloud
         uses: elgohr/gcloud-login-action@master
         with:
-          account_key: ${{ secrets.GCLOUD_KEY }}
+          account_key: ${{ secrets.GCLOUD_SERVICE_KEY }}
       - name: Publish to Registry
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
@@ -46,4 +46,7 @@ jobs:
           password: ${{ steps.gcloud.outputs.password }}
           registry: eu.gcr.io
           tags: "latest,${{ github.sha }}"
-
+      - name: Rollout update
+        run: |
+          gcloud container clusters get-credentials otp-dev
+          kubectl -n dev-otp rollout restart deployment/reittiopas-mh-test
