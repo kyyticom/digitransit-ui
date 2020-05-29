@@ -1,7 +1,7 @@
 /* eslint-disable */
 import configMerger from '../util/configMerger';
 
-const CONFIG = 'mh-dev';
+const CONFIG = 'mhdev';
 const APP_TITLE = 'Matkahuolto reittihaku DEV';
 const APP_DESCRIPTION = 'Matkahuolto reittihaku DEV';
 const walttiConfig = require('./config.waltti').default;
@@ -35,8 +35,8 @@ export default configMerger(walttiConfig, {
 
   textLogo: false,
 
-  logo: 'mh-dev/mh-logo.png',
-  favicon: './app/configurations/images/mh-dev/mh-favicon.png',
+  logo: 'mhdev/mh-logo.png',
+  favicon: './app/configurations/images/mhdev/mh-favicon.png',
 
   feedIds: ['Matkahuolto'],
 
