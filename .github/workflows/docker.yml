@@ -39,8 +39,9 @@ jobs:
       - uses: actions/checkout@v2
       - name: Login to gcloud registry
         run: |
-          echo "$GCLOUD_SERVICE_KEY" | base64 --decode --ignore-garbage > /tmp/gcloud-svc-key.json
+          echo "${{ secrets.GCLOUD_SERVICE_KEY }}" | base64 --decode --ignore-garbage > /tmp/gcloud-svc-key.json
           gcloud auth activate-service-account --key-file /tmp/gcloud-svc-key.json --project "${GCLOUD_PROJECT}"
+          echo ::add-mask::$(gcloud auth print-access-token)
           gcloud container clusters get-credentials "${KUBE_CLUSTER_NAME}" --zone "${GCLOUD_ZONE}" --project "${GCLOUD_PROJECT}"
       - name: Build and publish to Registry
         run: |
