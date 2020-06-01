@@ -17,6 +17,7 @@ export default configMerger(walttiConfig, {
   appBarLink: { name: 'Matkahuolto', href: 'http://www.matkahuolto.fi/' },
 
   URL: {
+    GEOCODING_BASE_URL: 'https://api.tuup.fi',
     OTP: `https://otp.matkahuolto.kyyti.com/otp/routers/default/`,
   },
 
