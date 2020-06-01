@@ -344,6 +344,9 @@ export function getGeocodingResult(
         opts['boundary.rect.min_lat']
       },${opts['boundary.rect.max_lon']},${opts['boundary.rect.max_lat']}`;
     }
+    if (!query.bbox) {
+      query.bbox = '19,59,32,71';
+    }
 
     return getJson(
       `${config.URL.GEOCODING_BASE_URL}/places/v2/search`,
