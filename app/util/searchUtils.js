@@ -15,6 +15,13 @@ import { uniqByLabel, isStop } from './suggestionUtils';
 import mapPeliasModality from './pelias-to-modality-mapper';
 import { PREFIX_ROUTES, PREFIX_STOPS } from './path';
 
+function useKyytiGeocoding(config) {
+  return (
+    !config.URL.GEOCODING_BASE_URL.includes('digitransit') &&
+    !config.URL.GEOCODING_BASE_URL.includes('mock_api_url')
+  );
+}
+
 function mapKyytiAddrToFeature(res) {
   return {
     type: 'Feature',
@@ -330,7 +337,7 @@ export function getGeocodingResult(
     opts = { ...opts, sources };
   }
 
-  if (!config.URL.GEOCODING_BASE_URL.includes('digitransit')) {
+  if (useKyytiGeocoding(config)) {
     const query = {
       text: opts.text,
     };
@@ -360,10 +367,7 @@ export function getGeocodingResult(
 }
 
 export function searchPlace(ids, config) {
-  if (
-    !config.URL.GEOCODING_BASE_URL.includes('digitransit') &&
-    !config.URL.GEOCODING_BASE_URL.includes('mock_api_url')
-  ) {
+  if (useKyytiGeocoding(config)) {
     return Promise.resolve({});
     // return getJson(`${config.URL.GEOCODING_BASE_URL}/places/v2/nearby/${ids}`);
   }
@@ -881,7 +885,7 @@ export const withCurrentTime = (getStore, location) => {
 };
 
 export function reverseGeocode(opts, config) {
-  if (!config.URL.GEOCODING_BASE_URL.includes('digitransit')) {
+  if (useKyytiGeocoding(config)) {
     const at = `${opts['point.lat']},${opts['point.lon']}`;
     return getJson(
       `${config.URL.GEOCODING_BASE_URL}/geocoder/v1/reverse`,
