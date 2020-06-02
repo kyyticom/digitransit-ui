@@ -331,10 +331,6 @@ export function getGeocodingResult(
   }
 
   if (!config.URL.GEOCODING_BASE_URL.includes('digitransit')) {
-    const headers = {
-      Accept: 'application/json',
-      'Accept-Language': opts.lang,
-    };
     const query = {
       text: opts.text,
     };
@@ -348,11 +344,9 @@ export function getGeocodingResult(
       query.bbox = '19,59,32,71';
     }
 
-    return getJson(
-      `${config.URL.GEOCODING_BASE_URL}/places/v2/search`,
-      query,
-      headers,
-    ).then(res => {
+    return getJson(`${config.URL.GEOCODING_BASE_URL}/places/v2/search`, query, {
+      'Accept-Language': opts.lang,
+    }).then(res => {
       const response = {
         features: res.search.map(mapKyytiAddrToFeature),
       };

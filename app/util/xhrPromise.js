@@ -16,13 +16,7 @@ function serialize(obj, prefix) {
 }
 
 // Return Promise for a url json get request
-export function getJson(
-  url,
-  params,
-  headers = {
-    Accept: 'application/json',
-  },
-) {
+export function getJson(url, params, headers) {
   return fetch(
     encodeURI(url) +
       (params ? (url.search(/\?/) === -1 ? '?' : '&') + serialize(params) : ''),
@@ -30,7 +24,10 @@ export function getJson(
       timeout: 10000,
       method: 'GET',
 
-      headers,
+      headers: {
+        Accept: 'application/json',
+        ...headers,
+      },
     },
   ).then(res => res.json());
 }
