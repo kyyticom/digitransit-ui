@@ -143,7 +143,11 @@ export default class Map extends React.Component {
         >
           <TileLayer
             onLoad={this.setLoaded}
-            url={`${mapUrl}{z}/{x}/{y}{size}.png`}
+            url={`${mapUrl}{z}/{x}/{y}{size}${
+              config.MAP_ACCESS_TOKEN
+                ? `?access_token=${config.MAP_ACCESS_TOKEN}`
+                : ''
+            }`}
             tileSize={config.map.tileSize || 256}
             zoomOffset={config.map.zoomOffset || 0}
             updateWhenIdle={false}
@@ -157,7 +161,7 @@ export default class Map extends React.Component {
           />
           <AttributionControl
             position="bottomright"
-            prefix="&copy; <a tabindex=&quot;-1&quot; href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a>"
+            prefix="© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>"
           />
           {this.props.showScaleBar && (
             <ScaleControl

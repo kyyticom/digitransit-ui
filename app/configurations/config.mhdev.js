@@ -6,6 +6,8 @@ const APP_TITLE = 'Matkahuolto reittihaku DEV';
 const APP_DESCRIPTION = 'Matkahuolto reittihaku DEV';
 const walttiConfig = require('./config.waltti').default;
 
+const MAP_URL = 'https://api.mapbox.com';
+
 const minLat = 59;
 const maxLat = 71;
 const minLon = 20;
@@ -16,8 +18,17 @@ export default configMerger(walttiConfig, {
 
   appBarLink: { name: 'Matkahuolto', href: 'http://www.matkahuolto.fi/' },
 
+  // This goes to browser, so not secret. When rotating keys just make
+  // sure Mapbox account panel lists deployed URLS for CORS policy
+  MAP_ACCESS_TOKEN: 'pk.eyJ1Ijoia3l5dGljb20iLCJhIjoiY2thcDdoaDMxMGw0eTJycG85N3Z1azBjMSJ9.hsIE5azenQvs2yOi7cOSCQ',
   URL: {
     GEOCODING_BASE_URL: 'https://devapi.tuup.fi',
+    MAP_URL,
+    MAP: {
+      default: `${MAP_URL}/styles/v1/kyyticom/cjvytj9650p4a1clh3qbzxspe/tiles/`,
+    },
+    STOP_MAP: null,
+    CITYBIKE_MAP: null,
     // OTP: `https://otp.matkahuolto.kyyti.com/otp/routers/default/`,
     OTP: 'https://otp.dev.kyyti.io/otp/routers/default/'
     // OTP: 'https://dev-api.digitransit.fi/routing/v1/routers/finland/'
