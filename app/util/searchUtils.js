@@ -352,6 +352,7 @@ export function getGeocodingResult(
     }
 
     return getJson(`${config.URL.GEOCODING_BASE_URL}/places/v2/search`, query, {
+      'Kyyti-App-AppId': config.appBundleId,
       'Accept-Language': opts.lang,
     }).then(res => {
       const response = {
@@ -891,6 +892,7 @@ export function reverseGeocode(opts, config) {
       `${config.URL.GEOCODING_BASE_URL}/geocoder/v1/reverse`,
       { at },
       {
+        'Kyyti-App-AppId': config.appBundleId,
         Accept: 'application/json',
         'Accept-Language': opts.lang,
       },
