@@ -27,7 +27,7 @@ function mapKyytiAddrToFeature(res) {
     type: 'Feature',
     geometry: {
       type: 'Point',
-      coordinates: [res.location.lot, res.location.lan],
+      coordinates: [res.location.lon, res.location.lat],
     },
     properties: {
       gid: res.gid,
