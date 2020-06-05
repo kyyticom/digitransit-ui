@@ -53,3 +53,25 @@
 .dynamic-height-modal .modal {
   height: unset !important;
 }
+
+.secondary-button, .primary-button {
+  border-radius: 30px;
+  font-weight: 700;
+}
+
+label.form-input  {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.form-input input {
+  border: 2px solid lightgrey;
+  font-size: 16px;
+  padding: 0.5em;
+  height: 42px;
+  border-radius: 4px;
+
+  &:focus, &:active {
+    border-color: $primary-color;
+  }
+}

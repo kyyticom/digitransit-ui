@@ -88,7 +88,7 @@ function EmailLinkModal(props /* context */) {
           )}
         </div>
 
-        <label htmlFor="input-deep-link-email" style={{ fontSize: '18px' }}>
+        <label htmlFor="input-deep-link-email" className="form-input">
           <FormattedMessage
             id="send-email-modal-input-label"
             defaultMessage="Email address"
@@ -104,19 +104,9 @@ function EmailLinkModal(props /* context */) {
             value={email}
             onChange={changeEmail}
             aria-invalid={email && !emailValid()}
-            style={{
-              fontSize: '16px',
-              padding: '0.5em',
-              height: '48px',
-              borderRadius: '4px',
-            }}
           />
         </label>
-        <button
-          type="submit"
-          onClick={doRequest}
-          style={{ borderRadius: '4px' }}
-        >
+        <button type="submit" onClick={doRequest} className="primary-button">
           <FormattedMessage
             id="send-email-modal-submit"
             defaultMessage="Send link"
