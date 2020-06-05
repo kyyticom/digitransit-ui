@@ -1,5 +1,12 @@
 @import '../../base/waltti';
 
+@font-face {
+  font-family: 'Centra No 2';
+  src: url('https://cdn.kyyti.com/fonts/CentraNo2-Book.woff2') format('woff2');
+  src: url('https://cdn.kyyti.com/fonts/CentraNo2-Bold.woff2') format('woff2');
+  src: url('https://cdn.kyyti.com/fonts/CentraNo2-Medium.woff2') format('woff2');
+}
+
 /* main theme colors */
 $primary-color: #0070b5;
 $secondary-color: darken($primary-color, 20%);
@@ -25,3 +32,5 @@ $top-navigation-title-color: $primary-color;
 
 $nav-logo-height: 72px;
 $nav-logo-width: 275px;
+
+$font-family: 'Centra No 2', system-ui, sans-serif;
