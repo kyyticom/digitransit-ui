@@ -14,6 +14,10 @@ function EmailLinkModal(props, context) {
   const requestDeepLinkEmail = async (requestUrl, options) => {
     await fetch(requestUrl, {
       method: 'post',
+      headers: {
+        'Kyyti-App-AppId': context.config.appBundleId,
+        Accept: 'application/json',
+      },
       body: JSON.stringify({ ...options }),
     });
   };
