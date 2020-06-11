@@ -5,17 +5,18 @@ import { locationShape, routerShape } from 'react-router';
 import PortalModal from './PortalModal';
 import SecondaryButton from './SecondaryButton';
 import Icon from './Icon';
+import { getFrom, getTo, getFromStartTime } from '../util/routeDeepLinkUtils';
 
-function EmailLinkModal(props /* context */) {
+function EmailLinkModal(props, context) {
   const [email, setEmail] = useState('');
   const [copySuccess, setCopySuccess] = useState(false);
 
-  // const requestDeepLinkEmail = async (requestUrl, options) => {
-  //   await fetch(requestUrl, {
-  //     method: 'post',
-  //     body: JSON.stringify({ ...options }),
-  //   });
-  // };
+  const requestDeepLinkEmail = async (requestUrl, options) => {
+    await fetch(requestUrl, {
+      method: 'post',
+      body: JSON.stringify({ ...options }),
+    });
+  };
 
   const copyLinkToClipboard = () => {
     navigator.clipboard.writeText(props.deepLink);
@@ -25,12 +26,17 @@ function EmailLinkModal(props /* context */) {
   const emailValid = () => /^.+@.+\..{2,}/.test(email);
 
   const doRequest = async () => {
-    // if (emailValid()) {
-    //   await requestDeepLinkEmail(
-    //     context.config.sendAppLinkSMSrequestEndpoint,
-    //     getDeepLinkUrl(context.config.routeAppDeepLink, props.itinerary),
-    //   );
-    // }
+    if (emailValid()) {
+      await requestDeepLinkEmail(
+        context.config.sendAppLinkEmailRequestEndpoint,
+        {
+          email,
+          from: getFrom(props.itinerary),
+          to: getTo(props.itinerary),
+          startTime: getFromStartTime(props.itinerary),
+        },
+      );
+    }
     props.toggleVisibility();
   };
 
