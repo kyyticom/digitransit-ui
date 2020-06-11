@@ -35,9 +35,9 @@ const getTo = itinerary => {
   if (!lastLegTo) {
     return null;
   }
-  const fromName = lastLegTo.name;
+  const toName = lastLegTo.name;
   const latLon = `${lastLegTo.lat},${lastLegTo.lon}`;
-  return `${fromName}::${latLon}`;
+  return `${toName}::${latLon}`;
 };
 const getFromStartTime = itinerary => {
   return _.get(itinerary, 'legs[0].startTime');
