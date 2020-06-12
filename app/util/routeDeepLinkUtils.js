@@ -15,7 +15,7 @@ export const shouldShowAppEmailLink = (config, legs) => {
     config.appInstallDeepLinkBase
   );
 };
-const getFrom = itinerary => {
+export const getFrom = itinerary => {
   const firstLegFrom = _.chain(itinerary.legs)
     .first()
     .get('from')
@@ -27,7 +27,7 @@ const getFrom = itinerary => {
   const latLon = `${firstLegFrom.lat},${firstLegFrom.lon}`;
   return `${fromName}::${latLon}`;
 };
-const getTo = itinerary => {
+export const getTo = itinerary => {
   const lastLegTo = _.chain(itinerary.legs)
     .last()
     .get('to')
@@ -35,11 +35,11 @@ const getTo = itinerary => {
   if (!lastLegTo) {
     return null;
   }
-  const fromName = lastLegTo.name;
+  const toName = lastLegTo.name;
   const latLon = `${lastLegTo.lat},${lastLegTo.lon}`;
-  return `${fromName}::${latLon}`;
+  return `${toName}::${latLon}`;
 };
-const getFromStartTime = itinerary => {
+export const getFromStartTime = itinerary => {
   return _.get(itinerary, 'legs[0].startTime');
 };
 

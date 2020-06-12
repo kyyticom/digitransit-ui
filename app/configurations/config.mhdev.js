@@ -149,7 +149,7 @@ export default configMerger(walttiConfig, {
   routeSearchDeepLinkBase: 'https://matkahuolto.kyyti.com/devroute-search/',
   appBundleId: 'com.kyyti.ride.matkahuolto.dev',
   appStoreId: '1496304929',
-  sendAppLinkEmailRequestEndpoint: false,
+  sendAppLinkEmailRequestEndpoint: 'https://devapi.tuup.fi/users/v2/send-route',
 
   aboutThisService: {
     fi: [
