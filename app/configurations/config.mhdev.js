@@ -2,6 +2,7 @@
 import configMerger from '../util/configMerger';
 
 const CONFIG = 'mhdev';
+const API_URL = process.env.API_URL || `https://otp.dev.kyyti.io`;
 const APP_TITLE = 'Matkahuolto reittihaku DEV';
 const APP_DESCRIPTION = 'Matkahuolto reittihaku DEV';
 const walttiConfig = require('./config.waltti').default;
@@ -22,16 +23,16 @@ export default configMerger(walttiConfig, {
   // sure Mapbox account panel lists deployed URLS for CORS policy
   MAP_ACCESS_TOKEN: 'pk.eyJ1Ijoia3l5dGljb20iLCJhIjoiY2thcDdoaDMxMGw0eTJycG85N3Z1azBjMSJ9.hsIE5azenQvs2yOi7cOSCQ',
   URL: {
+    API_URL,
     GEOCODING_BASE_URL: 'https://devapi.tuup.fi',
     MAP_URL,
     MAP: {
       default: `${MAP_URL}/styles/v1/kyyticom/cjvytj9650p4a1clh3qbzxspe/tiles/`,
+      sv: `${MAP_URL}/styles/v1/kyyticom/cjvytj9650p4a1clh3qbzxspe/tiles/`,
     },
     STOP_MAP: null,
     CITYBIKE_MAP: null,
-    // OTP: `https://otp.matkahuolto.kyyti.com/otp/routers/default/`,
-    OTP: 'https://otp.dev.kyyti.io/otp/routers/default/'
-    // OTP: 'https://dev-api.digitransit.fi/routing/v1/routers/finland/'
+    OTP: `${API_URL}/otp/routers/default/`,
   },
 
   colors: {
