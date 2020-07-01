@@ -47,6 +47,11 @@ export default configMerger(walttiConfig, {
       width: 1080,
       height: 600,
     },
+
+    twitter: {
+      card: 'summary_large_image',
+      site: '@matkahuolto',
+    },
   },
 
   title: APP_TITLE,
