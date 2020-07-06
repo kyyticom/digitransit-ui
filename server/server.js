@@ -263,6 +263,9 @@ function setUpErrorHandling() {
 function setUpRoutes() {
   app.use(helmet());
 
+  app.get('/health-check', (req, res) => {
+    res.send('Health check passed');
+  });
   app.use((req, res, next) => {
     if (process.env.NODE_ENV === 'production') {
       if (
