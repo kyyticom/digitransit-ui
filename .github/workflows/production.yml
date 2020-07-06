@@ -22,10 +22,11 @@ jobs:
         run: echo ::set-env name=RELEASE_TAG::${GITHUB_REF#refs/*/}
       - name: Publish tag to Registry
         run: |
-          echo "${{ secrets.GCLOUD_SERVICE_KEY }}" | base64 --decode --ignore-garbage | docker login -u _json_key https://${GCR_REGISTRY} --password-stdin
+          echo "${{ secrets.GCLOUD_SERVICE_KEY }}" | base64 --decode --ignore-garbage > /tmp/gcloud-svc-key.json
+          gcloud auth activate-service-account --key-file /tmp/gcloud-svc-key.json --project "${GCLOUD_PROJECT}"
+          echo ::add-mask::$(gcloud auth print-access-token)
 
-          docker tag "${GCR_REGISTRY}/${GCLOUD_PROJECT}/digitransit-ui:${{ github.sha }}" "${GCR_REGISTRY}/${GCLOUD_PROJECT}/digitransit-ui:${{ env.RELEASE_TAG }}"
-          docker push "${GCR_REGISTRY}/${GCLOUD_PROJECT}/digitransit-ui:${{ env.RELEASE_TAG }}"
+          gcloud container images add-tag "${GCR_REGISTRY}/${GCLOUD_PROJECT}/digitransit-ui:${{ github.sha }}" "${GCR_REGISTRY}/${GCLOUD_PROJECT}/digitransit-ui:${{ env.RELEASE_TAG }}"
 
       - name: Rollout update
         run: |
