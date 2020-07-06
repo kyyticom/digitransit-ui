@@ -149,11 +149,8 @@ function setUpRoutes() {
     res.send('Health check passed');
   });
   app.use((req, res, next) => {
-    if (process.env.NODE_ENV === 'production') {
-      if (
-        process.env.REDIRECT_HOST &&
-        req.headers.host !== process.env.REDIRECT_HOST
-      ) {
+    if (process.env.NODE_ENV === 'production' && process.env.REDIRECT_HOST) {
+      if (req.headers.host !== process.env.REDIRECT_HOST) {
         return res.redirect(301, `https://${process.env.REDIRECT_HOST}`);
       } else if (req.headers['x-forwarded-proto'] !== 'https') {
         return res.redirect(`https://${req.headers.host}${req.url}`);
