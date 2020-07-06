@@ -1,0 +1,37 @@
+name: Tag production image and rollout update
+
+on:
+  push:
+    tags:
+      - production-*
+
+jobs:
+  docker:
+    name: Tag and deploy production revision
+
+    runs-on: ubuntu-latest
+    env:
+      GCR_REGISTRY: eu.gcr.io
+      GCLOUD_PROJECT: open-trip-planner-260813
+      GCLOUD_ZONE: europe-north1-a
+      KUBE_CLUSTER_NAME: otp-prd
+    steps:
+      - uses: actions/checkout@v2
+      - name: Extract release tag
+        id: vars
+        run: echo ::set-env name=RELEASE_TAG::${GITHUB_REF#refs/*/}
+      - name: Publish tag to Registry
+        run: |
+          echo "${{ secrets.GCLOUD_SERVICE_KEY }}" | base64 --decode --ignore-garbage | docker login -u _json_key https://${GCR_REGISTRY} --password-stdin
+
+          docker tag "${GCR_REGISTRY}/${GCLOUD_PROJECT}/digitransit-ui:${{ github.sha }}" "${GCR_REGISTRY}/${GCLOUD_PROJECT}/digitransit-ui:${{ env.RELEASE_TAG }}"
+          docker push "${GCR_REGISTRY}/${GCLOUD_PROJECT}/digitransit-ui:${{ env.RELEASE_TAG }}"
+
+      - name: Rollout update
+        run: |
+          echo "${{ secrets.GCLOUD_SERVICE_KEY }}" | base64 --decode --ignore-garbage > /tmp/gcloud-svc-key.json
+          gcloud auth activate-service-account --key-file /tmp/gcloud-svc-key.json --project "${GCLOUD_PROJECT}"
+          echo ::add-mask::$(gcloud auth print-access-token)
+          gcloud container clusters get-credentials "${KUBE_CLUSTER_NAME}" --zone "${GCLOUD_ZONE}" --project "${GCLOUD_PROJECT}"
+
+          echo kubectl -n otp set image deployment/reittiopas-mh-prod "${GCR_REGISTRY}/${GCLOUD_PROJECT}/digitransit-ui:${{ env.RELEASE_TAG }}"
