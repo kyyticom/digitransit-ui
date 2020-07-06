@@ -269,7 +269,7 @@ function setUpRoutes() {
         process.env.REDIRECT_HOST &&
         req.headers.host !== process.env.REDIRECT_HOST
       ) {
-        return res.redirect(301, process.env.REDIRECT_HOST);
+        return res.redirect(301, `https://${process.env.REDIRECT_HOST}`);
       } else if (req.headers['x-forwarded-proto'] !== 'https') {
         return res.redirect(`https://${req.headers.host}${req.url}`);
       } else {
