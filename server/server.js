@@ -89,30 +89,6 @@ function setUpOIDC() {
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(helmet());
 
-  app.use((req, res, next) => {
-    if (process.env.NODE_ENV === 'production') {
-      if (
-        process.env.REDIRECT_HOST &&
-        req.headers.host !== process.env.REDIRECT_HOST
-      ) {
-        return res.redirect(301, process.env.REDIRECT_HOST);
-      } else if (req.headers['x-forwarded-proto'] !== 'https') {
-        return res.redirect(`https://${req.headers.host}${req.url}`);
-      } else {
-        return next();
-      }
-    } else {
-      return next();
-    }
-  });
-
-  const sixtyDaysInSeconds = 5184000;
-  app.use(
-    helmet.hsts({
-      maxAge: sixtyDaysInSeconds,
-    }),
-  );
-
   // Passport requires session to persist the authentication
   app.use(
     session({
@@ -285,6 +261,32 @@ function setUpErrorHandling() {
 }
 
 function setUpRoutes() {
+  app.use(helmet());
+
+  app.use((req, res, next) => {
+    if (process.env.NODE_ENV === 'production') {
+      if (
+        process.env.REDIRECT_HOST &&
+        req.headers.host !== process.env.REDIRECT_HOST
+      ) {
+        return res.redirect(301, process.env.REDIRECT_HOST);
+      } else if (req.headers['x-forwarded-proto'] !== 'https') {
+        return res.redirect(`https://${req.headers.host}${req.url}`);
+      } else {
+        return next();
+      }
+    } else {
+      return next();
+    }
+  });
+
+  const sixtyDaysInSeconds = 5184000;
+  app.use(
+    helmet.hsts({
+      maxAge: sixtyDaysInSeconds,
+    }),
+  );
+
   app.use(
     ['/', '/fi/', '/en/', '/sv/', '/ru/', '/slangi/'],
     require('./reittiopasParameterMiddleware').default,
