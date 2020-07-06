@@ -28,6 +28,7 @@ jobs:
 
   docker:
     name: Build docker image
+    needs: test
 
     runs-on: ubuntu-latest
     env:
