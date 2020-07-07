@@ -17,6 +17,7 @@ function EmailLinkModal(props, context) {
       headers: {
         'Kyyti-App-AppId': context.config.appBundleId,
         Accept: 'application/json',
+        'Accept-Language': props.intl.locale || 'fi',
       },
       body: JSON.stringify({ ...options }),
     });
