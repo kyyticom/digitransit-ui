@@ -69,7 +69,7 @@ function EmailLinkModal(props, context) {
           }}
         >
           <SecondaryButton
-            ariaLabel="copy-link"
+            ariaLabel="copy-link-to-clipboard"
             buttonClickAction={copyLinkToClipboard}
             buttonName="copy-link-to-clipboard"
             buttonIcon="icon-icon_clipboard"
