@@ -151,8 +151,7 @@ const productionPlugins = [
   new WebpackAssetsManifest({ output: '../manifest.json' }),
 ];
 
-module.exports = {
-  mode,
+const mainConfig = {
   entry: {
     main: ['./app/util/publicPath', './app/client'],
     ...(isProduction ? themeEntries : {}),
@@ -164,6 +163,56 @@ module.exports = {
     publicPath: isDevelopment ? '/proxy/' : `${process.env.APP_PATH || ''}/`,
     crossOriginLoading: 'anonymous',
   },
+  optimization: {
+    minimizer: [
+      new TerserJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true, // set to true if you want JS source maps
+      }),
+      new OptimizeCSSAssetsPlugin({}),
+    ],
+    moduleIds: 'named',
+    chunkIds: 'named',
+    splitChunks: {
+      chunks: isProduction ? 'all' : 'async',
+      cacheGroups: {
+        react: {
+          name: 'react',
+          test: /[\\/]node_modules[\\/](react|react-dom|react-relay|relay-runtime)[\\/]/,
+          reuseExistingChunk: false,
+        },
+      },
+    },
+    runtimeChunk: isProduction,
+  },
+};
+
+const widgetConfig = {
+  entry: {
+    widget: './app/widget',
+  },
+  output: {
+    path: path.join(__dirname, '_static'),
+    filename: 'js/[name].js',
+    chunkFilename: 'js/[chunkhash].js',
+    publicPath: isDevelopment ? '/proxy/' : `${process.env.APP_PATH || ''}/`,
+    crossOriginLoading: 'anonymous',
+  },
+  optimization: {
+    minimizer: [
+      new TerserJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true, // set to true if you want JS source maps
+      }),
+      new OptimizeCSSAssetsPlugin({}),
+    ],
+  },
+};
+
+const config = {
+  mode,
   module: {
     rules: [
       {
@@ -235,29 +284,6 @@ module.exports = {
       ? [new webpack.ContextReplacementPlugin(themeExpression, selectedTheme)]
       : productionPlugins),
   ],
-  optimization: {
-    minimizer: [
-      new TerserJsPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: true, // set to true if you want JS source maps
-      }),
-      new OptimizeCSSAssetsPlugin({}),
-    ],
-    moduleIds: 'named',
-    chunkIds: 'named',
-    splitChunks: {
-      chunks: isProduction ? 'all' : 'async',
-      cacheGroups: {
-        react: {
-          name: 'react',
-          test: /[\\/]node_modules[\\/](react|react-dom|react-relay|relay-runtime)[\\/]/,
-          reuseExistingChunk: false,
-        },
-      },
-    },
-    runtimeChunk: isProduction,
-  },
   performance: { hints: false },
   node: {
     net: 'empty',
@@ -333,3 +359,8 @@ module.exports = {
     overlay: true,
   },
 };
+
+module.exports = [
+  Object.assign({}, config, mainConfig),
+  Object.assign({}, config, widgetConfig),
+];
