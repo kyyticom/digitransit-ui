@@ -189,9 +189,11 @@ const mainConfig = {
 };
 
 const widgetConfig = {
+  mode,
   entry: {
-    widget: './app/widget',
+    widget: ['./app/widget.js', './app/widget.scss'],
   },
+
   output: {
     path: path.join(__dirname, '_static'),
     filename: 'js/[name].js',
@@ -199,7 +201,132 @@ const widgetConfig = {
     publicPath: isDevelopment ? '/proxy/' : `${process.env.APP_PATH || ''}/`,
     crossOriginLoading: 'anonymous',
   },
-  optimization: {
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        include: [path.resolve(__dirname, 'app')],
+        loader: 'babel-loader',
+        options: {
+          configFile: false,
+          presets: [
+            [
+              '@babel/preset-env',
+              {
+                // loose is needed by older Androids < 4.3 and IE10
+                loose: true,
+                modules: false,
+              },
+            ],
+            [
+              '@babel/preset-react',
+              { development: isDevelopment, useBuiltIns: true },
+            ],
+          ],
+          plugins: [
+            ['relay', { compat: true, schema: 'build/schema.json' }],
+            [
+              '@babel/plugin-transform-runtime',
+              {
+                helpers: true,
+                regenerator: true,
+                useESModules: true,
+              },
+            ],
+            '@babel/plugin-syntax-dynamic-import',
+            ['@babel/plugin-proposal-class-properties', { loose: true }],
+            '@babel/plugin-proposal-json-strings',
+          ],
+        },
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          // fallback to style-loader in development
+          isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader',
+        ],
+      },
+      {
+        test: /\.(eot|png|ttf|woff|svg|jpeg|jpg)$/,
+        loader: isDevelopment ? 'file-loader' : 'url-loader',
+        options: { limit: 10000, outputPath: 'assets' },
+      },
+    ],
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].css',
+      chunkFilename: 'css/[name].css',
+    }),
+  ],
+  performance: { hints: false },
+
+  node: {
+    net: 'empty',
+    tls: 'empty',
+  },
+  cache: true,
+  resolve: {
+    mainFields: ['browser', 'module', 'jsnext:main', 'main'],
+    alias: {
+      lodash: 'lodash-es',
+      'lodash.merge': 'lodash-es/merge',
+      moment$: 'moment/moment.js',
+      'react-router/lib/getRouteParams': 'react-router/es/getRouteParams',
+      'react-router-relay/lib': 'react-router-relay/es',
+      'react-router-relay/lib/RelayRouterContext':
+        'react-router-relay/es/RelayRouterContext',
+      'react-router-relay/lib/QueryAggregator':
+        'react-router-relay/es/QueryAggregator',
+      'babel-runtime/helpers/slicedToArray': path.join(
+        __dirname,
+        'app/util/slicedToArray',
+      ),
+      'babel-runtime/core-js/get-iterator': path.join(
+        __dirname,
+        'app/util/getIterator',
+      ),
+    },
+  },
+  externals: {
+    'babel-runtime/core-js/array/from': 'var Array.from',
+    '../core-js/array/from': 'var Array.from',
+    'babel-runtime/core-js/json/stringify': 'var JSON.stringify',
+    'babel-runtime/core-js/map': 'var Map',
+    'babel-runtime/core-js/object/assign': 'var Object.assign',
+    'babel-runtime/core-js/object/create': 'var Object.create',
+    '../core-js/object/create': 'var Object.create',
+    'babel-runtime/core-js/object/define-property': 'var Object.defineProperty',
+    '../core-js/object/define-property': 'var Object.defineProperty',
+    'babel-runtime/core-js/object/entries': 'var Object.entries',
+    'babel-runtime/core-js/object/freeze': 'var Object.freeze',
+    'babel-runtime/core-js/object/keys': 'var Object.keys',
+    '../core-js/object/get-own-property-descriptor':
+      'var Object.getOwnPropertyDescriptor',
+    'babel-runtime/core-js/object/get-prototype-of':
+      'var Object.getPrototypeOf',
+    '../core-js/object/get-prototype-of': 'var Object.getPrototypeOf',
+    'babel-runtime/core-js/object/set-prototype-of':
+      'var Object.setPrototypeOf',
+    '../core-js/object/set-prototype-of': 'var Object.setPrototypeOf',
+    'babel-runtime/core-js/promise': 'var Promise',
+    '../core-js/symbol': 'var Symbol',
+    '../core-js/symbol/iterator': 'var Symbol.iterator',
+    'babel-runtime/core-js/weak-map': 'var WeakMap',
+
+    'babel-runtime/helpers/extends': 'var Object.assign',
+    'object-assign': 'var Object.assign',
+    'simple-assign': 'var Object.assign',
+
+    'fbjs/lib/fetch': 'var fetch',
+    './fetch': 'var fetch',
+
+    'fbjs/lib/Map': 'var Map',
+  },
+
+  /* optimization: {
     minimizer: [
       new TerserJsPlugin({
         cache: true,
@@ -208,7 +335,20 @@ const widgetConfig = {
       }),
       new OptimizeCSSAssetsPlugin({}),
     ],
-  },
+    moduleIds: 'named',
+    chunkIds: 'named',
+    splitChunks: {
+      chunks: isProduction ? 'all' : 'async',
+      cacheGroups: {
+        react: {
+          name: 'react',
+          test: /[\\/]node_modules[\\/](react|react-dom|react-relay|relay-runtime)[\\/]/,
+          reuseExistingChunk: false,
+        },
+      },
+    },
+    runtimeChunk: isProduction,
+  }, */
 };
 
 const config = {
@@ -362,5 +502,5 @@ const config = {
 
 module.exports = [
   Object.assign({}, config, mainConfig),
-  Object.assign({}, config, widgetConfig),
+  Object.assign({}, widgetConfig),
 ];

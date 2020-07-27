@@ -14,6 +14,7 @@ import { distance } from './geo-utils';
 import { uniqByLabel, isStop } from './suggestionUtils';
 import mapPeliasModality from './pelias-to-modality-mapper';
 import { PREFIX_ROUTES, PREFIX_STOPS } from './path';
+import { getConfiguration } from '../config';
 
 function useKyytiGeocoding(config) {
   return (
@@ -867,6 +868,151 @@ const debouncedSearch = debounce(executeSearchImmediate, 300, {
 export const executeSearch = (getStore, refPoint, data, callback) => {
   callback(null); // This means 'we are searching'
   debouncedSearch(getStore, refPoint, data, callback);
+};
+
+export function executeWidgetSearchImmediate({ input, type }, callback) {
+  const position = {};
+  const config = getConfiguration(null);
+  const endpointSearches = { type: 'endpoint', term: input, results: [] };
+  const searchSearches = { type: 'search', term: input, results: [] };
+
+  let endpointSearchesPromise;
+  let searchSearchesPromise;
+  // const endpointLayers = ["CurrentPosition", "FavouritePlace", "FavouriteStop", "OldSearch", "Geocoding", "Stops"]; //layers || getAllEndpointLayers();
+  const endpointLayers = ['Geocoding'];
+
+  if (type === SearchType.Endpoint || type === SearchType.All) {
+    const language = 'fi';
+    const searchComponents = [];
+    if (
+      endpointLayers.includes('CurrentPosition') &&
+      position.status !== 'geolocation-not-supported'
+    ) {
+      searchComponents.push(getCurrentPositionIfEmpty(input, position));
+    }
+    if (endpointLayers.includes('OldSearch')) {
+      const dropLayers = ['currentPosition'];
+      // old searches should also obey the layers definition
+      if (!endpointLayers.includes('FavouritePlace')) {
+        dropLayers.push('favouritePlace');
+      }
+      // searchComponents.push(getOldSearches(oldSearches, input, dropLayers));
+    }
+
+    if (endpointLayers.includes('Geocoding')) {
+      const focusPoint =
+        config.autoSuggest.locationAware && position.hasLocation
+          ? {
+              // Round coordinates to approx 1 km, in order to improve caching
+              'focus.point.lat': position.lat.toFixed(2),
+              'focus.point.lon': position.lon.toFixed(2),
+            }
+          : {};
+
+      const sources = get(config, 'searchSources', '').join(',');
+
+      searchComponents.push(
+        getGeocodingResult(
+          input,
+          config.searchParams,
+          language,
+          focusPoint,
+          sources,
+          config,
+        ),
+      );
+    }
+
+    if (endpointLayers.includes('Stops')) {
+      const focusPoint =
+        config.autoSuggest.locationAware && position.hasLocation
+          ? {
+              // Round coordinates to approx 1 km, in order to improve caching
+              'focus.point.lat': position.lat.toFixed(2),
+              'focus.point.lon': position.lon.toFixed(2),
+            }
+          : {};
+      const sources = get(config, 'feedIds', [])
+        .map(v => `gtfs${v}`)
+        .join(',');
+
+      if (sources) {
+        searchComponents.push(
+          getGeocodingResult(
+            input,
+            undefined,
+            language,
+            focusPoint,
+            sources,
+            config,
+          ),
+        );
+      }
+    }
+
+    endpointSearchesPromise = Promise.all(searchComponents)
+      .then(resultsArray => {
+        if (
+          endpointLayers.includes('Stops') &&
+          endpointLayers.includes('Geocoding')
+        ) {
+          // sort & combine pelias results into single array
+          const modifiedResultsArray = [];
+          for (let i = 0; i < resultsArray.length - 2; i++) {
+            modifiedResultsArray.push(resultsArray[i]);
+          }
+          const sorted = orderBy(
+            resultsArray[resultsArray.length - 1].concat(
+              resultsArray[resultsArray.length - 2],
+            ),
+            [u => u.properties.confidence],
+            ['desc'],
+          );
+          modifiedResultsArray.push(sorted);
+          return modifiedResultsArray;
+        }
+        return resultsArray;
+      })
+      .then(flatten)
+      .then(uniqByLabel)
+      .then(results => {
+        endpointSearches.results = results;
+      })
+      .catch(err => {
+        endpointSearches.error = err;
+      });
+
+    if (type === SearchType.Endpoint) {
+      endpointSearchesPromise.then(() =>
+        callback({
+          ...endpointSearches,
+          results: sortSearchResults(config, endpointSearches.results, input),
+        }),
+      );
+      return;
+    }
+  }
+
+  Promise.all([endpointSearchesPromise, searchSearchesPromise]).then(() => {
+    const results = [];
+    if (endpointSearches && Array.isArray(endpointSearches.results)) {
+      results.push(...endpointSearches.results);
+    }
+    if (searchSearches && Array.isArray(searchSearches.results)) {
+      results.push(...searchSearches.results);
+    }
+    callback({
+      results: sortSearchResults(config, results, input),
+    });
+  });
+}
+const debouncedWidgetSearch = debounce(executeWidgetSearchImmediate, 300, {
+  leading: true,
+});
+
+export const executeWidgetSearch = (data, callback) => {
+  callback(null); // This means 'we are searching'
+  debouncedWidgetSearch(data, callback);
 };
 
 export const withCurrentTime = (getStore, location) => {
