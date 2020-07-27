@@ -9362,7 +9362,7 @@ input.react-autosuggest__input {
   .react-autosuggest__container input:focus {
     box-shadow: none;
     /* First apply outline that is used in Edge and Firefox */
-    outline: 1px dotted #0070b5;
+    outline: 1px solid #0070b5;
     /* Then override outline for webkit browsers like Chrome, this has no effect on other browsers */
     border: none;
     background: #ffffff;
