@@ -16,32 +16,6 @@ import mapPeliasModality from './pelias-to-modality-mapper';
 import { PREFIX_ROUTES, PREFIX_STOPS } from './path';
 import { getConfiguration } from '../config';
 
-function useKyytiGeocoding(config) {
-  return (
-    !config.URL.GEOCODING_BASE_URL.includes('digitransit') &&
-    !config.URL.GEOCODING_BASE_URL.includes('mock_api_url')
-  );
-}
-
-function mapKyytiAddrToFeature(res) {
-  return {
-    type: 'Feature',
-    geometry: {
-      type: 'Point',
-      coordinates: [res.location.lon, res.location.lat],
-    },
-    properties: {
-      gid: res.gid,
-      layer: 'locality',
-      name: res.name,
-      country: res.country,
-      country_a: res.country,
-      locality: res.city,
-      label: res.title,
-    },
-  };
-}
-
 /**
  * LayerType depicts the type of the point-of-interest.
  */
@@ -338,42 +312,12 @@ export function getGeocodingResult(
     opts = { ...opts, sources };
   }
 
-  if (useKyytiGeocoding(config)) {
-    const query = {
-      text: opts.text,
-    };
-
-    if (opts['boundary.rect.min_lon']) {
-      query.bbox = `${opts['boundary.rect.min_lon']},${
-        opts['boundary.rect.min_lat']
-      },${opts['boundary.rect.max_lon']},${opts['boundary.rect.max_lat']}`;
-    }
-    if (!query.bbox) {
-      query.bbox = '19,59,32,71';
-    }
-
-    return getJson(`${config.URL.GEOCODING_BASE_URL}/places/v2/search`, query, {
-      'Kyyti-App-AppId': config.appBundleId,
-      'Accept-Language': opts.lang,
-    }).then(res => {
-      const response = {
-        features: res.search.map(mapKyytiAddrToFeature),
-      };
-      return mapPeliasModality(response.features, config);
-    });
-  }
-
   return getJson(`${config.URL.GEOCODING_BASE_URL}/search`, opts).then(
     response => mapPeliasModality(response.features, config),
   );
 }
 
 export function searchPlace(ids, config) {
-  if (useKyytiGeocoding(config)) {
-    return Promise.resolve({});
-    // return getJson(`${config.URL.GEOCODING_BASE_URL}/places/v2/nearby/${ids}`);
-  }
-
   return getJson(`${config.URL.GEOCODING_BASE_URL}/place`, {
     ids,
   });
@@ -870,128 +814,45 @@ export const executeSearch = (getStore, refPoint, data, callback) => {
   debouncedSearch(getStore, refPoint, data, callback);
 };
 
-export function executeWidgetSearchImmediate({ input, type }, callback) {
+export function executeWidgetSearchImmediate({ input }, callback) {
   const position = {};
   const config = getConfiguration(null);
   const endpointSearches = { type: 'endpoint', term: input, results: [] };
   const searchSearches = { type: 'search', term: input, results: [] };
 
-  let endpointSearchesPromise;
   let searchSearchesPromise;
-  // const endpointLayers = ["CurrentPosition", "FavouritePlace", "FavouriteStop", "OldSearch", "Geocoding", "Stops"]; //layers || getAllEndpointLayers();
-  const endpointLayers = ['Geocoding'];
-
-  if (type === SearchType.Endpoint || type === SearchType.All) {
-    const language = 'fi';
-    const searchComponents = [];
-    if (
-      endpointLayers.includes('CurrentPosition') &&
-      position.status !== 'geolocation-not-supported'
-    ) {
-      searchComponents.push(getCurrentPositionIfEmpty(input, position));
-    }
-    if (endpointLayers.includes('OldSearch')) {
-      const dropLayers = ['currentPosition'];
-      // old searches should also obey the layers definition
-      if (!endpointLayers.includes('FavouritePlace')) {
-        dropLayers.push('favouritePlace');
-      }
-      // searchComponents.push(getOldSearches(oldSearches, input, dropLayers));
-    }
-
-    if (endpointLayers.includes('Geocoding')) {
-      const focusPoint =
-        config.autoSuggest.locationAware && position.hasLocation
-          ? {
-              // Round coordinates to approx 1 km, in order to improve caching
-              'focus.point.lat': position.lat.toFixed(2),
-              'focus.point.lon': position.lon.toFixed(2),
-            }
-          : {};
-
-      const sources = get(config, 'searchSources', '').join(',');
-
-      searchComponents.push(
-        getGeocodingResult(
-          input,
-          config.searchParams,
-          language,
-          focusPoint,
-          sources,
-          config,
-        ),
-      );
-    }
-
-    if (endpointLayers.includes('Stops')) {
-      const focusPoint =
-        config.autoSuggest.locationAware && position.hasLocation
-          ? {
-              // Round coordinates to approx 1 km, in order to improve caching
-              'focus.point.lat': position.lat.toFixed(2),
-              'focus.point.lon': position.lon.toFixed(2),
-            }
-          : {};
-      const sources = get(config, 'feedIds', [])
-        .map(v => `gtfs${v}`)
-        .join(',');
-
-      if (sources) {
-        searchComponents.push(
-          getGeocodingResult(
-            input,
-            undefined,
-            language,
-            focusPoint,
-            sources,
-            config,
-          ),
-        );
-      }
-    }
-
-    endpointSearchesPromise = Promise.all(searchComponents)
-      .then(resultsArray => {
-        if (
-          endpointLayers.includes('Stops') &&
-          endpointLayers.includes('Geocoding')
-        ) {
-          // sort & combine pelias results into single array
-          const modifiedResultsArray = [];
-          for (let i = 0; i < resultsArray.length - 2; i++) {
-            modifiedResultsArray.push(resultsArray[i]);
-          }
-          const sorted = orderBy(
-            resultsArray[resultsArray.length - 1].concat(
-              resultsArray[resultsArray.length - 2],
-            ),
-            [u => u.properties.confidence],
-            ['desc'],
-          );
-          modifiedResultsArray.push(sorted);
-          return modifiedResultsArray;
+  const language = 'fi';
+  const searchComponents = [];
+  const focusPoint =
+    config.autoSuggest.locationAware && position.hasLocation
+      ? {
+          'focus.point.lat': position.lat.toFixed(2),
+          'focus.point.lon': position.lon.toFixed(2),
         }
-        return resultsArray;
-      })
-      .then(flatten)
-      .then(uniqByLabel)
-      .then(results => {
-        endpointSearches.results = results;
-      })
-      .catch(err => {
-        endpointSearches.error = err;
-      });
+      : {};
 
-    if (type === SearchType.Endpoint) {
-      endpointSearchesPromise.then(() =>
-        callback({
-          ...endpointSearches,
-          results: sortSearchResults(config, endpointSearches.results, input),
-        }),
-      );
-      return;
-    }
-  }
+  const sources = get(config, 'searchSources', '').join(',');
+
+  searchComponents.push(
+    getGeocodingResult(
+      input,
+      config.searchParams,
+      language,
+      focusPoint,
+      sources,
+      config,
+    ),
+  );
+
+  const endpointSearchesPromise = Promise.all(searchComponents)
+    .then(flatten)
+    .then(uniqByLabel)
+    .then(results => {
+      endpointSearches.results = results;
+    })
+    .catch(err => {
+      endpointSearches.error = err;
+    });
 
   Promise.all([endpointSearchesPromise, searchSearchesPromise]).then(() => {
     const results = [];
@@ -1006,6 +867,7 @@ export function executeWidgetSearchImmediate({ input, type }, callback) {
     });
   });
 }
+
 const debouncedWidgetSearch = debounce(executeWidgetSearchImmediate, 300, {
   leading: true,
 });
@@ -1032,22 +894,5 @@ export const withCurrentTime = (getStore, location) => {
 };
 
 export function reverseGeocode(opts, config) {
-  if (useKyytiGeocoding(config)) {
-    const at = `${opts['point.lat']},${opts['point.lon']}`;
-    return getJson(
-      `${config.URL.GEOCODING_BASE_URL}/geocoder/v1/reverse`,
-      { at },
-      {
-        'Kyyti-App-AppId': config.appBundleId,
-        Accept: 'application/json',
-        'Accept-Language': opts.lang,
-      },
-    ).then(res => {
-      return {
-        features: [mapKyytiAddrToFeature(res)],
-      };
-    });
-  }
-
   return getJson(`${config.URL.GEOCODING_BASE_URL}/reverse`, opts);
 }
