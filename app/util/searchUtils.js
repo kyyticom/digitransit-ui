@@ -820,7 +820,6 @@ export function executeWidgetSearchImmediate({ input }, callback) {
   const endpointSearches = { type: 'endpoint', term: input, results: [] };
   const searchSearches = { type: 'search', term: input, results: [] };
 
-  let searchSearchesPromise;
   const language = 'fi';
   const searchComponents = [];
   const focusPoint =
@@ -854,7 +853,7 @@ export function executeWidgetSearchImmediate({ input }, callback) {
       endpointSearches.error = err;
     });
 
-  Promise.all([endpointSearchesPromise, searchSearchesPromise]).then(() => {
+  Promise.all([endpointSearchesPromise]).then(() => {
     const results = [];
     if (endpointSearches && Array.isArray(endpointSearches.results)) {
       results.push(...endpointSearches.results);
