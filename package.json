@@ -74,7 +74,7 @@
   },
   "lint-staged": {
     "*.{js,jsx}": [
-      "eslint --fix"
+      "eslint"
     ],
     "*.scss": [
       "stylelint --syntax scss"

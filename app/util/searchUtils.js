@@ -942,15 +942,15 @@ export function reverseGeocode(opts, config) {
     return getJson(
       `${config.URL.GEOCODING_BASE_URL}/geocoder/v1/reverse`,
       { at },
-      {	
-        'Kyyti-App-AppId': config.appBundleId,	
-        Accept: 'application/json',	
-        'Accept-Language': opts.lang,	
-      },	
-    ).then(res => {	
-      return {	
-        features: [mapKyytiAddrToFeature(res)],	
-      };	
+      {
+        'Kyyti-App-AppId': config.appBundleId,
+        Accept: 'application/json',
+        'Accept-Language': opts.lang,
+      },
+    ).then(res => {
+      return {
+        features: [mapKyytiAddrToFeature(res)],
+      };
     });
   }
   return getJson(`${config.URL.GEOCODING_BASE_URL}/reverse`, opts);
