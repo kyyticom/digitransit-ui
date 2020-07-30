@@ -12,6 +12,7 @@ class WidgetAutoSuggest extends React.Component {
     id: PropTypes.string.isRequired,
     placeholder: PropTypes.string.isRequired,
     onChange: PropTypes.func,
+    config: PropTypes.object.isRequired,
   };
 
   static defaultProps = {
@@ -163,7 +164,7 @@ class WidgetAutoSuggest extends React.Component {
       executeWidgetSearch(
         {
           input: value,
-          type: 'all',
+          config: this.props.config,
         },
         searchResult => {
           if (searchResult == null) {

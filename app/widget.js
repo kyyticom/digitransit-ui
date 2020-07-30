@@ -5,6 +5,10 @@ import WidgetAutoSuggest from './widgetAutoSuggest';
 import MhIcon from './configurations/images/mh/mh-favicon.png';
 import { getNamedConfiguration } from './config';
 
+// Config name filled in global window.* when serving the asset from specialised URL
+// eslint-disable-next-line no-underscore-dangle
+const config = getNamedConfiguration(window.____kyytiDigitransitUIWidgetConfig);
+
 class Widget extends React.Component {
   constructor() {
     super();
@@ -29,10 +33,6 @@ class Widget extends React.Component {
   };
 
   handleOnlick = () => {
-    const customerConfigName = process.env.MHCONFIG;
-    const config = getNamedConfiguration(customerConfigName);
-    const url = config.DIGI_URL;
-
     const time = Math.floor(new Date().getTime() / 1000);
     const origin = `${
       this.state.originValue
@@ -40,11 +40,13 @@ class Widget extends React.Component {
     const destination = `${
       this.state.destinationValue
     }::${this.state.destinationLatLng.reverse()}`;
+
+    const url = config.URL.APP_URL || '';
+
     window.open(
-      `${`${url}/reitti/${encodeURIComponent(origin)}` +
-        '/' +
-        `${encodeURIComponent(destination)}` +
-        '?time='}${time}`,
+      `${url}/reitti/${encodeURIComponent(origin)}/${encodeURIComponent(
+        destination,
+      )}?time=${time}`,
     );
   };
 
@@ -83,6 +85,7 @@ class Widget extends React.Component {
                   <WidgetAutoSuggest
                     id="origin"
                     placeholder="Search origin"
+                    config={config}
                     onChange={this.onChange}
                   />
                 </div>
@@ -95,6 +98,7 @@ class Widget extends React.Component {
                   <WidgetAutoSuggest
                     id="destination"
                     placeholder="Search destination"
+                    config={config}
                     onChange={this.onChange}
                   />
                 </div>

@@ -14,7 +14,6 @@ import { distance } from './geo-utils';
 import { uniqByLabel, isStop } from './suggestionUtils';
 import mapPeliasModality from './pelias-to-modality-mapper';
 import { PREFIX_ROUTES, PREFIX_STOPS } from './path';
-import { getNamedConfiguration } from '../config';
 
 function useKyytiGeocoding(config) {
   return (
@@ -869,9 +868,7 @@ export const executeSearch = (getStore, refPoint, data, callback) => {
   debouncedSearch(getStore, refPoint, data, callback);
 };
 
-export function executeWidgetSearchImmediate({ input }, callback) {
-  const customerConfigName = process.env.MHCONFIG;
-  const config = getNamedConfiguration(customerConfigName);
+export function executeWidgetSearchImmediate({ input, config }, callback) {
   const endpointSearches = { type: 'endpoint', term: input, results: [] };
   const language = 'fi';
   const searchComponents = [];
