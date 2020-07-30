@@ -22,6 +22,7 @@ const {
   faviconPlugins,
 } = require('./build/contextHelper');
 
+const widgets = process.env.WIDGET_CONF || 'mhwidgets';
 const mode = process.env.NODE_ENV;
 const isProduction = mode === 'production';
 const isDevelopment = !isProduction;
@@ -259,6 +260,9 @@ const widgetConfig = {
     new MiniCssExtractPlugin({
       filename: 'css/[name].css',
       chunkFilename: 'css/[name].css',
+    }),
+    new webpack.DefinePlugin({
+      'process.env.MHCONFIG': JSON.stringify(widgets),
     }),
   ],
   performance: { hints: false },

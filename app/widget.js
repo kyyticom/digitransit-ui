@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Icon from './component/Icon';
 import WidgetAutoSuggest from './widgetAutoSuggest';
 import MhIcon from './configurations/images/mh/mh-favicon.png';
+import { getNamedConfiguration } from './config';
 
 class Widget extends React.Component {
   constructor() {
@@ -28,6 +29,10 @@ class Widget extends React.Component {
   };
 
   handleOnlick = () => {
+    const customerConfigName = process.env.MHCONFIG;
+    const config = getNamedConfiguration(customerConfigName);
+    const url = config.DIGI_URL;
+
     const time = Math.floor(new Date().getTime() / 1000);
     const origin = `${
       this.state.originValue
@@ -36,7 +41,7 @@ class Widget extends React.Component {
       this.state.destinationValue
     }::${this.state.destinationLatLng.reverse()}`;
     window.open(
-      `${`http://localhost:8080/reitti/${encodeURIComponent(origin)}` +
+      `${`${url}/reitti/${encodeURIComponent(origin)}` +
         '/' +
         `${encodeURIComponent(destination)}` +
         '?time='}${time}`,
