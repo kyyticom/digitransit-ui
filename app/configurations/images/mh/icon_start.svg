@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="27px" height="45px" viewBox="0 0 27 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 6 Copy 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <ellipse id="path-1" cx="13.68" cy="34.4153333" rx="7.524" ry="3.12866667"></ellipse>
+        <filter x="-56.5%" y="-103.9%" width="213.0%" height="371.7%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.79761096 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Kyyti-App-Layouts" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="00_kyyti_testing_01a" transform="translate(-174.000000, -351.000000)">
+            <g id="Group" transform="translate(134.000000, 335.000000)">
+                <g id="Group-6-Copy-3" transform="translate(40.000000, 16.000000)">
+                    <g id="Oval-2" opacity="0.300000012" fill="black" fill-opacity="1">
+                        <use filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    </g>
+                    <g id="Group-2">
+                        <path d="M13.2031436,0 C20.5248869,0 26.5263158,5.83894094 26.5263158,13.1078266 C26.5263158,19.0659296 20.1648011,28.5988944 15.2436294,33.722863 C14.1633722,34.7953215 12.3629436,34.7953215 11.2826864,33.722863 C6.36151465,28.5988944 0,19.3042537 0,13.1078266 C0,5.83894094 5.88140033,0 13.2031436,0 Z" id="Shape" fill="#0070b5"></path>
+                        <path d="M16.6067951,19.964 L15.4798576,16.8301875 L11.1650763,16.8301875 L10.0612951,19.964 L8.11617006,19.964 L12.3383263,8.632875 L14.3452013,8.632875 L18.5673576,19.964 L16.6067951,19.964 Z M14.9935763,15.240125 L13.9361076,12.1680625 C13.8589197,11.9622281 13.7521447,11.6380439 13.6157794,11.1955 C13.4794142,10.7529561 13.3855037,10.4287719 13.3340451,10.2229375 C13.1951069,10.8558782 12.9918485,11.5479858 12.7242638,12.2992813 L11.7053888,15.240125 L14.9935763,15.240125 Z" id="A" fill="#FFFFFF"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

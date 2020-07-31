@@ -372,7 +372,6 @@ export function searchPlace(ids, config) {
     return Promise.resolve({});
     // return getJson(`${config.URL.GEOCODING_BASE_URL}/places/v2/nearby/${ids}`);
   }
-
   return getJson(`${config.URL.GEOCODING_BASE_URL}/place`, {
     ids,
   });
@@ -869,6 +868,56 @@ export const executeSearch = (getStore, refPoint, data, callback) => {
   debouncedSearch(getStore, refPoint, data, callback);
 };
 
+export function executeWidgetSearchImmediate({ input, config }, callback) {
+  const endpointSearches = { type: 'endpoint', term: input, results: [] };
+  const language = 'fi';
+  const searchComponents = [];
+  const focusPoint = {};
+
+  const sources = get(config, 'searchSources', '').join(',');
+
+  searchComponents.push(
+    getGeocodingResult(
+      input,
+      config.searchParams,
+      language,
+      focusPoint,
+      sources,
+      config,
+    ),
+  );
+
+  const endpointSearchesPromise = Promise.all(searchComponents)
+    .then(flatten)
+    .then(uniqByLabel)
+    .then(results => {
+      endpointSearches.results = results;
+    })
+    .catch(err => {
+      endpointSearches.error = err;
+    });
+
+  Promise.all([endpointSearchesPromise]).then(() => {
+    const results = [];
+    if (endpointSearches && Array.isArray(endpointSearches.results)) {
+      results.push(...endpointSearches.results);
+    }
+
+    callback({
+      results: sortSearchResults(config, results, input),
+    });
+  });
+}
+
+const debouncedWidgetSearch = debounce(executeWidgetSearchImmediate, 300, {
+  leading: true,
+});
+
+export const executeWidgetSearch = (data, callback) => {
+  callback(null); // This means 'we are searching'
+  debouncedWidgetSearch(data, callback);
+};
+
 export const withCurrentTime = (getStore, location) => {
   const query = (location && location.query) || {};
 
@@ -902,6 +951,5 @@ export function reverseGeocode(opts, config) {
       };
     });
   }
-
   return getJson(`${config.URL.GEOCODING_BASE_URL}/reverse`, opts);
 }

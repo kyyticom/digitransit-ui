@@ -90,15 +90,33 @@ function setUpStaticFolders() {
     });
   }
 
+  const oneDaySeconds = 86400;
+  if (config.widgetEnabled) {
+    const widgetCode = fs.readFileSync(
+      path.join(process.cwd(), '_static', 'js', 'widget.js'),
+      { encoding: 'utf8' },
+    );
+
+    const widgetFinal = `window.____kyytiDigitransitUIWidgetConfig='${
+      process.env.CONFIG
+    }';${widgetCode}`;
+
+    app.get(`${config.APP_PATH}/js/widget.js`, (req, res) => {
+      res.setHeader('Cache-Control', `public, max-age=${14 * oneDaySeconds}`);
+      res.setHeader('Content-type', 'application/javascript; charset=UTF-8');
+      res.send(widgetFinal);
+    });
+  }
+
   const staticFolder = path.join(process.cwd(), '_static');
-  // Sert cache for 1 week
-  const oneDay = 86400000;
+
   app.use(
     config.APP_PATH,
     expressStaticGzip(staticFolder, {
       enableBrotli: true,
       indexFromEmptyFile: false,
-      maxAge: 14 * oneDay,
+      // Cache for maximum 2 weeks
+      maxAge: 14 * 1000 * oneDaySeconds,
       setHeaders(res, reqPath) {
         if (
           reqPath.toLowerCase().includes('sw.js') ||

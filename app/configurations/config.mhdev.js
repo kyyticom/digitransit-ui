@@ -19,11 +19,14 @@ export default configMerger(walttiConfig, {
 
   appBarLink: { name: 'Matkahuolto', href: 'http://www.matkahuolto.fi/' },
 
+  widgetEnabled: true,
+
   // This goes to browser, so not secret. When rotating keys just make
   // sure Mapbox account panel lists deployed URLS for CORS policy
   MAP_ACCESS_TOKEN: 'pk.eyJ1Ijoia3l5dGljb20iLCJhIjoiY2thcDdoaDMxMGw0eTJycG85N3Z1azBjMSJ9.hsIE5azenQvs2yOi7cOSCQ',
   URL: {
     API_URL,
+    APP_URL : 'https://reittiopas-mh-test.kyyti.io',
     GEOCODING_BASE_URL: 'https://devapi.tuup.fi',
     MAP_URL,
     MAP: {
