@@ -14,7 +14,7 @@ jobs:
       GCR_REGISTRY: eu.gcr.io
       GCLOUD_PROJECT: open-trip-planner-260813
       GCLOUD_ZONE: europe-north1-a
-      KUBE_CLUSTER_NAME: otp-prd
+      KUBE_CLUSTER_NAME: otp-matkahuolto-prd
     steps:
       - uses: actions/checkout@v2
       - name: Extract release tag
