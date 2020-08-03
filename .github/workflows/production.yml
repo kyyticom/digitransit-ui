@@ -26,7 +26,7 @@ jobs:
           gcloud auth activate-service-account --key-file /tmp/gcloud-svc-key.json --project "${GCLOUD_PROJECT}"
           echo ::add-mask::$(gcloud auth print-access-token)
 
-          gcloud container images add-tag "${GCR_REGISTRY}/${GCLOUD_PROJECT}/digitransit-ui:${{ github.sha }}" "${GCR_REGISTRY}/${GCLOUD_PROJECT}/digitransit-ui:${{ env.RELEASE_TAG }}"
+          gcloud container images add-tag --quiet "${GCR_REGISTRY}/${GCLOUD_PROJECT}/digitransit-ui:${{ github.sha }}" "${GCR_REGISTRY}/${GCLOUD_PROJECT}/digitransit-ui:${{ env.RELEASE_TAG }}"
 
       - name: Rollout update
         run: |
