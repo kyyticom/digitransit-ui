@@ -35,4 +35,4 @@ jobs:
           echo ::add-mask::$(gcloud auth print-access-token)
           gcloud container clusters get-credentials "${KUBE_CLUSTER_NAME}" --zone "${GCLOUD_ZONE}" --project "${GCLOUD_PROJECT}"
 
-          echo kubectl -n otp set image deployment/reittiopas-mh-prod "${GCR_REGISTRY}/${GCLOUD_PROJECT}/digitransit-ui:${{ env.RELEASE_TAG }}"
+          kubectl -n otp set image deployment/reittiopas-mh-prod "reittiopas-mh-prod=${GCR_REGISTRY}/${GCLOUD_PROJECT}/digitransit-ui:${{ env.RELEASE_TAG }}"
