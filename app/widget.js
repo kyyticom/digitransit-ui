@@ -108,8 +108,10 @@ class Widget extends React.Component {
               </button>
             </div>
             <div className="widget-icon">
-              <span>Powered By </span>
-              <img className="mh-icon" src={MhIcon} alt="Logo" />
+              <span className="powered-by">Powered By </span>
+              <div>
+                <img className="mh-icon" src={MhIcon} alt="Logo" />
+              </div>
             </div>
           </div>
         </div>
