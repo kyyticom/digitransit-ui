@@ -1,4 +1,4 @@
-.main-title {
+#mh-widgets .main-title {
     padding: 13px 10px 13px 10px;
     color: white;
     text-align: center;
@@ -8,246 +8,48 @@
     font-size: 1.25rem;
     background-color: #0070B5;
 }
-.autosuggest-panel{
+#mh-widgets .autosuggest-panel{
   margin:0rem;
 }
 
-.autosuggest-in-panel{
+#mh-widgets .autosuggest-in-panel{
   margin:1rem;
 }
 
-.powered-by {
-  /* display: inline-block; */
-  /* border: 1px solid red; */
+#mh-widgets .powered-by {
   display: inline-flex;
   align-items: center;
-  /* text-align: center; */
-  /* vertical-align: middle; */
 }
 
-.widget-icon{
+#mh-widgets .widget-icon{
   display:flex;
   margin:1rem;
   text-align: center;
   box-sizing: border-box;
   justify-content:center;
 }
-.mh-icon{
+
+#mh-widgets .mh-icon{
     max-height: 80px;
     min-height: 72px;
     min-width: 110px;
 
 }
-.search-icon{
+#mh-widgets .search-icon{
   width:100%;
 }
 
-.widget-body{
+#mh-widgets .widget-body{
   background-color:#ffffff!important;
   letter-spacing:0;
   -webkit-text-size-adjust:100%
 }
 
-.search-button {
+#mh-widgets .search-button {
   width:100%;
   display:block;
   background-color: #0070b5;
 }
-
-.search-button :hover{
-  background-color: #646668;
-}
-
-html {
-  /* Fix font display on webkit based browsers */
-  -webkit-font-smoothing: antialiased;
-  /* Disable touch delay on ms-devices */
-  -ms-touch-action: manipulation;
-  touch-action: manipulation;
-  font-size: 15px !important; }
-
-@media screen and (min-width: 320px) {
-  html {
-    font-size: calc(14px + 7 * (100vw - 320px) / 500) !important; } }
-
-@media screen and (min-width: 900px) {
-  html {
-    font-size: 16px !important; } }
-body {
-  background-color: #eef1f3 !important;
-  font-family: Lato, Arial, Georgia, Serif;
-  font-weight: 400;
-  letter-spacing: 0;
-  /* Remove Mobile Safari automatic font size adjustments */
-  -webkit-text-size-adjust: 100%; }
-#main {
-  background-color: #eef1f3; }
-#app {
-  height: 100%;
-  display: flex;
-  flex-direction: column; }
-  @media print {
-    #app {
-      display: block;
-      height: auto; } }
-
-p {
-  font-family: Lato, Arial, Georgia, Serif;
-  font-weight: 400;
-  font-size: 1rem;
-  color: #333;
-  /* Remove Android FontBoosting */
-  max-height: 999999px; }
-
-a {
-  color: #008bde; }
-
-/* HEADINGS */
-h1,
-.h1 {
-  font-family: "PT Sans Narrow", "Arial Condensed", Arial, Georgia, Serif;
-  font-weight: 500;
-  letter-spacing: 0;
-  font-size: 1.5rem;
-  padding: 0.4em 0 0.2em;
-  margin: 0;
-  color: #333; }
-
-h2,
-.h2 {
-  font-family: Lato, Arial, Georgia, Serif;
-  font-weight: 700;
-  font-size: 1.25rem;
-  color: #333;
-  text-transform: none; }
-
-h3,
-.h3 {
-  color: #333;
-  font-family: Lato, Arial, Georgia, Serif;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.2;
-  margin: 0;
-  text-transform: none; }
-
-h4,
-.h4 {
-  font-family: Lato, Arial, Georgia, Serif;
-  font-weight: 700;
-  font-size: 0.87rem;
-  text-transform: uppercase;
-  line-height: 1.2;
-  color: #333; }
-
-a h4,
-a .h4 {
-  color: #008bde; }
-
-h1 a {
-  color: inherit;
-  text-decoration: none; }
-
-/* SUB HEADERS */
-.sub-header-h4 {
-  font-family: Lato, Arial, Georgia, Serif;
-  font-weight: 400;
-  font-size: 0.92rem;
-  margin: 0 !important;
-  color: #666; }
-
-.sub-header-h5 {
-  font-family: Lato, Arial, Georgia, Serif;
-  font-weight: 400;
-  font-size: 0.87rem;
-  margin: 0;
-  color: #666; }
-
-.route-list {
-  padding: 0em 1em 0.25em; }
-  .route-list div {
-    font-family: "PT Sans Narrow", "Arial Condensed", Arial, Georgia, Serif;
-    font-weight: 500;
-    letter-spacing: 0;
-    font-size: 12pt;
-    line-height: 1.2; }
-
-.transparent {
-  background: rgba(0, 0, 0, 0.5) !important;
-  color: #ffffff !important; }
-
-div.spinner-loader {
-  z-index: 40000;
-  position: absolute;
-  left: 50%;
-  margin: 17px 0 0 -34px;
-  width: 68px;
-  height: 68px;
-  background-image: url(/proxy/assets/e3111cc9666a27cc9effe3579739107a.png);
-  animation: spin 4s linear infinite;
-  background-size: cover; }
-
-@keyframes spin {
-  100% {
-    transform: rotate(360deg); } }
-
-hr {
-  clear: both; }
-
-body select {
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='9' height='9' viewBox='0 0 1024 1024'><path stroke='white' fill='white' class='path1' d='M845.224 212.621l-333.221 333.235-333.224-333.235c-40.901-40.901-107.212-40.901-148.113 0v0c-40.901 40.901-40.897 107.212 0 148.109l481.333 481.326 481.333-481.326c40.901-40.901 40.901-107.212 0-148.109v0c-40.897-40.904-107.212-40.901-148.109 0z'></path></svg>");
-  background-position: right 10px top 50%;
-  margin-bottom: 0; }
-
-.no-select {
-  user-select: none; }
-
-/*
-  Style Guidelines Page
-*/
-.code {
-  font-family: monospace;
-  font-weight: 400;
-  font-size: 16px;
-  color: crimson;
-  padding: 0 10px; }
-
-.color-code {
-  display: inline-block;
-  padding-bottom: 20px; }
-
-.color-palette {
-  margin-bottom: -20px; }
-
-.sub-header {
-  font-weight: bold;
-  font-size: 20px;
-  text-transform: uppercase;
-  padding: 10px 0; }
-
-.leaflet-container a {
-  color: currentColor; }
-
-.subicon-caution .icon,
-.subicon-info .icon {
-  display: block;
-  overflow: visible; }
-
-.subicon-caution .icon {
-  color: white;
-  fill: #dc0451;
-  height: 13px;
-  width: 13px; }
-
-.subicon-info .icon {
-  fill: #666;
-  height: 11px;
-  width: 11px; }
-
-.subicon-info .icon-circle {
-  stroke: white;
-  stroke-width: 12; }
-
 .sr-only:not(:focus):not(:active) {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
@@ -257,226 +59,8 @@ body select {
   white-space: nowrap;
   width: 1px; }
 
-/* Override foundation styles */
-input {
-  border-radius: 3px; }
-
-span.postfix {
-  border-top-right-radius: 3px !important;
-  border-bottom-right-radius: 3px !important; }
-
-span.prefix {
-  border-top-left-radius: 3px !important;
-  border-bottom-left-radius: 3px !important; }
-
-.postfix.search {
-  color: #ffffff;
-  background: linear-gradient(to bottom, #4dc7ff 1px, #1ab7ff 1px, #009ee6); }
-
-.prefix-and-postfix-radius input {
-  border-radius: 0 !important; }
-
-input[type="date"]::-webkit-clear-button, input[type="time"]::-webkit-clear-button {
-  display: none; }
-
-input[type="time"]::-webkit-inner-spin-button {
-  display: none; }
-
-.fullscreen {
-  position: relative;
-  height: 100%;
-  display: flex;
-  flex-direction: column; }
-
-@media print {
-  .fullscreen {
-    height: auto; } }
-
-.padding-small {
-  padding: 0.45em 1em; }
-
-.card-padding {
-  padding: 1em 1em 0.5em 1.5em; }
-
-.padding-normal {
-  padding: 0.7em 1em; }
-
-.padding-vertical-small {
-  padding: 0.45em 0; }
-
-.padding-vertical-normal {
-  padding: 0.6em 0; }
-
-.padding-horizontal {
-  padding: 0 1em; }
-
-.padding-horizontal-large {
-  padding: 0 2em; }
-
-.no-padding {
-  padding: 0 !important; }
-
-.no-margin {
-  margin: 0 !important; }
-
-/* Appearance */
-.cursor-grab {
-  cursor: grab !important; }
-
-.cursor-pointer {
-  cursor: pointer; }
-
-/* TODO Remove this - setting only the font-weight can give wrong combinations,
-        as main and secondary families have different weights for bold. */
-.bold {
-  font-weight: 700; }
-
-.no-decoration {
-  text-decoration: none; }
-
-.large-text {
-  font-size: 1.1em; }
-
-.uppercase {
-  text-transform: uppercase; }
-
-.capitalize {
-  text-transform: capitalize; }
-
-.hover:hover {
-  opacity: 0.8;
-  transition: 0.1s ease-in-out; }
-
-.hide-dropdown {
-  background-image: none; }
-
-.large-icon {
-  width: 20px;
-  height: 20px; }
-
-body .large .icon {
-  width: 20px;
-  height: 20px; }
-
-.border-bottom {
-  border-bottom: 1px solid #ddd; }
-
-.border-top {
-  border-top: 1px solid #ddd; }
-
-.border-dashed {
-  border: 1px dashed #ddd; }
-
-.collapsed {
-  display: none !important; }
-
-.hidden {
-  visibility: hidden; }
-
-.page-frame {
-  padding: 10px; }
-
-.call-to-action-button {
-  font-family: Lato, Arial, Georgia, Serif;
-  font-weight: 400;
-  letter-spacing: 0;
-  color: white;
-  background: #008bde;
-  vertical-align: middle;
-  border-radius: 1.5em;
-  padding: 0.5em 1.5em;
-  text-align: center;
-  max-width: 500px;
-  margin-top: 25px;
-  margin-bottom: 18px;
-  margin-left: auto;
-  margin-right: auto; }
-  .call-to-action-button:active {
-    background: #b6c1c7; }
-
-.page-not-found {
-  align-items: center;
-  display: flex;
-  flex: 1 0 auto;
-  flex-direction: column;
-  justify-content: center; }
-  .page-not-found .icon-container {
-    margin-top: 1.25rem; }
-    .page-not-found .icon-container svg {
-      height: 130px;
-      width: 150px; }
-  .page-not-found p {
-    font-size: 1.25rem; }
-    .page-not-found p a {
-      font-size: 1.25rem;
-      color: #00afff;
-      border-bottom: 1px dotted;
-      text-decoration: none; }
-    .page-not-found p button {
-      margin: 0; }
-
-/* Card */
-.card {
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  margin-bottom: 5px;
-  line-height: 1.2;
-  overflow-x: hidden; }
-
-.card-header {
-  background-color: #ffffff;
-  padding: 0.4em 0 0.5em; }
-  .card-header .card-header-content {
-    display: flex;
-    flex-direction: row;
-    align-items: center; }
-    .card-header .card-header-content .card-header-wrapper {
-      flex-grow: 1; }
-  .card-header .zone-icon-container {
-    align-items: center;
-    color: #00afff;
-    display: flex;
-    font-size: 0.8rem;
-    font-weight: 400;
-    padding-bottom: 0.4em; }
-    .card-header .zone-icon-container .icon {
-      display: block;
-      height: 2em;
-      margin-left: 0.5em;
-      width: 2em; }
-  .card-header .h3 {
-    margin-top: -10px; }
-  .card-header .card-sub-header p {
-    display: inline; }
-  .card-header .card-sub-header .card-code {
-    border: 1px solid #ddd;
-    border-radius: 3px;
-    font-size: 0.8rem;
-    color: #78909c;
-    margin-right: 3px;
-    padding: 0px 2px 0px 2px; }
-
-/* buttons */
-.show-more {
-  text-align: center;
-  text-transform: uppercase;
-  border-radius: 30px;
-  background: #b6c1c7;
-  color: #ffffff;
-  font-family: Lato, Arial, Georgia, Serif;
-  font-weight: 400;
-  font-size: 0.92rem;
-  width: 100%;
-  height: 40px;
-  margin-top: 20px;
-  padding: 0; }
-  .show-more:hover, .show-more:focus {
-    background-color: #b6c1c7;
-    outline: 0; }
-
 /* ICONS */
-.icon {
+#mh-widgets .icon {
   display: inline-block;
   width: 1em;
   height: 1em;
@@ -563,128 +147,7 @@ svg.realtime-icon {
     opacity: 0;
     transform: scale(3); } }
 
-input[type='range'].slider:focus {
-  outline: none; }
-
-/* Track is the line where the circle moves */
-/* Mixins work, but straight nested definitions don't */
-input[type='range'].slider {
-  -webkit-appearance: none;
-  /* Hides the slider so that custom slider can be made */
-  width: 100%;
-  /* Specific width is required for Firefox. */
-  margin: 3px 0 1em; }
-  input[type='range'].slider::-webkit-slider-runnable-track {
-    width: 100%;
-    height: 7px;
-    cursor: pointer;
-    background: #000000;
-    border-radius: 3px;
-    border: 2px solid #575757; }
-  input[type='range'].slider:focus::-webkit-slider-runnable-track {
-    background: #0d0d0d; }
-  input[type='range'].slider::-moz-range-track {
-    width: 100%;
-    cursor: pointer;
-    background: #000000;
-    border-radius: 3px;
-    border: 2px solid #575757;
-    height: 3px; }
-  input[type='range'].slider::-ms-track {
-    width: 100%;
-    height: 7px;
-    cursor: pointer;
-    border-radius: 3px;
-    border: 2px solid #575757;
-    background: transparent;
-    border-color: transparent;
-    color: transparent;
-    border-width: 10px; }
-  input[type='range'].slider::-ms-fill-lower {
-    background: #000000;
-    border: 2px solid #575757;
-    border-radius: 6px; }
-  input[type='range'].slider::-ms-fill-upper {
-    background: #000000;
-    border: 2px solid #575757;
-    border-radius: 6px; }
-  input[type='range'].slider:focus::-ms-fill-lower {
-    background: #000000; }
-  input[type='range'].slider:focus::-ms-fill-upper {
-    background: #0d0d0d; }
-
-/* Thumb is the circle on the track */
-/* stylelint-disable-next-line */
-input[type='range'].slider {
-  /* Prevent Firefox from drawing an ugly dotted line over the thumb */ }
-  input[type='range'].slider::-webkit-slider-thumb {
-    box-shadow: 0px 1.3px 0.2px #000000, 0px 0px 1px #c1c1c1;
-    border: 3px solid #ffffff;
-    height: 24px;
-    width: 24px;
-    border-radius: 15px;
-    background: #575757;
-    box-sizing: border-box;
-    /* Default in webkit, not in Gecko */
-    cursor: ew-resize;
-    -webkit-appearance: none;
-    /* You need to specify a margin in Chrome,
-       but in Firefox and IE it is automatic */
-    margin-top: -10.5px; }
-  input[type='range'].slider::-moz-range-thumb {
-    box-shadow: 0px 1.3px 0.2px #000000, 0px 0px 1px #c1c1c1;
-    border: 3px solid #ffffff;
-    height: 24px;
-    width: 24px;
-    border-radius: 15px;
-    background: #575757;
-    box-sizing: border-box;
-    /* Default in webkit, not in Gecko */
-    cursor: ew-resize; }
-  input[type='range'].slider::-moz-focus-outer {
-    border: 0; }
-  input[type='range'].slider::-ms-thumb {
-    box-shadow: 0px 1.3px 0.2px #000000, 0px 0px 1px #c1c1c1;
-    border: 3px solid #ffffff;
-    width: 24px;
-    border-radius: 15px;
-    background: #575757;
-    box-sizing: border-box;
-    /* Default in webkit, not in Gecko */
-    cursor: ew-resize;
-    height: 24px; }
-
-.itinerary-profile-container {
-  padding: 0.7em; }
-  .itinerary-profile-container.small {
-    font-size: 10pt; }
-  .itinerary-profile-container .itinerary-profile-item-title {
-    font-weight: 400;
-    letter-spacing: 0;
-    color: #666;
-    display: inline-block; }
-  .itinerary-profile-container .itinerary-profile-item-value {
-    color: #333;
-    display: inline-block;
-    margin-left: 0.25rem; }
-
-meta.foundation-mq-large {
-  width: 64.063em; }
-
-meta.foundation-mq-xlarge {
-  width: 90.063em; }
-
-.clearfix:before, .clearfix:after {
-  content: " ";
-  display: table; }
-
-meta.foundation-mq-medium {
-  width: 40.063em; }
-
-html, body {
-  font-size: 100%; }
-
-button, .search-button  {
+#mh-widgets button, .search-button  {
   border-style: solid;
   border-width: 0px;
   cursor: pointer;
@@ -704,166 +167,122 @@ button, .search-button  {
   font-size: 1rem;
   border-color: #008ccc;
   display: block;
+  text-shadow: none;
   background-color: #0070b5;
+  background-image: linear-gradient(#0070b5,#0070b5);
   color: #ffffff;
   transition: background-color 300ms ease-out; }
-  button:hover {
+
+  .search-button:hover:not(:disabled) {
     color: #ffffff;
-    background-color: #666;
+    box-shadow: inset 0 1px 0 0 #646668;
+    cursor: pointer;
+    background-color: #646668;
+    background-image: -webkit-linear-gradient(#646668,#646668);
   }
-  button:focus{
+  #mh-widgets .search-button:focus:not(:disabled) {
+    border: none;
+    box-shadow: none;
     color: #ffffff;
     background-color: #0070b5;
   }
-  button.secondary, .button.secondary {
-    background-color: #008bde;
-    border-color: #006fb2;
-    color: #ffffff; }
-    button.secondary:hover, button.secondary:focus, .button.secondary:hover, .button.secondary:focus {
-      color: #ffffff; }
-  button.success, .button.success {
-    background-color: #43AC6A;
-    border-color: #368a55;
-    color: #ffffff; }
-    button.success:hover, button.success:focus, .button.success:hover, .button.success:focus {
-      background-color: #368a55; }
-  button.warning, .button.warning {
-    background-color: #f08a24;
-    border-color: #cf6e0e;
-    color: #ffffff; }
-    button.warning:hover, button.warning:focus, .button.warning:hover, .button.warning:focus {
-      color: #ffffff; }
-  button.info, .button.info {
-    background-color: #a0d3e8;
-    border-color: #61b6d9;
-    color: #333333; }
-
-    button.info:hover, button.info:focus, .button.info:hover, .button.info:focus {
-      color: #ffffff; }
-  button.large, .button.large {
+  #mh-widgets button.large, .button.large {
     padding-top: 1.125rem;
     padding-right: 2.25rem;
     padding-bottom: 1.1875rem;
     padding-left: 2.25rem;
     font-size: 1.25rem; }
-  button.small, .button.small {
+    #mh-widgets button.small, .button.small {
     padding-top: 0.875rem;
     padding-right: 1.75rem;
     padding-bottom: 0.9375rem;
     padding-left: 1.75rem;
     font-size: 0.8125rem; }
-  button.tiny, .button.tiny {
+    #mh-widgets button.tiny, .button.tiny {
     padding-top: 0.625rem;
     padding-right: 1.25rem;
     padding-bottom: 0.6875rem;
     padding-left: 1.25rem;
     font-size: 0.6875rem; }
-  button.expand, .button.expand {
+    #mh-widgets button.expand, .button.expand {
     padding-right: 0;
     padding-left: 0;
     width: 100%; }
-  button.left-align, .button.left-align {
+    #mh-widgets button.left-align, .button.left-align {
     text-align: left;
     text-indent: 0.75rem; }
-  button.right-align, .button.right-align {
+    #mh-widgets button.right-align, .button.right-align {
     text-align: right;
     padding-right: 0.75rem; }
-  button.radius, .button.radius {
+    #mh-widgets button.radius, .button.radius {
     border-radius: 3px; }
-  button.round, .button.round {
+    #mh-widgets button.round, .button.round {
     border-radius: 1000px; }
-  button.disabled, button[disabled], .button.disabled, .button[disabled] {
+    #mh-widgets button.disabled, button[disabled], .button.disabled, .button[disabled] {
     background-color:#0070b5;
     border-color: #008ccc;
     color: #ffffff;
     cursor: default;
     opacity: 0.7;
     box-shadow: none; }
-    button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
+    #mh-widgets button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
       background-color: #008ccc; }
-    button.disabled.secondary, button[disabled].secondary, .button.disabled.secondary, .button[disabled].secondary {
+      #mh-widgets button.disabled.secondary, button[disabled].secondary, .button.disabled.secondary, .button[disabled].secondary {
       background-color: #008bde;
       border-color: #006fb2;
       color: #ffffff;
       cursor: default;
       opacity: 0.7;
       box-shadow: none; }
-      button.disabled.secondary:hover, button.disabled.secondary:focus, button[disabled].secondary:hover, button[disabled].secondary:focus, .button.disabled.secondary:hover, .button.disabled.secondary:focus, .button[disabled].secondary:hover, .button[disabled].secondary:focus {
+      #mh-widgets button.disabled.secondary:hover, button.disabled.secondary:focus, button[disabled].secondary:hover, button[disabled].secondary:focus, .button.disabled.secondary:hover, .button.disabled.secondary:focus, .button[disabled].secondary:hover, .button[disabled].secondary:focus {
         background-color: #006fb2; }
-    button.disabled.success, button[disabled].success, .button.disabled.success, .button[disabled].success {
+        #mh-widgets button.disabled.success, button[disabled].success, .button.disabled.success, .button[disabled].success {
       background-color: #43AC6A;
       border-color: #368a55;
       color: #ffffff;
       cursor: default;
       opacity: 0.7;
       box-shadow: none; }
-      button.disabled.success:hover, button.disabled.success:focus, button[disabled].success:hover, button[disabled].success:focus, .button.disabled.success:hover, .button.disabled.success:focus, .button[disabled].success:hover, .button[disabled].success:focus {
+      #mh-widgets button.disabled.success:hover, button.disabled.success:focus, button[disabled].success:hover, button[disabled].success:focus, .button.disabled.success:hover, .button.disabled.success:focus, .button[disabled].success:hover, .button[disabled].success:focus {
         background-color: #368a55; }
 
-    button.disabled.alert, button[disabled].alert, .button.disabled.alert, .button[disabled].alert {
+        #mh-widgets button.disabled.alert, button[disabled].alert, .button.disabled.alert, .button[disabled].alert {
       background-color: #f04124;
       border-color: #cf2a0e;
       color: #ffffff;
       cursor: default;
       opacity: 0.7;
       box-shadow: none; }
-      button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .button.disabled.alert:focus, .button[disabled].alert:hover, .button[disabled].alert:focus {
+      #mh-widgets button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .button.disabled.alert:focus, .button[disabled].alert:hover, .button[disabled].alert:focus {
         background-color: #cf2a0e; }
 
-    button.disabled.warning, button[disabled].warning, .button.disabled.warning, .button[disabled].warning {
+        #mh-widgets button.disabled.warning, button[disabled].warning, .button.disabled.warning, .button[disabled].warning {
       background-color: #f08a24;
       border-color: #cf6e0e;
       color: #ffffff;
       cursor: default;
       opacity: 0.7;
       box-shadow: none; }
-      button.disabled.warning:hover, button.disabled.warning:focus, button[disabled].warning:hover, button[disabled].warning:focus, .button.disabled.warning:hover, .button.disabled.warning:focus, .button[disabled].warning:hover, .button[disabled].warning:focus {
+      #mh-widgets button.disabled.warning:hover, button.disabled.warning:focus, button[disabled].warning:hover, button[disabled].warning:focus, .button.disabled.warning:hover, .button.disabled.warning:focus, .button[disabled].warning:hover, .button[disabled].warning:focus {
         background-color: #cf6e0e; }
 
-    button.disabled.info, button[disabled].info, .button.disabled.info, .button[disabled].info {
+        #mh-widgets button.disabled.info, button[disabled].info, .button.disabled.info, .button[disabled].info {
       background-color: #a0d3e8;
       border-color: #61b6d9;
       color: #333333;
       cursor: default;
       opacity: 0.7;
       box-shadow: none; }
-button.disabled.info:hover, button.disabled.info:focus, button[disabled].info:hover, button[disabled].info:focus, .button.disabled.info:hover, .button.disabled.info:focus, .button[disabled].info:hover, .button[disabled].info:focus {
+      #mh-widgets button.disabled.info:hover, button.disabled.info:focus, button[disabled].info:hover, button[disabled].info:focus, .button.disabled.info:hover, .button.disabled.info:focus, .button[disabled].info:hover, .button[disabled].info:focus {
         background-color: #a0d3e8; }
 
-button::-moz-focus-inner {
+        #mh-widgets button::-moz-focus-inner {
   border: 0;
   padding: 0; }
 
 @media only screen and (min-width: 40.063em) {
-  button, .search-button  {
+  #mh-widgets button, .search-button  {
     display: inline-block; } }
-
-/* Standard Forms */
-form {
-  margin: 0 0 0.5rem; }
-
-/* Using forms within rows, we need to set some defaults */
-form .row .row {
-  margin: 0 -0.25rem; }
-  form .row .row .column,
-  form .row .row .columns {
-    padding: 0 0.25rem; }
-  form .row .row.collapse {
-    margin: 0; }
-    form .row .row.collapse .column,
-    form .row .row.collapse .columns {
-      padding: 0; }
-    form .row .row.collapse input {
-      -webkit-border-bottom-right-radius: 0;
-      -webkit-border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-      border-top-right-radius: 0; }
-
-form .row input.column,
-form .row input.columns,
-form .row textarea.column,
-form .row textarea.columns {
-  padding-left: 0.25rem; }
 
 /* We use this to get basic styling on all basic form elements */
 input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"], textarea {
@@ -885,6 +304,7 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  text-shadow: none;
   transition: box-shadow 0.45s, border-color 0.45s ease-in-out; }
   input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="time"]:focus, input[type="url"]:focus, input[type="color"]:focus, textarea:focus {
     box-shadow: 0 0 5px #999999;
@@ -910,80 +330,18 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   fieldset[disabled] textarea {
     background-color: #DDDDDD;
     cursor: default; }
+
   input[type="text"].radius, input[type="password"].radius, input[type="date"].radius, input[type="datetime"].radius, input[type="datetime-local"].radius, input[type="month"].radius, input[type="week"].radius, input[type="email"].radius, input[type="number"].radius, input[type="search"].radius, input[type="tel"].radius, input[type="time"].radius, input[type="url"].radius, input[type="color"].radius, textarea.radius {
     border-radius: 3px; }
 
-form .row .prefix-radius.row.collapse input,
-form .row .prefix-radius.row.collapse textarea,
-form .row .prefix-radius.row.collapse select {
-  border-radius: 0;
-  -webkit-border-bottom-right-radius: 3px;
-  -webkit-border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-  border-top-right-radius: 3px; }
-
-form .row .prefix-radius.row.collapse .prefix {
-  border-radius: 0;
-  -webkit-border-bottom-left-radius: 3px;
-  -webkit-border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-  border-top-left-radius: 3px; }
-
-form .row .postfix-radius.row.collapse input,
-form .row .postfix-radius.row.collapse textarea,
-form .row .postfix-radius.row.collapse select {
-  border-radius: 0;
-  -webkit-border-bottom-left-radius: 3px;
-  -webkit-border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-  border-top-left-radius: 3px; }
-
-form .row .postfix-radius.row.collapse .postfix {
-  border-radius: 0;
-  -webkit-border-bottom-right-radius: 3px;
-  -webkit-border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-  border-top-right-radius: 3px; }
-
-form .row .prefix-round.row.collapse input,
-form .row .prefix-round.row.collapse textarea,
-form .row .prefix-round.row.collapse select {
-  border-radius: 0;
-  -webkit-border-bottom-right-radius: 1000px;
-  -webkit-border-top-right-radius: 1000px;
-  border-bottom-right-radius: 1000px;
-  border-top-right-radius: 1000px; }
-
-/* Calculate some extra width for typeahead results*/
-.search-container {
-  margin-left: 5%;
-  pointer-events: none;
-  position: absolute;
-  width: 52.5%;
-  z-index: 8; }
-  .search-container .autosuggest-input-container,
-  .search-container .street-mode-selector-popup-options,
-  .search-container .street-mode-selector-popup-toggle {
-    pointer-events: auto; }
-
-.front-page .autosuggest-input-container {
-  box-shadow: 1.5px 2.6px 10px 0 rgba(0, 0, 0, 0.2); }
-
-.front-page .origin-input-container
-.front-page .destination-input-container
-.front-page #origin
-.front-page #destination {
+.autosuggest-in-panel .origin-input-container
+.autosuggest-in-panel .destination-input-container
+.autosuggest-in-panel #origin
+.autosuggest-in-panel #destination {
   margin: 0;
   font-size: 1rem; }
 
-.front-page .autosuggest-input-icon {
-  margin-top: 0.75em;
-  z-index: 18; }
-
-.front-page button.clear-input {
-  font-size: 1rem; }
-
-.front-page .autosuggest-panel .react-autosuggest__container .react-autosuggest__suggestions-container--open {
+.autosuggest-in-panel .autosuggest-panel .react-autosuggest__container .react-autosuggest__suggestions-container--open {
   top: 3rem; }
 
 /*Placeholder selectors can't be nested and need to be put 1 at a time, these are for the
@@ -1363,7 +721,7 @@ input.react-autosuggest__input {
   .react-autosuggest__container input:focus {
     box-shadow: none;
     /* First apply outline that is used in Edge and Firefox */
-    outline: 5px auto -webkit-focus-ring-color;
+    outline: 2px auto -webkit-focus-ring-color;
     /* Then override outline for webkit browsers like Chrome, this has no effect on other browsers */
     border: none;
     background: #ffffff;
@@ -1373,7 +731,7 @@ input.react-autosuggest__input {
 input.react-autosuggest__input::-ms-clear {
   display: none; }
 
-button.clear-input {
+  #mh-widgets button.clear-input {
   display: flex;
   background: #f4f4f4;
   border-top-right-radius: 4px;
@@ -1386,11 +744,14 @@ button.clear-input {
   margin-bottom: 0px;
   color: #666;
   outline: none; }
-  button.clear-input span {
+  #mh-widgets button.clear-input span {
     font-size: 1.1rem; }
-  button.clear-input:hover {
-    background: #ffffff; }
-  button.clear-input:focus {
+    #mh-widgets button.clear-input:hover:not(:disabled) {
+    background: #ffffff;
+    box-shadow: none;
+    border: none;
+  }
+  #mh-widgets button.clear-input:focus {
     background-color: #ffffff;
     /* First apply outline that is used in Edge and Firefox */
     outline: 1px dotted #212121;
