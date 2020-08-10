@@ -4,6 +4,7 @@ import Icon from './component/Icon';
 import WidgetAutoSuggest from './widgetAutoSuggest';
 import MhIcon from './configurations/images/mh/mh-favicon.png';
 import { getNamedConfiguration } from './config';
+import '../sass/_widget.scss';
 
 // Config name filled in global window.* when serving the asset from specialised URL
 // eslint-disable-next-line no-underscore-dangle
@@ -71,7 +72,7 @@ class Widget extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="reittiopas-mh-widget">
         <div dangerouslySetInnerHTML={this.createSpriteMarkup()} />
         <div className="widget-body">
           <div className="autosuggest-panel">
@@ -108,8 +109,10 @@ class Widget extends React.Component {
               </button>
             </div>
             <div className="widget-icon">
-              <span>Powered By </span>
-              <img className="mh-icon" src={MhIcon} alt="Logo" />
+              <span className="powered-by">Powered By </span>
+              <div>
+                <img className="mh-icon" src={MhIcon} alt="Logo" />
+              </div>
             </div>
           </div>
         </div>
