@@ -49,8 +49,10 @@
   width:100%;
   display:block;
   background-color: #0070b5;
+  margin-top: .3rem;
 }
-.sr-only:not(:focus):not(:active) {
+
+#mh-widgets .sr-only:not(:focus):not(:active) {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
   height: 1px;
@@ -60,37 +62,38 @@
   width: 1px; }
 
 /* ICONS */
-#mh-widgets .icon {
+#mh-widgets {
+  .icon {
   display: inline-block;
   width: 1em;
   height: 1em;
   fill: currentColor; }
-  .icon.caution {
+ .icon.caution {
     color: #ffffff;
     fill: #dc0451; }
-  .icon.info {
+ .icon.info {
     color: #78909c; }
-  .icon.inline-icon {
+ .icon.inline-icon {
     margin-left: 0.25em;
     position: relative;
     top: 0.125em; }
 
-.favourite-icon {
+ .favourite-icon {
   padding: 0;
   height: 24px;
   width: 24px; }
-  .favourite-icon .icon.favourite {
+ .favourite-icon .icon.favourite {
     height: 24px;
     width: 24px;
     stroke: #ccc;
     stroke-width: 50px;
     fill: transparent; }
-    .favourite-icon .icon.favourite:hover {
+ .favourite-icon .icon.favourite:hover {
       stroke: #e9ab00; }
-    .favourite-icon .icon.favourite.selected {
+ .favourite-icon .icon.favourite.selected {
       fill: #e9ab00;
       stroke: #eef1f3; }
-    .favourite-icon .icon.favourite.selected:hover {
+ .favourite-icon .icon.favourite.selected:hover {
       stroke: #ddd; }
 
 @keyframes realtimeInnerArch {
@@ -119,20 +122,20 @@
   100% {
     opacity: 1; } }
 
-svg.realtime-icon {
+ svg.realtime-icon {
   transform: translate3d(0, 0, 0); }
 
-#icon-icon_realtime {
+ #icon-icon_realtime {
   color: #3f8600; }
 
-#icon-icon_realtime path {
+ #icon-icon_realtime path {
   animation-duration: 2s;
   animation-iteration-count: infinite;
   animation-timing-function: step-start;
   fill: currentColor; }
-  #icon-icon_realtime path.path1 {
+ #icon-icon_realtime path.path1 {
     animation-name: realtimeInnerArch; }
-  #icon-icon_realtime path.path2 {
+ #icon-icon_realtime path.path2 {
     animation-name: realtimeOuterArch; }
 
 @keyframes locationIcon {
@@ -146,7 +149,7 @@ svg.realtime-icon {
   100% {
     opacity: 0;
     transform: scale(3); } }
-
+}
 #mh-widgets button, .search-button  {
   border-style: solid;
   border-width: 0px;
@@ -173,7 +176,7 @@ svg.realtime-icon {
   color: #ffffff;
   transition: background-color 300ms ease-out; }
 
-  .search-button:hover:not(:disabled) {
+  #mh-widgets .search-button:hover:not(:disabled) {
     color: #ffffff;
     box-shadow: inset 0 1px 0 0 #646668;
     cursor: pointer;
@@ -281,7 +284,7 @@ svg.realtime-icon {
   padding: 0; }
 
 @media only screen and (min-width: 40.063em) {
-  #mh-widgets button, .search-button  {
+  button, .search-button  {
     display: inline-block; } }
 
 /* We use this to get basic styling on all basic form elements */
@@ -309,14 +312,14 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="time"]:focus, input[type="url"]:focus, input[type="color"]:focus, textarea:focus {
     box-shadow: 0 0 5px #999999;
     border-color: #999999; }
-  input[type="text"]:disabled, input[type="password"]:disabled, input[type="date"]:disabled, input[type="datetime"]:disabled, input[type="datetime-local"]:disabled, input[type="month"]:disabled, input[type="week"]:disabled, input[type="email"]:disabled, input[type="number"]:disabled, input[type="search"]:disabled, input[type="tel"]:disabled, input[type="time"]:disabled, input[type="url"]:disabled, input[type="color"]:disabled, textarea:disabled {
+    input[type="text"]:disabled, input[type="password"]:disabled, input[type="date"]:disabled, input[type="datetime"]:disabled, input[type="datetime-local"]:disabled, input[type="month"]:disabled, input[type="week"]:disabled, input[type="email"]:disabled, input[type="number"]:disabled, input[type="search"]:disabled, input[type="tel"]:disabled, input[type="time"]:disabled, input[type="url"]:disabled, input[type="color"]:disabled, textarea:disabled {
     background-color: #DDDDDD;
     cursor: default; }
-  input[type="text"][disabled], input[type="text"][readonly],
-  fieldset[disabled] input[type="text"], input[type="password"][disabled], input[type="password"][readonly],
-  fieldset[disabled] input[type="password"], input[type="date"][disabled], input[type="date"][readonly],
-  fieldset[disabled] input[type="date"], input[type="datetime"][disabled], input[type="datetime"][readonly],
-  fieldset[disabled] input[type="datetime"], input[type="datetime-local"][disabled], input[type="datetime-local"][readonly],
+    input[type="text"][disabled], input[type="text"][readonly],
+    fieldset[disabled] input[type="text"], input[type="password"][disabled], input[type="password"][readonly],
+    fieldset[disabled] input[type="password"], input[type="date"][disabled], input[type="date"][readonly],
+    fieldset[disabled] input[type="date"], input[type="datetime"][disabled], input[type="datetime"][readonly],
+    fieldset[disabled] input[type="datetime"], input[type="datetime-local"][disabled], input[type="datetime-local"][readonly],
   fieldset[disabled] input[type="datetime-local"], input[type="month"][disabled], input[type="month"][readonly],
   fieldset[disabled] input[type="month"], input[type="week"][disabled], input[type="week"][readonly],
   fieldset[disabled] input[type="week"], input[type="email"][disabled], input[type="email"][readonly],
@@ -331,10 +334,10 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
     background-color: #DDDDDD;
     cursor: default; }
 
-  input[type="text"].radius, input[type="password"].radius, input[type="date"].radius, input[type="datetime"].radius, input[type="datetime-local"].radius, input[type="month"].radius, input[type="week"].radius, input[type="email"].radius, input[type="number"].radius, input[type="search"].radius, input[type="tel"].radius, input[type="time"].radius, input[type="url"].radius, input[type="color"].radius, textarea.radius {
+    input[type="text"].radius, input[type="password"].radius, input[type="date"].radius, input[type="datetime"].radius, input[type="datetime-local"].radius, input[type="month"].radius, input[type="week"].radius, input[type="email"].radius, input[type="number"].radius, input[type="search"].radius, input[type="tel"].radius, input[type="time"].radius, input[type="url"].radius, input[type="color"].radius, textarea.radius {
     border-radius: 3px; }
 
-.autosuggest-in-panel .origin-input-container
+ .autosuggest-in-panel .origin-input-container
 .autosuggest-in-panel .destination-input-container
 .autosuggest-in-panel #origin
 .autosuggest-in-panel #destination {
@@ -650,10 +653,12 @@ ul.react-autowhatever__items-list {
   .autosuggest-input-icon.destination {
     color: #ec5188;
     z-index: 3;
+    padding:.2rem;
   }
   .autosuggest-input-icon.origin {
     color: #64be14;
     z-index: 3;
+    padding:.2rem;
   }
   .autosuggest-input-icon .icon {
     width: 100%;
