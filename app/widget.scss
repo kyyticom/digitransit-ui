@@ -1,4 +1,4 @@
-#mh-widget .main-title {
+#reittiopas-mh-widget {.main-title {
     padding: 13px 10px 13px 10px;
     color: white;
     text-align: center;
@@ -8,20 +8,20 @@
     font-size: 1.25rem;
     background-color: #0070B5;
 }
-#mh-widget .autosuggest-panel{
+.autosuggest-panel{
   margin:0rem;
 }
 
-#mh-widget .autosuggest-in-panel{
+.autosuggest-in-panel{
   margin:1rem;
 }
 
-#mh-widget .powered-by {
+.powered-by {
   display: inline-flex;
   align-items: center;
 }
 
-#mh-widget .widget-icon{
+.widget-icon{
   display:flex;
   margin:1rem;
   text-align: center;
@@ -29,30 +29,30 @@
   justify-content:center;
 }
 
-#mh-widget .mh-icon{
+.mh-icon{
     max-height: 80px;
     min-height: 72px;
     min-width: 110px;
 
 }
-#mh-widget .search-icon{
+.search-icon{
   width:100%;
 }
 
-#mh-widget .widget-body{
+.widget-body{
   background-color:#ffffff!important;
   letter-spacing:0;
   -webkit-text-size-adjust:100%
 }
 
-#mh-widget .search-button {
+.search-button {
   width:100%;
   display:block;
   background-color: #0070b5;
   margin-top: .3rem;
 }
 
-#mh-widget .sr-only:not(:focus):not(:active) {
+.sr-only:not(:focus):not(:active) {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
   height: 1px;
@@ -62,7 +62,6 @@
   width: 1px; }
 
 /* ICONS */
-#mh-widget {
   .icon {
   display: inline-block;
   width: 1em;
@@ -149,8 +148,8 @@
   100% {
     opacity: 0;
     transform: scale(3); } }
-}
-#mh-widget button, .search-button  {
+
+button, .search-button  {
   border-style: solid;
   border-width: 0px;
   cursor: pointer;
@@ -176,110 +175,110 @@
   color: #ffffff;
   transition: background-color 300ms ease-out; }
 
-  #mh-widget .search-button:hover:not(:disabled) {
+.search-button:hover:not(:disabled) {
     color: #ffffff;
     box-shadow: inset 0 1px 0 0 #646668;
     cursor: pointer;
     background-color: #646668;
     background-image: -webkit-linear-gradient(#646668,#646668);
   }
-  #mh-widget .search-button:focus:not(:disabled) {
+.search-button:focus:not(:disabled) {
     border: none;
     box-shadow: none;
     color: #ffffff;
     background-color: #0070b5;
   }
-  #mh-widget button.large, .button.large {
+button.large, .button.large {
     padding-top: 1.125rem;
     padding-right: 2.25rem;
     padding-bottom: 1.1875rem;
     padding-left: 2.25rem;
     font-size: 1.25rem; }
-    #mh-widget button.small, .button.small {
+button.small, .button.small {
     padding-top: 0.875rem;
     padding-right: 1.75rem;
     padding-bottom: 0.9375rem;
     padding-left: 1.75rem;
     font-size: 0.8125rem; }
-    #mh-widget button.tiny, .button.tiny {
+button.tiny, .button.tiny {
     padding-top: 0.625rem;
     padding-right: 1.25rem;
     padding-bottom: 0.6875rem;
     padding-left: 1.25rem;
     font-size: 0.6875rem; }
-    #mh-widget button.expand, .button.expand {
+button.expand, .button.expand {
     padding-right: 0;
     padding-left: 0;
     width: 100%; }
-    #mh-widget button.left-align, .button.left-align {
+button.left-align, .button.left-align {
     text-align: left;
     text-indent: 0.75rem; }
-    #mh-widget button.right-align, .button.right-align {
+button.right-align, .button.right-align {
     text-align: right;
     padding-right: 0.75rem; }
-    #mh-widget button.radius, .button.radius {
+button.radius, .button.radius {
     border-radius: 3px; }
-    #mh-widget button.round, .button.round {
+button.round, .button.round {
     border-radius: 1000px; }
-    #mh-widget button.disabled, button[disabled], .button.disabled, .button[disabled] {
+button.disabled, button[disabled], .button.disabled, .button[disabled] {
     background-color:#0070b5;
     border-color: #008ccc;
     color: #ffffff;
     cursor: default;
     opacity: 0.7;
     box-shadow: none; }
-    #mh-widget button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
+button.disabled:hover, button.disabled:focus, button[disabled]:hover, button[disabled]:focus, .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
       background-color: #008ccc; }
-      #mh-widget button.disabled.secondary, button[disabled].secondary, .button.disabled.secondary, .button[disabled].secondary {
+  button.disabled.secondary, button[disabled].secondary, .button.disabled.secondary, .button[disabled].secondary {
       background-color: #008bde;
       border-color: #006fb2;
       color: #ffffff;
       cursor: default;
       opacity: 0.7;
       box-shadow: none; }
-      #mh-widget button.disabled.secondary:hover, button.disabled.secondary:focus, button[disabled].secondary:hover, button[disabled].secondary:focus, .button.disabled.secondary:hover, .button.disabled.secondary:focus, .button[disabled].secondary:hover, .button[disabled].secondary:focus {
+  button.disabled.secondary:hover, button.disabled.secondary:focus, button[disabled].secondary:hover, button[disabled].secondary:focus, .button.disabled.secondary:hover, .button.disabled.secondary:focus, .button[disabled].secondary:hover, .button[disabled].secondary:focus {
         background-color: #006fb2; }
-        #mh-widget button.disabled.success, button[disabled].success, .button.disabled.success, .button[disabled].success {
+    button.disabled.success, button[disabled].success, .button.disabled.success, .button[disabled].success {
       background-color: #43AC6A;
       border-color: #368a55;
       color: #ffffff;
       cursor: default;
       opacity: 0.7;
       box-shadow: none; }
-      #mh-widget button.disabled.success:hover, button.disabled.success:focus, button[disabled].success:hover, button[disabled].success:focus, .button.disabled.success:hover, .button.disabled.success:focus, .button[disabled].success:hover, .button[disabled].success:focus {
+  button.disabled.success:hover, button.disabled.success:focus, button[disabled].success:hover, button[disabled].success:focus, .button.disabled.success:hover, .button.disabled.success:focus, .button[disabled].success:hover, .button[disabled].success:focus {
         background-color: #368a55; }
 
-        #mh-widget button.disabled.alert, button[disabled].alert, .button.disabled.alert, .button[disabled].alert {
+    button.disabled.alert, button[disabled].alert, .button.disabled.alert, .button[disabled].alert {
       background-color: #f04124;
       border-color: #cf2a0e;
       color: #ffffff;
       cursor: default;
       opacity: 0.7;
       box-shadow: none; }
-      #mh-widget button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .button.disabled.alert:focus, .button[disabled].alert:hover, .button[disabled].alert:focus {
+  button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert:hover, button[disabled].alert:focus, .button.disabled.alert:hover, .button.disabled.alert:focus, .button[disabled].alert:hover, .button[disabled].alert:focus {
         background-color: #cf2a0e; }
 
-        #mh-widget button.disabled.warning, button[disabled].warning, .button.disabled.warning, .button[disabled].warning {
+    button.disabled.warning, button[disabled].warning, .button.disabled.warning, .button[disabled].warning {
       background-color: #f08a24;
       border-color: #cf6e0e;
       color: #ffffff;
       cursor: default;
       opacity: 0.7;
       box-shadow: none; }
-      #mh-widget button.disabled.warning:hover, button.disabled.warning:focus, button[disabled].warning:hover, button[disabled].warning:focus, .button.disabled.warning:hover, .button.disabled.warning:focus, .button[disabled].warning:hover, .button[disabled].warning:focus {
+  button.disabled.warning:hover, button.disabled.warning:focus, button[disabled].warning:hover, button[disabled].warning:focus, .button.disabled.warning:hover, .button.disabled.warning:focus, .button[disabled].warning:hover, .button[disabled].warning:focus {
         background-color: #cf6e0e; }
 
-        #mh-widget button.disabled.info, button[disabled].info, .button.disabled.info, .button[disabled].info {
+    button.disabled.info, button[disabled].info, .button.disabled.info, .button[disabled].info {
       background-color: #a0d3e8;
       border-color: #61b6d9;
       color: #333333;
       cursor: default;
       opacity: 0.7;
       box-shadow: none; }
-      #mh-widget button.disabled.info:hover, button.disabled.info:focus, button[disabled].info:hover, button[disabled].info:focus, .button.disabled.info:hover, .button.disabled.info:focus, .button[disabled].info:hover, .button[disabled].info:focus {
+  button.disabled.info:hover, button.disabled.info:focus, button[disabled].info:hover, button[disabled].info:focus, .button.disabled.info:hover, .button.disabled.info:focus, .button[disabled].info:hover, .button[disabled].info:focus {
         background-color: #a0d3e8; }
 
-        #mh-widget button::-moz-focus-inner {
+    button::-moz-focus-inner {
   border: 0;
   padding: 0; }
 
@@ -288,7 +287,7 @@
     display: inline-block; } }
 
 /* We use this to get basic styling on all basic form elements */
-input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"], textarea {
+ input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"], textarea {
   -webkit-appearance: none;
   -webkit-border-radius: 0px;
   background-color: #ffffff;
@@ -337,7 +336,7 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
     input[type="text"].radius, input[type="password"].radius, input[type="date"].radius, input[type="datetime"].radius, input[type="datetime-local"].radius, input[type="month"].radius, input[type="week"].radius, input[type="email"].radius, input[type="number"].radius, input[type="search"].radius, input[type="tel"].radius, input[type="time"].radius, input[type="url"].radius, input[type="color"].radius, textarea.radius {
     border-radius: 3px; }
 
- .autosuggest-in-panel .origin-input-container
+.autosuggest-in-panel .origin-input-container
 .autosuggest-in-panel .destination-input-container
 .autosuggest-in-panel #origin
 .autosuggest-in-panel #destination {
@@ -736,7 +735,7 @@ input.react-autosuggest__input {
 input.react-autosuggest__input::-ms-clear {
   display: none; }
 
-  #mh-widget button.clear-input {
+button.clear-input {
   display: flex;
   background: #f4f4f4;
   border-top-right-radius: 4px;
@@ -749,14 +748,14 @@ input.react-autosuggest__input::-ms-clear {
   margin-bottom: 0px;
   color: #666;
   outline: none; }
-  #mh-widget button.clear-input span {
+button.clear-input span {
     font-size: 1.1rem; }
-    #mh-widget button.clear-input:hover:not(:disabled) {
+  button.clear-input:hover:not(:disabled) {
     background: #ffffff;
     box-shadow: none;
     border: none;
   }
-  #mh-widget button.clear-input:focus {
+button.clear-input:focus {
     background-color: #ffffff;
     /* First apply outline that is used in Edge and Firefox */
     outline: 1px dotted #212121;
@@ -768,3 +767,4 @@ input.react-autosuggest__input::-ms-clear {
 
 .suggestion-is-updating {
   visibility: hidden; }
+}
