@@ -4,6 +4,7 @@ import Icon from './component/Icon';
 import WidgetAutoSuggest from './widgetAutoSuggest';
 import MhIcon from './configurations/images/mh/mh-favicon.png';
 import { getNamedConfiguration } from './config';
+import '../sass/_widget.scss';
 
 // Config name filled in global window.* when serving the asset from specialised URL
 // eslint-disable-next-line no-underscore-dangle

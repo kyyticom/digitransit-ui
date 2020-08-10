@@ -191,7 +191,7 @@ const mainConfig = {
 const widgetConfig = {
   mode,
   entry: {
-    widget: ['./app/widget.js', './app/widget.scss'],
+    widget: ['./app/widget.js'],
   },
 
   output: {
