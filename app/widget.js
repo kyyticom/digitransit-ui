@@ -71,7 +71,7 @@ class Widget extends React.Component {
 
   render() {
     return (
-      <div id="mh-widgets">
+      <div id="mh-widget">
         <div dangerouslySetInnerHTML={this.createSpriteMarkup()} />
         <div className="widget-body">
           <div className="autosuggest-panel">
