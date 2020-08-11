@@ -237,17 +237,39 @@ const mainConfig = {
       ? [new webpack.ContextReplacementPlugin(themeExpression, selectedTheme)]
       : productionPlugins),
   ],
+  optimization: {
+    minimizer: [
+      new TerserJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true, // set to true if you want JS source maps
+      }),
+      new OptimizeCSSAssetsPlugin({}),
+    ],
+    moduleIds: 'named',
+    chunkIds: 'named',
+    splitChunks: {
+      chunks: isProduction ? 'all' : 'async',
+      cacheGroups: {
+        react: {
+          name: 'react',
+          test: /[\\/]node_modules[\\/](react|react-dom|react-relay|relay-runtime)[\\/]/,
+          reuseExistingChunk: false,
+        },
+      },
+    },
+    runtimeChunk: isProduction,
+  },
 };
 
 const widgetConfig = {
   mode,
   entry: {
-    widget: ['./app/widget.js', './sass/_widget.scss'],
+    widget: ['./app/widget.js'],
   },
   output: {
     path: path.join(__dirname, '_static'),
     filename: 'js/[name].js',
-    chunkFilename: 'js/[chunkhash].js',
     publicPath: isDevelopment ? '/proxy/' : `${process.env.APP_PATH || ''}/`,
     crossOriginLoading: 'anonymous',
   },
@@ -257,7 +279,7 @@ const widgetConfig = {
       {
         test: /\.scss$/,
         use: [
-          isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'style-loader',
           {
             loader: 'css-loader',
             options: {
@@ -283,6 +305,16 @@ const widgetConfig = {
       chunkFilename: 'css/[name].css',
     }),
   ],
+  optimization: {
+    minimizer: [
+      new TerserJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true, // set to true if you want JS source maps
+      }),
+      new OptimizeCSSAssetsPlugin({}),
+    ],
+  },
 };
 
 const config = {
@@ -350,29 +382,6 @@ const config = {
     './fetch': 'var fetch',
 
     'fbjs/lib/Map': 'var Map',
-  },
-  optimization: {
-    minimizer: [
-      new TerserJsPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: true, // set to true if you want JS source maps
-      }),
-      new OptimizeCSSAssetsPlugin({}),
-    ],
-    moduleIds: 'named',
-    chunkIds: 'named',
-    splitChunks: {
-      chunks: isProduction ? 'all' : 'async',
-      cacheGroups: {
-        react: {
-          name: 'react',
-          test: /[\\/]node_modules[\\/](react|react-dom|react-relay|relay-runtime)[\\/]/,
-          reuseExistingChunk: false,
-        },
-      },
-    },
-    runtimeChunk: isProduction,
   },
   devServer: {
     writeToDisk: true,
