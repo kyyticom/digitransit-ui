@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Icon from './component/Icon';
-import WidgetAutoSuggest from './widgetAutoSuggest';
+import cx from 'classnames';
+import Icon from './component/WidgetIcon';
+import WidgetAutoSuggest from './component/WidgetAutoSuggest';
 import MhIcon from './configurations/images/mh/mh-favicon.png';
 import { getNamedConfiguration } from './config';
-import '../sass/_widget.scss';
+import styles from '../sass/_widget.scss';
 
 // Config name filled in global window.* when serving the asset from specialised URL
 // eslint-disable-next-line no-underscore-dangle
@@ -55,7 +56,7 @@ class Widget extends React.Component {
     return (
       <button
         type="button"
-        className="search-button"
+        className={styles['search-button']}
         onClick={this.handleOnlick}
       >
         Hae Lippuja
@@ -72,15 +73,25 @@ class Widget extends React.Component {
 
   render() {
     return (
-      <div id="reittiopas-mh-widget">
+      <div>
         <div dangerouslySetInnerHTML={this.createSpriteMarkup()} />
-        <div className="widget-body">
-          <div className="autosuggest-panel">
-            <div className="main-title">Matkahaku</div>
-            <div className="autosuggest-in-panel">
-              <div className="origin-input-container">
-                <div className="autosuggest-input-container origin">
-                  <div className="autosuggest-input-icon origin">
+        <div className={styles['widget-body']}>
+          <div className={styles['autosuggest-panel']}>
+            <div className={styles['main-title']}>Matkahaku</div>
+            <div className={styles['autosuggest-in-panel']}>
+              <div className={styles['origin-input-container']}>
+                <div
+                  className={cx(
+                    styles['autosuggest-input-container'],
+                    styles.origin,
+                  )}
+                >
+                  <div
+                    className={cx(
+                      styles['autosuggest-input-icon'],
+                      styles.origin,
+                    )}
+                  >
                     <Icon img="icon-icon_mapMarker-from" />
                   </div>
                   <WidgetAutoSuggest
@@ -91,9 +102,19 @@ class Widget extends React.Component {
                   />
                 </div>
               </div>
-              <div className="destination-input-container">
-                <div className="autosuggest-input-container destination">
-                  <div className="autosuggest-input-icon destination">
+              <div className={styles['destination-input-container']}>
+                <div
+                  className={cx(
+                    styles['autosuggest-input-container'],
+                    styles.destination,
+                  )}
+                >
+                  <div
+                    className={cx(
+                      styles['autosuggest-input-icon'],
+                      styles.destination,
+                    )}
+                  >
                     <Icon img="icon-icon_mapMarker-to" />
                   </div>
                   <WidgetAutoSuggest
@@ -104,14 +125,17 @@ class Widget extends React.Component {
                   />
                 </div>
               </div>
-              <button className="search-button" onClick={this.handleOnlick}>
+              <button
+                className={styles['search-button']}
+                onClick={this.handleOnlick}
+              >
                 Hae Lippuja
               </button>
             </div>
-            <div className="widget-icon">
-              <span className="powered-by">Powered By </span>
+            <div className={styles['widget-icon']}>
+              <span className={styles['powered-by']}>Powered By </span>
               <div>
-                <img className="mh-icon" src={MhIcon} alt="Logo" />
+                <img className={styles['mh-icon']} src={MhIcon} alt="Logo" />
               </div>
             </div>
           </div>

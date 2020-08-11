@@ -1,10 +1,29 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Autosuggest from 'react-autosuggest';
-import Icon from './component/Icon';
-import SuggestionItem from './component/SuggestionItem';
-import { getLabel } from './util/suggestionUtils';
-import { executeWidgetSearch } from './util/searchUtils';
+import Icon from './WidgetIcon';
+import SuggestionItem from './WidgetSuggestionItem';
+import { getLabel } from '../util/suggestionUtils';
+import { executeWidgetSearch } from '../util/searchUtils';
+import styles from '../../sass/_widget.scss';
+
+const autoSuggestTheme = {
+  container: styles['react-autosuggest__container'],
+  containerOpen: styles['react-autosuggest__container--open'],
+  input: styles['react-autosuggest__input'],
+  inputOpen: styles['react-autosuggest__input--open'],
+  inputFocused: styles['react-autosuggest__input--focused'],
+  suggestionsContainer: styles['react-autosuggest__suggestions-container'],
+  suggestionsContainerOpen:
+    styles['react-autosuggest__suggestions-container--open'],
+  suggestionsList: styles['react-autosuggest__suggestions-list'],
+  suggestion: styles['react-autosuggest__suggestion'],
+  suggestionFirst: styles['react-autosuggest__suggestion--first'],
+  suggestionHighlighted: styles['react-autosuggest__suggestion--highlighted'],
+  sectionContainer: styles['react-autosuggest__section-container'],
+  sectionContainerFirst: styles['react-autosuggest__section-container--first'],
+  sectionTitle: styles['react-autosuggest__section-title'],
+};
 
 class WidgetAutoSuggest extends React.Component {
   static propTypes = {
@@ -60,7 +79,7 @@ class WidgetAutoSuggest extends React.Component {
     const img = this.state.value ? 'icon-icon_close' : 'icon-icon_search';
     return (
       <button
-        className="noborder clear-input"
+        className={styles['clear-input']}
         onClick={this.clearInput}
         aria-label="clearboom"
       >
@@ -211,7 +230,9 @@ class WidgetAutoSuggest extends React.Component {
       onChange: this.onChange,
       onBlur: this.onBlur,
       onKeyDown: this.keyDown,
-      className: 'react-autosuggest__input widgetlocation',
+      className: `${styles['react-autosuggest__input']} ${
+        styles.widgetlocation
+      }`,
     };
 
     return (
@@ -236,7 +257,7 @@ class WidgetAutoSuggest extends React.Component {
                 onKeyDown={this.keyDown}
                 {...p}
               />
-              <span className="sr-only" role="alert">
+              <span className={styles['sr-only']} role="alert">
                 6
               </span>
               {this.clearButton()}
@@ -244,6 +265,7 @@ class WidgetAutoSuggest extends React.Component {
           )}
           onSuggestionSelected={this.onSelected}
           ref={this.storeInputReference}
+          theme={autoSuggestTheme}
         />
       </div>
     );

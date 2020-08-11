@@ -170,14 +170,13 @@ function setUpRoutes() {
     if (process.env.NODE_ENV === 'production' && process.env.REDIRECT_HOST) {
       if (req.headers.host !== process.env.REDIRECT_HOST) {
         return res.redirect(301, `https://${process.env.REDIRECT_HOST}`);
-      } else if (req.headers['x-forwarded-proto'] !== 'https') {
-        return res.redirect(`https://${req.headers.host}${req.url}`);
-      } else {
-        return next();
       }
-    } else {
+      if (req.headers['x-forwarded-proto'] !== 'https') {
+        return res.redirect(`https://${req.headers.host}${req.url}`);
+      }
       return next();
     }
+    return next();
   });
 
   const sixtyDaysInSeconds = 5184000;
