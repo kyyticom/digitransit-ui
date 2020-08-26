@@ -52,18 +52,6 @@ class Widget extends React.Component {
     );
   };
 
-  searchButton = () => {
-    return (
-      <button
-        type="button"
-        className={styles['search-button']}
-        onClick={this.handleOnlick}
-      >
-        Hae Lippuja
-      </button>
-    );
-  };
-
   createSpriteMarkup = () => {
     return {
       __html:
@@ -129,7 +117,8 @@ class Widget extends React.Component {
                 className={styles['search-button']}
                 onClick={this.handleOnlick}
               >
-                Hae Lippuja
+                {' '}
+                HAE REITTEJÄ{' '}
               </button>
             </div>
             <div className={styles['widget-icon']}>

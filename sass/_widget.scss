@@ -50,7 +50,7 @@
   width: 100%;
   display: block;
   background-color: #0070b5;
-  margin-top: 0.3rem;
+  margin-top: .6rem;
 }
 
 .sr-only:not(:focus):not(:active) {
@@ -191,7 +191,6 @@ button,
   font-family: Lato, Arial, Georgia, Serif;
   font-weight: normal;
   line-height: normal;
-  margin: 0 0 0.1rem;
   position: relative;
   text-decoration: none;
   text-align: center;
@@ -215,8 +214,8 @@ button,
   color: #ffffff;
   box-shadow: inset 0 1px 0 0 #646668;
   cursor: pointer;
-  background-color: #646668;
-  background-image: -webkit-linear-gradient(#646668, #646668);
+  background-color: #0070b5;
+  background-image: -webkit-linear-gradient(#0070b5, #0070b5);
 }
 .search-button:focus:not(:disabled) {
   border: none;
@@ -673,7 +672,7 @@ ul.react-autowhatever__items-list li:not(:last-child) {
   color: #666;
 }
 .react-autosuggest__suggestions-container .react-autosuggest__suggestions-list {
-  margin-top: -0.2em;
+  margin-top: 0em;
   margin-bottom: 0;
   padding-top: 0px;
   padding-left: 0;
@@ -964,12 +963,10 @@ ul.react-autowhatever__items-list li:not(:last-child) {
 .autosuggest-input-icon.destination {
   color: #ec5188;
   z-index: 3;
-  padding: 0.2rem;
 }
 .autosuggest-input-icon.origin {
   color: #64be14;
   z-index: 3;
-  padding: 0.2rem;
 }
 .autosuggest-input-icon .icon {
   width: 100%;
