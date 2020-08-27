@@ -447,5 +447,7 @@
   "yesterday": "I går",
   "your-favourites": "Favoriter",
   "zone": "Zon",
-  "zones": "Biljettzoner"
+  "zones": "Biljettzoner",
+  "widget-name":"Reittihaku",
+  "widget-button-name": "HAE REITTEJÄ"
 }
