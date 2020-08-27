@@ -87,7 +87,7 @@ class Widget extends React.Component {
                   </div>
                   <WidgetAutoSuggest
                     id="origin"
-                    placeholder="Search origin"
+                    placeholder="Hae lähtöpaikkaa"
                     config={config}
                     onChange={this.onChange}
                   />
@@ -110,7 +110,7 @@ class Widget extends React.Component {
                   </div>
                   <WidgetAutoSuggest
                     id="destination"
-                    placeholder="Search destination"
+                    placeholder="Hae määränpäätä"
                     config={config}
                     onChange={this.onChange}
                   />

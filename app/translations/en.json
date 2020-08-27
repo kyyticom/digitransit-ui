@@ -446,6 +446,6 @@
   "your-favourites": "Favorites",
   "zone": "Zone",
   "zones": "Fare zones",
-  "widget-name":"Reittihaku",
-  "widget-button-name": "HAE REITTEJÄ"
+  "widget-name":"Route Search",
+  "widget-button-name": "Search Routes"
 }
