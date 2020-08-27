@@ -65,7 +65,7 @@ class Widget extends React.Component {
         <div dangerouslySetInnerHTML={this.createSpriteMarkup()} />
         <div className={styles['widget-body']}>
           <div className={styles['autosuggest-panel']}>
-            <div className={styles['main-title']}>Matkahaku</div>
+            <div className={styles['main-title']}>Reittihaku</div>
             <div className={styles['autosuggest-in-panel']}>
               <div className={styles['origin-input-container']}>
                 <div
