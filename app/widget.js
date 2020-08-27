@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import cx from 'classnames';
+import { FormattedMessage } from 'react-intl';
 import Icon from './component/WidgetIcon';
 import WidgetAutoSuggest from './component/WidgetAutoSuggest';
 import MhIcon from './configurations/images/mh/mh-favicon.png';
@@ -65,7 +66,9 @@ class Widget extends React.Component {
         <div dangerouslySetInnerHTML={this.createSpriteMarkup()} />
         <div className={styles['widget-body']}>
           <div className={styles['autosuggest-panel']}>
-            <div className={styles['main-title']}>Reittihaku</div>
+            <div className={styles['main-title']}>
+              <FormattedMessage id="widget-name" defaultMessage="Reittihaku" />
+            </div>
             <div className={styles['autosuggest-in-panel']}>
               <div className={styles['origin-input-container']}>
                 <div
@@ -117,8 +120,10 @@ class Widget extends React.Component {
                 className={styles['search-button']}
                 onClick={this.handleOnlick}
               >
-                {' '}
-                HAE REITTEJÄ{' '}
+                <FormattedMessage
+                  id="widget-button-name"
+                  defaultMessage="HAE REITTEJÄ"
+                />
               </button>
             </div>
             <div className={styles['widget-icon']}>
