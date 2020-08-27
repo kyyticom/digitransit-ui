@@ -446,5 +446,7 @@
   "yesterday": "Eilen",
   "your-favourites": "Suosikkisi",
   "zone": "Vyöhyke",
-  "zones": "Lippuvyöhykkeet"
+  "zones": "Lippuvyöhykkeet",
+  "widget-name":"Reittihaku",
+  "widget-button-name": "HAE REITTEJÄ"
 }
