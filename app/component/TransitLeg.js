@@ -195,7 +195,7 @@ class TransitLeg extends React.Component {
           duration: durationToString(leg.duration * 1000),
           trackInfo: (
             <PlatformNumber
-              number={leg.from.stop.platformCode}
+              number={leg.from.stop && leg.from.stop.platformCode}
               short={false}
               isRailOrSubway={
                 modeClassName === 'rail' || modeClassName === 'subway'
@@ -252,9 +252,11 @@ class TransitLeg extends React.Component {
               }
             }}
             to={
-              `/${PREFIX_ROUTES}/${leg.route.gtfsId}/${PREFIX_STOPS}/${
-                leg.trip.pattern.code
-              }/${leg.trip.gtfsId}`
+              leg.trip.pattern
+                ? `/${PREFIX_ROUTES}/${leg.route.gtfsId}/${PREFIX_STOPS}/${
+                    leg.trip.pattern.code
+                  }/${leg.trip.gtfsId}`
+                : `/${PREFIX_ROUTES}/${leg.route.gtfsId}`
               // TODO: Create a helper function for generationg links
             }
           >
@@ -312,7 +314,7 @@ class TransitLeg extends React.Component {
               />
               {this.stopCode(leg.from.stop && leg.from.stop.code)}
               <PlatformNumber
-                number={leg.from.stop.platformCode}
+                number={leg.from.stop && leg.from.stop.platformCode}
                 short={false}
                 isRailOrSubway={
                   modeClassName === 'rail' || modeClassName === 'subway'
@@ -405,7 +407,7 @@ TransitLeg.propTypes = {
       gtfsId: PropTypes.string.isRequired,
       pattern: PropTypes.shape({
         code: PropTypes.string.isRequired,
-      }).isRequired,
+      }),
     }).isRequired,
     startTime: PropTypes.number.isRequired,
     departureDelay: PropTypes.number,

@@ -37,11 +37,15 @@ class CallAgencyLeg extends React.Component {
         <div className="small-2 columns itinerary-time-column call">
           <Link
             onClick={e => e.stopPropagation()}
-            to={`/${PREFIX_ROUTES}/${
-              this.props.leg.route.gtfsId
-            }/${PREFIX_STOPS}/${this.props.leg.trip.pattern.code}/${
-              this.props.leg.trip.gtfsId
-            }`}
+            to={
+              this.props.leg.trip.pattern
+                ? `/${PREFIX_ROUTES}/${
+                    this.props.leg.route.gtfsId
+                  }/${PREFIX_STOPS}/${this.props.leg.trip.pattern.code}/${
+                    this.props.leg.trip.gtfsId
+                  }`
+                : `/${PREFIX_ROUTES}/${this.props.leg.route.gtfsId}`
+            }
           >
             <div className="itinerary-time-column-time">
               <span>{moment(this.props.leg.startTime).format('HH:mm')}</span>
