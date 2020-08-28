@@ -386,44 +386,50 @@ describe('modeUtils', () => {
     });
   });
 
-  describe('getOTPMode', () => {
-    it('should return undefined if the given mode is undefined', () => {
-      expect(utils.getOTPMode(config, undefined)).to.equal(undefined);
+  describe('getOTPModes', () => {
+    it('should return an empty array if the given mode is undefined', () => {
+      expect(utils.getOTPModes(config, undefined)).to.deep.equal([]);
     });
 
-    it('should return undefined if the given mode is not a string', () => {
-      expect(utils.getOTPMode(config, {})).to.equal(undefined);
+    it('should return an empty array if the given mode is not a string', () => {
+      expect(utils.getOTPModes(config, {})).to.deep.equal([]);
     });
 
     it('should not matter if the given mode is in UPPERCASE or lowercase', () => {
       const modeConfig = {
         modeToOTP: {
-          walk: 'WALK',
+          walk: ['WALK'],
         },
       };
       const upperCaseMode = 'WALK';
       const lowerCaseMode = 'walk';
 
-      expect(utils.getOTPMode(modeConfig, upperCaseMode)).to.equal('WALK');
-      expect(utils.getOTPMode(modeConfig, lowerCaseMode)).to.equal('WALK');
+      expect(utils.getOTPModes(modeConfig, upperCaseMode)).to.deep.equal([
+        'WALK',
+      ]);
+      expect(utils.getOTPModes(modeConfig, lowerCaseMode)).to.deep.equal([
+        'WALK',
+      ]);
     });
 
     it('should return the configured OTP mode in UPPERCASE', () => {
       const modeConfig = {
         modeToOTP: {
-          walk: 'walk',
+          walk: ['walk'],
         },
       };
 
-      expect(utils.getOTPMode(modeConfig, StreetMode.Walk)).to.equal('WALK');
+      expect(utils.getOTPModes(modeConfig, StreetMode.Walk)).to.deep.equal([
+        'WALK',
+      ]);
     });
 
-    it('should return undefined for a missing mode', () => {
+    it('should return empty array for a missing mode', () => {
       const modeConfig = {
         modeToOTP: {},
       };
 
-      expect(utils.getOTPMode(modeConfig, StreetMode.Walk)).to.equal(undefined);
+      expect(utils.getOTPModes(modeConfig, StreetMode.Walk)).to.deep.equal([]);
     });
   });
 
@@ -443,9 +449,9 @@ describe('modeUtils', () => {
     it('should support a modes array', () => {
       const modeConfig = {
         modeToOTP: {
-          bus: 'BUS',
-          car_park: 'CAR_PARK',
-          walk: 'WALK',
+          bus: ['BUS'],
+          car_park: ['CAR_PARK'],
+          walk: ['WALK'],
         },
         streetModes: {
           car_park: {
@@ -481,9 +487,9 @@ describe('modeUtils', () => {
     it('should support a single mode', () => {
       const modeConfig = {
         modeToOTP: {
-          bus: 'BUS',
-          car_park: 'CAR_PARK',
-          walk: 'WALK',
+          bus: ['BUS'],
+          car_park: ['CAR_PARK'],
+          walk: ['WALK'],
         },
         streetModes: {
           car_park: {
@@ -515,9 +521,9 @@ describe('modeUtils', () => {
     it('should support a comma-separated modes string', () => {
       const modeConfig = {
         modeToOTP: {
-          bus: 'BUS',
-          car_park: 'CAR_PARK',
-          walk: 'WALK',
+          bus: ['BUS'],
+          car_park: ['CAR_PARK'],
+          walk: ['WALK'],
         },
         streetModes: {
           car_park: {
@@ -549,8 +555,8 @@ describe('modeUtils', () => {
     it('should omit missing OTP modes', () => {
       const modeConfig = {
         modeToOTP: {
-          bus: 'BUS',
-          walk: 'WALK',
+          bus: ['BUS'],
+          walk: ['WALK'],
         },
         streetModes: {
           car_park: {
@@ -582,9 +588,9 @@ describe('modeUtils', () => {
     it('should return only distinct OTP modes', () => {
       const modeConfig = {
         modeToOTP: {
-          bus: 'BUS',
-          public_transport: 'WALK',
-          walk: 'WALK',
+          bus: ['BUS'],
+          public_transport: ['WALK'],
+          walk: ['WALK'],
         },
         streetModes: {
           public_transport: {
@@ -616,10 +622,10 @@ describe('modeUtils', () => {
     it('should prevent the use of unavailable street or transport modes', () => {
       const modeConfig = {
         modeToOTP: {
-          bus: 'BUS',
-          car: 'CAR',
-          rail: 'RAIL',
-          walk: 'WALK',
+          bus: ['BUS'],
+          car: ['CAR'],
+          rail: ['RAIL'],
+          walk: ['WALK'],
         },
         streetModes: {
           walk: {
@@ -654,9 +660,9 @@ describe('modeUtils', () => {
     it('should keep FERRY when there is a place inside FERRY modePolygons', () => {
       const modeConfig = {
         modeToOTP: {
-          bus: 'BUS',
-          ferry: 'FERRY',
-          walk: 'WALK',
+          bus: ['BUS'],
+          ferry: ['FERRY'],
+          walk: ['WALK'],
         },
         streetModes: {
           walk: {
@@ -710,9 +716,9 @@ describe('modeUtils', () => {
     it('should filter out FERRY when no places are inside FERRY modePolygons', () => {
       const modeConfig = {
         modeToOTP: {
-          bus: 'BUS',
-          ferry: 'FERRY',
-          walk: 'WALK',
+          bus: ['BUS'],
+          ferry: ['FERRY'],
+          walk: ['WALK'],
         },
         streetModes: {
           walk: {
@@ -862,9 +868,9 @@ describe('modeUtils', () => {
           },
         },
         modeToOTP: {
-          bus: 'BUS',
-          walk: 'WALK',
-          public_transport: 'WALK',
+          bus: ['BUS'],
+          walk: ['WALK'],
+          public_transport: ['WALK'],
         },
         modePolygons: {},
       };

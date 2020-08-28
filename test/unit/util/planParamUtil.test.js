@@ -20,9 +20,9 @@ describe('planParamUtil', () => {
     it('should return mode defaults from config if modes are missing from both the current URI and localStorage', () => {
       const config = {
         modeToOTP: {
-          bus: 'BUS',
-          walk: 'WALK',
-          citybike: 'BICYCLE_RENT',
+          bus: ['BUS'],
+          walk: ['WALK'],
+          citybike: ['BICYCLE_RENT'],
         },
         streetModes: {
           walk: {

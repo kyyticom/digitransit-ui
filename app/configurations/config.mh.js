@@ -113,6 +113,22 @@ export default configMerger(walttiConfig, {
   /* Option to disable the "next" column of the Route panel as it can be confusing sometimes: https://github.com/mfdz/digitransit-ui/issues/167 */
   displayNextDeparture: false,
 
+  modeToOTP: {
+    bus: ['BUS', 'FLEXIBLE'],
+    tram: ['TRAM'],
+    rail: ['RAIL'],
+    subway: ['SUBWAY'],
+    citybike: ['BICYCLE_RENT'],
+    airplane: ['AIRPLANE'],
+    ferry: ['FERRY'],
+    walk: ['WALK'],
+    bicycle: ['BICYCLE'],
+    car: ['CAR'],
+    car_park: ['CAR_PARK'],
+    public_transport: ['WALK'],
+  },
+
+
   mainMenu: {
     // Whether to show the left menu toggle button at all
     show: true,
