@@ -2,7 +2,7 @@
 import configMerger from '../util/configMerger';
 
 const CONFIG = 'mh';
-const API_URL = process.env.API_URL || `https://otp.matkahuolto.kyyti.com`;
+const API_URL = 'https://matkahuolto-otp-2.kyytiapis.com';
 const APP_TITLE = 'Matkahuolto reittihaku';
 const APP_DESCRIPTION = 'Matkahuolto reittihaku';
 const walttiConfig = require('./config.waltti').default;
