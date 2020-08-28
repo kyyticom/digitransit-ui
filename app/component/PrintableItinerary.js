@@ -574,6 +574,8 @@ export default Relay.createContainer(PrintableItinerary, {
               }
             }
           }
+          pickupType
+          dropoffType
         }
       }
     `,

@@ -304,12 +304,12 @@ const getServiceAlertMetadata = (alert = {}) => ({
 });
 
 const getServiceAlerts = (
-  { alerts } = {},
+  service,
   { color, mode, shortName } = {},
   locale = 'en',
 ) =>
-  Array.isArray(alerts)
-    ? alerts.map(alert => ({
+  service && Array.isArray(service.alerts)
+    ? service.alerts.map(alert => ({
         ...getServiceAlertMetadata(alert),
         description: getServiceAlertDescription(alert, locale),
         hash: alert.alertHash,

@@ -273,6 +273,8 @@ const containerComponent = Relay.createContainer(
               ${StopAlertsQuery}
             }
           }
+          pickupType
+          dropoffType
         }
       }
     `,

@@ -365,6 +365,8 @@ const withIntlAndRelay = Relay.createContainer(withIntl, {
               }
             }
           }
+          pickupType
+          dropoffType
         }
       }
     `,

@@ -98,19 +98,19 @@ export const buildStreetModeQuery = (
 };
 
 /**
- * Retrieves the related OTP mode from the given configuration, if available.
- * This will return undefined if the given mode cannot be mapped.
+ * Retrieves the related OTP modes from the given configuration, if available.
+ * This will return an empty array if the given mode cannot be mapped.
  *
  * @param {*} config The configuration for the software installation
  * @param {String} mode The mode to map
- * @returns The mapped mode, or undefined
+ * @returns {Array<String>} The mapped modes, or an empty aray
  */
-export const getOTPMode = (config, mode) => {
+export const getOTPModes = (config, mode) => {
   if (!isString(mode)) {
-    return undefined;
+    return [];
   }
-  const otpMode = config.modeToOTP[mode.toLowerCase()];
-  return otpMode ? otpMode.toUpperCase() : undefined;
+  const otpModes = config.modeToOTP[mode.toLowerCase()];
+  return otpModes ? otpModes.map(otpMode => otpMode.toUpperCase()) : [];
 };
 
 /**
@@ -180,8 +180,7 @@ export const filterModes = (config, modes, from, to, intermediatePlaces) => {
           ...intermediatePlaces,
         ]),
       )
-      .map(mode => getOTPMode(config, mode))
-      .filter(mode => !!mode)
+      .reduce((acc, mode) => acc.concat(getOTPModes(config, mode)), [])
       .sort(),
   ).join(',');
 };

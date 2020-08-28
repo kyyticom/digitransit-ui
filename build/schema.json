@@ -6884,6 +6884,30 @@
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
+                    },
+                    {
+                        "name": "pickupType",
+                        "description": "Whether the vehicle can be boarded at this stop. This field can also be used to indicate if boarding is possible only with special arrangements.",
+                        "args": [],
+                        "type": {
+                            "kind": "ENUM",
+                            "name": "PickupDropoffType",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "dropoffType",
+                        "description": "Whether the vehicle can be disembarked at this stop. This field can also be used to indicate if disembarkation is possible only with special arrangements.",
+                        "args": [],
+                        "type": {
+                            "kind": "ENUM",
+                            "name": "PickupDropoffType",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
                     }
                 ],
                 "inputFields": null,
