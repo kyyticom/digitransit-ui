@@ -748,6 +748,7 @@ export default {
     oulu: 'oulu',
     hameenlinna: 'hameenlinna',
     matka: 'matka',
+    trillium: 'trillium',
     mh: 'mh',
     mhdev: 'mhdev',
     salo: 'salo',
