@@ -1,0 +1,144 @@
+/* eslint-disable */
+import configMerger from '../util/configMerger';
+
+const CONFIG = 'mobilitydesigner';
+const API_URL = 'https://opentripplanner-trillium.kyyti.io';
+const APP_TITLE = 'Route Planner';
+const APP_DESCRIPTION = 'Mobility Designer - Route Planner';
+const walttiConfig = require('./config.waltti').default;
+
+const MAP_URL = 'https://api.mapbox.com';
+
+const minLat = 44.20;
+const maxLat = 46.40;
+const minLon = -124.25;
+const maxLon = -121.85;
+
+export default configMerger(walttiConfig, {
+  CONFIG,
+
+  appBarLink: { name: 'Kyyti', href: 'https://www.kyyti.com/' },
+
+  // This goes to browser, so not secret. When rotating keys just make
+  // sure Mapbox account panel lists deployed URLS for CORS policy
+  MAP_ACCESS_TOKEN: 'pk.eyJ1Ijoia3l5dGljb20iLCJhIjoiY2tmZjdnd2oyMGM3ZjMxczJoMms4MWg0dSJ9.2HKOs4heiHaVyYD9Z_IZfg',
+  URL: {
+    API_URL,
+    APP_URL: 'https://otp2-oregon-flex.kyyti.io',
+    GEOCODING_BASE_URL: 'https://api.tuup.fi',
+    MAP_URL,
+    MAP: {
+      default: `${MAP_URL}/styles/v1/kyyticom/cjvytj9650p4a1clh3qbzxspe/tiles/`,
+      sv: `${MAP_URL}/styles/v1/kyyticom/cjvytj9650p4a1clh3qbzxspe/tiles/`,
+    },
+    STOP_MAP: null,
+    CITYBIKE_MAP: null,
+    OTP: `${API_URL}/otp/routers/default/`,
+  },
+
+  colors: {
+    primary: '#65A8D0',
+  },
+
+  socialMedia: {
+    title: APP_TITLE,
+    description: APP_DESCRIPTION,
+  },
+
+  title: APP_TITLE,
+
+  textLogo: false,
+  logo: 'mobilitydesigner/md-logo.png',
+  favicon: './app/configurations/images/mobilitydesigner/md-favicon.png',
+
+  feedIds: ['Mobilitydesigner'],
+
+  searchParams: {
+    'boundary.rect.min_lat': minLat,
+    'boundary.rect.max_lat': maxLat,
+    'boundary.rect.min_lon': minLon,
+    'boundary.rect.max_lon': maxLon,
+  },
+
+  areaPolygon: [
+    [-124.10427365216604, 46.34373083369677],
+    [-122.81277721717258, 46.26546793951183],
+    [-122.68438283474632, 45.68812034425427],
+    [-122.30675229819853, 45.60364097423179],
+    [-121.89891131872692, 45.70922028077350],
+    [-121.60813580558510, 45.36005307763868],
+    [-121.57414905729583, 45.07542495324026],
+    [-121.68743821826016, 44.81348746505913],
+    [-122.90340854594405, 44.80277075221398],
+    [-123.08467120348698, 44.25087352955946],
+    [-124.23644433995776, 44.26710089846950],
+    [-124.23644433995776, 44.26710089846950],
+    [-124.10427365216604, 46.34373083369677],
+  ],
+
+  defaultEndpoint: {
+    address: 'Mobility Designer',
+    lat: 0.5 * (minLat + maxLat),
+    lon: 0.5 * (minLon + maxLon),
+  },
+
+  defaultOrigins: [
+    {
+      icon: 'icon-icon_place',
+      label: 'Oregon State Capitol, Salem, OR, USA',
+      lat: 44.938620,
+      lon: -123.030711,
+    },
+  ],
+
+  footer: {
+    content: [
+      { label: `© Kyyti ${walttiConfig.YEAR}` },
+      {},
+      {
+        name: 'about-this-service',
+        nameEn: 'About this service',
+        route: '/tietoja-palvelusta',
+        icon: 'icon-icon_info',
+      },
+    ],
+  },
+
+  contactName: {
+    en: 'Kyyti',
+    fi: 'Kyyti',
+    default: "Kyyti's",
+  },
+  availableLanguages: ['en','fi', 'sv'],
+  defaultLanguage: 'en',
+
+  aboutThisService: {
+    en: [
+      {
+        header: 'About this service',
+        paragraphs: [
+          'This service is provided by Mobility Designer for route planning in Oregon, USA region. The service covers public transport, walking, cycling, and some private car use. Service is built on Digitransit platform.',
+        ],
+      },
+    ],
+
+    fi: [
+      {
+        header: 'Tietoja palvelusta',
+        paragraphs: [
+          'Tämän palvelun tarjoaa Mobility Designer reittisuunnittelua varten Oregon, USA alueella. Palvelu kattaa joukkoliikenteen, kävelyn, pyöräilyn ja yksityisautoilun rajatuilta osin. Palvelu perustuu Digitransit-palvelualustaan.',
+        ],
+      },
+    ],
+
+    sv: [
+      {
+        header: 'Om tjänsten',
+        paragraphs: [
+          'Den här tjänsten erbjuds av Mobility Designer för reseplanering inom Oregon, USA. Reseplaneraren täcker med vissa begränsningar kollektivtrafik, promenad, cykling samt privatbilism. Tjänsten baserar sig på Digitransit-plattformen.',
+        ],
+      },
+    ],
+
+  },
+});
