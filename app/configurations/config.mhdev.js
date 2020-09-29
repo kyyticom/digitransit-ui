@@ -33,7 +33,7 @@ export default configMerger(walttiConfig, {
       default: `${MAP_URL}/styles/v1/kyyticom/cjvytj9650p4a1clh3qbzxspe/tiles/`,
       sv: `${MAP_URL}/styles/v1/kyyticom/cjvytj9650p4a1clh3qbzxspe/tiles/`,
     },
-    STOP_MAP: null,
+    STOP_MAP: `${API_URL}/otp/routers/default/vectorTiles/stops,stations/`,
     CITYBIKE_MAP: null,
     OTP: `${API_URL}/otp/routers/default/`,
   },
