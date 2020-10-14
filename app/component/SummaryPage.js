@@ -549,6 +549,7 @@ const containerComponent = Relay.createContainer(SummaryPageWithBreakpoint, {
           modeWeight: $modeWeight
           preferred: $preferred,
           unpreferred: $unpreferred,
+          banned: $banned,
           allowedBikeRentalNetworks: $allowedBikeRentalNetworks,
           locale: $locale,
         ),
@@ -600,6 +601,7 @@ const containerComponent = Relay.createContainer(SummaryPageWithBreakpoint, {
       maxWalkDistance: 0,
       preferred: null,
       unpreferred: null,
+      banned: null,
       ticketTypes: null,
       itineraryFiltering: ITINERARYFILTERING_DEFAULT,
       minTransferTime: null,

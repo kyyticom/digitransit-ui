@@ -88,6 +88,11 @@ export default configMerger(walttiConfig, {
     [20.212469, 69.475061]
   ],
 
+  defaultSettings: {
+    banned: {
+      agencies: "MDR-Porvoo:Porvoo"
+    }
+  },
 
   footer: {
     content: [
