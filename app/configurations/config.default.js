@@ -750,6 +750,7 @@ export default {
     matka: 'matka',
     mh: 'mh',
     mhdev: 'mhdev',
+    mobilitydesigner: 'mobilitydesigner',
     salo: 'salo',
     rovaniemi: 'rovaniemi',
     kouvola: 'kouvola',
