@@ -53,3 +53,4 @@ jobs:
           gcloud container clusters get-credentials "${KUBE_CLUSTER_NAME}" --zone "${GCLOUD_ZONE}" --project "${GCLOUD_PROJECT}"
 
           kubectl -n dev-otp rollout restart deployment/reittiopas-mh-test
+          kubectl -n dev-otp rollout restart deployment/reittiopas-mh-staging
