@@ -28,10 +28,10 @@ export default configMerger(walttiConfig, {
     GEOCODING_BASE_URL: 'https://api.tuup.fi',
     MAP_URL,
     MAP: {
-      default: `${MAP_URL}/styles/v1/kyyticom/cjvytj9650p4a1clh3qbzxspe/tiles/`,
-      sv: `${MAP_URL}/styles/v1/kyyticom/cjvytj9650p4a1clh3qbzxspe/tiles/`,
+      default: `${MAP_URL}/styles/v1/kyyticom/ckfoy6sug0kci19ql1i7vokr7/tiles/`,
+      sv: `${MAP_URL}/styles/v1/kyyticom/ckfoy6sug0kci19ql1i7vokr7/tiles/`,
     },
-    STOP_MAP: null,
+    STOP_MAP: `${API_URL}/otp/routers/default/vectorTiles/stops,stations/`,
     CITYBIKE_MAP: null,
     OTP: `${API_URL}/otp/routers/default/`,
   },
