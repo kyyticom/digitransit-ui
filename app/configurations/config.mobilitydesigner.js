@@ -2,17 +2,14 @@
 import configMerger from '../util/configMerger';
 
 const CONFIG = 'mobilitydesigner';
-const API_URL = 'https://opentripplanner-trillium.kyyti.io';
+const API_URL = process.env.API_URL || 'https://opentripplanner-trillium.kyyti.io';
 const APP_TITLE = 'Route Planner';
-const APP_DESCRIPTION = 'Mobility Designer - Route Planner';
+const APP_DESCRIPTION = process.env.APP_DESCRIPTION || 'Mobility Designer - Route Planner';
 const walttiConfig = require('./config.waltti').default;
 
 const MAP_URL = 'https://api.mapbox.com';
 
-const minLat = 44.20;
-const maxLat = 46.40;
-const minLon = -124.25;
-const maxLon = -121.85;
+const [minLat, maxLat, minLon, maxLon] = (process.env.BOUNDING_BOX || '44.20:46.40:-124.25:-121.85').split(':').map(i => Number(i));
 
 export default configMerger(walttiConfig, {
   CONFIG,
@@ -24,8 +21,8 @@ export default configMerger(walttiConfig, {
   MAP_ACCESS_TOKEN: 'pk.eyJ1Ijoia3l5dGljb20iLCJhIjoiY2tmZjdnd2oyMGM3ZjMxczJoMms4MWg0dSJ9.2HKOs4heiHaVyYD9Z_IZfg',
   URL: {
     API_URL,
-    APP_URL: 'https://otp2-oregon-flex.kyyti.io',
-    GEOCODING_BASE_URL: 'https://api.tuup.fi',
+    APP_URL: process.env.APP_URL || 'https://otp2-oregon-flex.kyyti.io',
+    GEOCODING_BASE_URL: process.env.GEOCODING_BASE_URL || 'https://api.tuup.fi',
     MAP_URL,
     MAP: {
       default: `${MAP_URL}/styles/v1/kyyticom/ckfoy6sug0kci19ql1i7vokr7/tiles/`,
@@ -60,7 +57,7 @@ export default configMerger(walttiConfig, {
     'boundary.rect.max_lon': maxLon,
   },
 
-  areaPolygon: [
+  areaPolygon: JSON.parse(process.env.AREA_POLYGON || 'false') || [
     [-124.10427365216604, 46.34373083369677],
     [-122.81277721717258, 46.26546793951183],
     [-122.68438283474632, 45.68812034425427],
@@ -82,7 +79,7 @@ export default configMerger(walttiConfig, {
     lon: 0.5 * (minLon + maxLon),
   },
 
-  defaultOrigins: [
+  defaultOrigins: JSON.parse(process.env.DEFAULT_ORIGINS || 'false') || [
     {
       icon: 'icon-icon_place',
       label: 'Oregon State Capitol, Salem, OR, USA',
@@ -117,7 +114,7 @@ export default configMerger(walttiConfig, {
       {
         header: 'About this service',
         paragraphs: [
-          'This service is provided by Mobility Designer for route planning in Oregon, USA region. The service covers public transport, walking, cycling, and some private car use. Service is built on Digitransit platform.',
+          'This service is provided by Kyyti Group Ltd for route planning. The service covers public transport, walking, cycling, and some private car use. Service is built on Digitransit platform.',
         ],
       },
     ],
@@ -126,7 +123,7 @@ export default configMerger(walttiConfig, {
       {
         header: 'Tietoja palvelusta',
         paragraphs: [
-          'Tämän palvelun tarjoaa Mobility Designer reittisuunnittelua varten Oregon, USA alueella. Palvelu kattaa joukkoliikenteen, kävelyn, pyöräilyn ja yksityisautoilun rajatuilta osin. Palvelu perustuu Digitransit-palvelualustaan.',
+          'Tämän palvelun tarjoaa Kyyti Group Oy reittisuunnittelua varten. Palvelu kattaa joukkoliikenteen, kävelyn, pyöräilyn ja yksityisautoilun rajatuilta osin. Palvelu perustuu Digitransit-palvelualustaan.',
         ],
       },
     ],
@@ -135,7 +132,7 @@ export default configMerger(walttiConfig, {
       {
         header: 'Om tjänsten',
         paragraphs: [
-          'Den här tjänsten erbjuds av Mobility Designer för reseplanering inom Oregon, USA. Reseplaneraren täcker med vissa begränsningar kollektivtrafik, promenad, cykling samt privatbilism. Tjänsten baserar sig på Digitransit-plattformen.',
+          'Den här tjänsten erbjuds av Kyyti Group Ab för reseplanering. Reseplaneraren täcker med vissa begränsningar kollektivtrafik, promenad, cykling samt privatbilism. Tjänsten baserar sig på Digitransit-plattformen.',
         ],
       },
     ],
