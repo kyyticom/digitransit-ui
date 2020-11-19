@@ -114,7 +114,10 @@ class RouteMapContainer extends React.PureComponent {
         className="full"
         leafletObjs={leafletObjs}
         fitBounds={!(dispLat && dispLon) && shouldFitBounds}
-        bounds={(filteredPoints || pattern.stops).map(p => [p.lat, p.lon])}
+        bounds={(filteredPoints && filteredPoints.length > 1
+          ? filteredPoints
+          : pattern.stops
+        ).map(p => [p.lat, p.lon])}
         zoom={dispLat && dispLon ? 15 : undefined}
         showScaleBar={showScale}
       >
