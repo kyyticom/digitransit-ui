@@ -1,1092 +1,1094 @@
-.main-title {
-  padding: 13px 10px 13px 10px;
-  color: white;
-  text-align: center;
-  font-family: 'Intro W01 Black Caps', 'Open Sans', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-antialiasing: grayscale;
-  font-size: 1.25rem;
-  background-color: #0070b5;
-}
-.autosuggest-panel {
-  margin: 0rem;
-}
-
-.autosuggest-in-panel {
-  margin: 1rem;
-}
-
-.powered-by {
-  display: inline-flex;
-  align-items: center;
-}
-
-.widget-icon {
-  display: flex;
-  margin: 1rem;
-  text-align: center;
-  box-sizing: border-box;
-  justify-content: center;
-}
-
-.mh-icon {
-  max-height: 80px;
-  min-height: 72px;
-  min-width: 110px;
-  width: auto;
-  height: auto;
-}
-.search-icon {
-  width: 100%;
-}
-
-.widget-body {
-  background-color: #ffffff !important;
-  letter-spacing: 0;
-  -webkit-text-size-adjust: 100%;
-}
-
-.search-button {
-  width: 100%;
-  display: block;
-  background-color: #0070b5;
-  margin-top: .6rem;
-}
-
-.sr-only:not(:focus):not(:active) {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-}
-
-/* ICONS */
-.icon {
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  fill: currentColor;
-}
-.icon.caution {
-  color: #ffffff;
-  fill: #dc0451;
-}
-.icon.info {
-  color: #78909c;
-}
-.icon.inline-icon {
-  margin-left: 0.25em;
-  position: relative;
-  top: 0.125em;
-}
-
-.favourite-icon {
-  padding: 0;
-  height: 24px;
-  width: 24px;
-}
-.favourite-icon .icon.favourite {
-  height: 24px;
-  width: 24px;
-  stroke: #ccc;
-  stroke-width: 50px;
-  fill: transparent;
-}
-.favourite-icon .icon.favourite:hover {
-  stroke: #e9ab00;
-}
-.favourite-icon .icon.favourite.selected {
-  fill: #e9ab00;
-  stroke: #eef1f3;
-}
-.favourite-icon .icon.favourite.selected:hover {
-  stroke: #ddd;
-}
-
-@keyframes realtimeInnerArch {
-  0% {
-    opacity: 1;
+:global(#reittiopas-mh-widget) {
+  .main-title {
+    padding: 13px 10px 13px 10px;
+    color: white;
+    text-align: center;
+    font-family: 'Intro W01 Black Caps', 'Open Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-antialiasing: grayscale;
+    font-size: 1.25rem;
+    background-color: #0070b5;
   }
-  20% {
-    opacity: 1;
+  .autosuggest-panel {
+    margin: 0rem;
   }
-  40% {
-    opacity: 0;
-  }
-  60% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 
-@keyframes realtimeOuterArch {
-  0% {
-    opacity: 1;
+  .autosuggest-in-panel {
+    margin: 1rem;
   }
-  20% {
-    opacity: 1;
+
+  .powered-by {
+    display: inline-flex;
+    align-items: center;
   }
-  40% {
-    opacity: 0;
+
+  .widget-icon {
+    display: flex;
+    margin: 1rem;
+    text-align: center;
+    box-sizing: border-box;
+    justify-content: center;
   }
-  60% {
-    opacity: 0;
+
+  .mh-icon {
+    max-height: 80px;
+    min-height: 72px;
+    min-width: 110px;
+    width: auto;
+    height: auto;
   }
-  80% {
-    opacity: 1;
+  .search-icon {
+    width: 100%;
   }
-  100% {
-    opacity: 1;
+
+  .widget-body {
+    background-color: #ffffff !important;
+    letter-spacing: 0;
+    -webkit-text-size-adjust: 100%;
   }
-}
 
-svg.realtime-icon {
-  transform: translate3d(0, 0, 0);
-}
-
-#icon-icon_realtime {
-  color: #3f8600;
-}
-
-#icon-icon_realtime path {
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
-  animation-timing-function: step-start;
-  fill: currentColor;
-}
-#icon-icon_realtime path.path1 {
-  animation-name: realtimeInnerArch;
-}
-#icon-icon_realtime path.path2 {
-  animation-name: realtimeOuterArch;
-}
-
-@keyframes locationIcon {
-  0% {
-    opacity: 1;
-    transform: scale(1);
+  .search-button {
+    width: 100%;
+    display: block;
+    background-color: #0070b5;
+    margin-top: .6rem;
   }
-  50% {
-    opacity: 0.4;
+
+  .sr-only:not(:focus):not(:active) {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
   }
-  75% {
-    opacity: 0.1;
+
+  /* ICONS */
+  .icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
   }
-  100% {
-    opacity: 0;
-    transform: scale(3);
+  .icon.caution {
+    color: #ffffff;
+    fill: #dc0451;
   }
-}
+  .icon.info {
+    color: #78909c;
+  }
+  .icon.inline-icon {
+    margin-left: 0.25em;
+    position: relative;
+    top: 0.125em;
+  }
 
-button,
-.search-button {
-  border-style: solid;
-  border-width: 0px;
-  cursor: pointer;
-  font-family: Lato, Arial, Georgia, Serif;
-  font-weight: normal;
-  line-height: normal;
-  position: relative;
-  text-decoration: none;
-  text-align: center;
-  -webkit-appearance: none;
-  -webkit-border-radius: 0;
-  padding-top: 1rem;
-  padding-right: 2rem;
-  padding-bottom: 1.0625rem;
-  padding-left: 2rem;
-  font-size: 1rem;
-  border-color: #008ccc;
-  display: block;
-  text-shadow: none;
-  background-color: #0070b5;
-  background-image: linear-gradient(#0070b5, #0070b5);
-  color: #ffffff;
-  transition: background-color 300ms ease-out;
-}
+  .favourite-icon {
+    padding: 0;
+    height: 24px;
+    width: 24px;
+  }
+  .favourite-icon .icon.favourite {
+    height: 24px;
+    width: 24px;
+    stroke: #ccc;
+    stroke-width: 50px;
+    fill: transparent;
+  }
+  .favourite-icon .icon.favourite:hover {
+    stroke: #e9ab00;
+  }
+  .favourite-icon .icon.favourite.selected {
+    fill: #e9ab00;
+    stroke: #eef1f3;
+  }
+  .favourite-icon .icon.favourite.selected:hover {
+    stroke: #ddd;
+  }
 
-.search-button:hover:not(:disabled) {
-  color: #ffffff;
-  box-shadow: inset 0 1px 0 0 #646668;
-  cursor: pointer;
-  background-color: #0070b5;
-  background-image: -webkit-linear-gradient(#0070b5, #0070b5);
-}
-.search-button:focus:not(:disabled) {
-  border: none;
-  box-shadow: none;
-  color: #ffffff;
-  background-color: #0070b5;
-}
-button.large,
-.button.large {
-  padding-top: 1.125rem;
-  padding-right: 2.25rem;
-  padding-bottom: 1.1875rem;
-  padding-left: 2.25rem;
-  font-size: 1.25rem;
-}
-button.small,
-.button.small {
-  padding-top: 0.875rem;
-  padding-right: 1.75rem;
-  padding-bottom: 0.9375rem;
-  padding-left: 1.75rem;
-  font-size: 0.8125rem;
-}
-button.tiny,
-.button.tiny {
-  padding-top: 0.625rem;
-  padding-right: 1.25rem;
-  padding-bottom: 0.6875rem;
-  padding-left: 1.25rem;
-  font-size: 0.6875rem;
-}
-button.expand,
-.button.expand {
-  padding-right: 0;
-  padding-left: 0;
-  width: 100%;
-}
-button.left-align,
-.button.left-align {
-  text-align: left;
-  text-indent: 0.75rem;
-}
-button.right-align,
-.button.right-align {
-  text-align: right;
-  padding-right: 0.75rem;
-}
-button.radius,
-.button.radius {
-  border-radius: 3px;
-}
-button.round,
-.button.round {
-  border-radius: 1000px;
-}
-button.disabled,
-button[disabled],
-.button.disabled,
-.button[disabled] {
-  background-color: #0070b5;
-  border-color: #008ccc;
-  color: #ffffff;
-  cursor: default;
-  opacity: 0.7;
-  box-shadow: none;
-}
-button.disabled:hover,
-button.disabled:focus,
-button[disabled]:hover,
-button[disabled]:focus,
-.button.disabled:hover,
-.button.disabled:focus,
-.button[disabled]:hover,
-.button[disabled]:focus {
-  background-color: #008ccc;
-}
-button.disabled.secondary,
-button[disabled].secondary,
-.button.disabled.secondary,
-.button[disabled].secondary {
-  background-color: #008bde;
-  border-color: #006fb2;
-  color: #ffffff;
-  cursor: default;
-  opacity: 0.7;
-  box-shadow: none;
-}
-button.disabled.secondary:hover,
-button.disabled.secondary:focus,
-button[disabled].secondary:hover,
-button[disabled].secondary:focus,
-.button.disabled.secondary:hover,
-.button.disabled.secondary:focus,
-.button[disabled].secondary:hover,
-.button[disabled].secondary:focus {
-  background-color: #006fb2;
-}
-button.disabled.success,
-button[disabled].success,
-.button.disabled.success,
-.button[disabled].success {
-  background-color: #43ac6a;
-  border-color: #368a55;
-  color: #ffffff;
-  cursor: default;
-  opacity: 0.7;
-  box-shadow: none;
-}
-button.disabled.success:hover,
-button.disabled.success:focus,
-button[disabled].success:hover,
-button[disabled].success:focus,
-.button.disabled.success:hover,
-.button.disabled.success:focus,
-.button[disabled].success:hover,
-.button[disabled].success:focus {
-  background-color: #368a55;
-}
+  @keyframes realtimeInnerArch {
+    0% {
+      opacity: 1;
+    }
+    20% {
+      opacity: 1;
+    }
+    40% {
+      opacity: 0;
+    }
+    60% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 
-button.disabled.alert,
-button[disabled].alert,
-.button.disabled.alert,
-.button[disabled].alert {
-  background-color: #f04124;
-  border-color: #cf2a0e;
-  color: #ffffff;
-  cursor: default;
-  opacity: 0.7;
-  box-shadow: none;
-}
-button.disabled.alert:hover,
-button.disabled.alert:focus,
-button[disabled].alert:hover,
-button[disabled].alert:focus,
-.button.disabled.alert:hover,
-.button.disabled.alert:focus,
-.button[disabled].alert:hover,
-.button[disabled].alert:focus {
-  background-color: #cf2a0e;
-}
+  @keyframes realtimeOuterArch {
+    0% {
+      opacity: 1;
+    }
+    20% {
+      opacity: 1;
+    }
+    40% {
+      opacity: 0;
+    }
+    60% {
+      opacity: 0;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 
-button.disabled.warning,
-button[disabled].warning,
-.button.disabled.warning,
-.button[disabled].warning {
-  background-color: #f08a24;
-  border-color: #cf6e0e;
-  color: #ffffff;
-  cursor: default;
-  opacity: 0.7;
-  box-shadow: none;
-}
-button.disabled.warning:hover,
-button.disabled.warning:focus,
-button[disabled].warning:hover,
-button[disabled].warning:focus,
-.button.disabled.warning:hover,
-.button.disabled.warning:focus,
-.button[disabled].warning:hover,
-.button[disabled].warning:focus {
-  background-color: #cf6e0e;
-}
+  svg.realtime-icon {
+    transform: translate3d(0, 0, 0);
+  }
 
-button.disabled.info,
-button[disabled].info,
-.button.disabled.info,
-.button[disabled].info {
-  background-color: #a0d3e8;
-  border-color: #61b6d9;
-  color: #333333;
-  cursor: default;
-  opacity: 0.7;
-  box-shadow: none;
-}
-button.disabled.info:hover,
-button.disabled.info:focus,
-button[disabled].info:hover,
-button[disabled].info:focus,
-.button.disabled.info:hover,
-.button.disabled.info:focus,
-.button[disabled].info:hover,
-.button[disabled].info:focus {
-  background-color: #a0d3e8;
-}
+  #icon-icon_realtime {
+    color: #3f8600;
+  }
 
-button::-moz-focus-inner {
-  border: 0;
-  padding: 0;
-}
+  #icon-icon_realtime path {
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: step-start;
+    fill: currentColor;
+  }
+  #icon-icon_realtime path.path1 {
+    animation-name: realtimeInnerArch;
+  }
+  #icon-icon_realtime path.path2 {
+    animation-name: realtimeOuterArch;
+  }
 
-@media only screen and (min-width: 40.063em) {
+  @keyframes locationIcon {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.4;
+    }
+    75% {
+      opacity: 0.1;
+    }
+    100% {
+      opacity: 0;
+      transform: scale(3);
+    }
+  }
+
   button,
   .search-button {
-    display: inline-block;
+    border-style: solid;
+    border-width: 0px;
+    cursor: pointer;
+    font-family: Lato, Arial, Georgia, Serif;
+    font-weight: normal;
+    line-height: normal;
+    position: relative;
+    text-decoration: none;
+    text-align: center;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    padding-top: 1rem;
+    padding-right: 2rem;
+    padding-bottom: 1.0625rem;
+    padding-left: 2rem;
+    font-size: 1rem;
+    border-color: #008ccc;
+    display: block;
+    text-shadow: none;
+    background-color: #0070b5;
+    background-image: linear-gradient(#0070b5, #0070b5);
+    color: #ffffff;
+    transition: background-color 300ms ease-out;
   }
-}
 
-/* We use this to get basic styling on all basic form elements */
-input[type='text'],
-input[type='password'],
-input[type='date'],
-input[type='datetime'],
-input[type='datetime-local'],
-input[type='month'],
-input[type='week'],
-input[type='email'],
-input[type='number'],
-input[type='search'],
-input[type='tel'],
-input[type='time'],
-input[type='url'],
-input[type='color'],
-textarea {
-  -webkit-appearance: none;
-  -webkit-border-radius: 0px;
-  background-color: #ffffff;
-  font-family: inherit;
-  border-style: none;
-  border-width: 0;
-  border-color: #cccccc;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-  color: rgba(0, 0, 0, 0.75);
-  display: block;
-  font-size: 0.875rem;
-  margin: 0 0 0.5rem 0;
-  padding: 0.25rem;
-  height: 1.5625rem;
-  width: 100%;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  text-shadow: none;
-  transition: box-shadow 0.45s, border-color 0.45s ease-in-out;
-}
-input[type='text']:focus,
-input[type='password']:focus,
-input[type='date']:focus,
-input[type='datetime']:focus,
-input[type='datetime-local']:focus,
-input[type='month']:focus,
-input[type='week']:focus,
-input[type='email']:focus,
-input[type='number']:focus,
-input[type='search']:focus,
-input[type='tel']:focus,
-input[type='time']:focus,
-input[type='url']:focus,
-input[type='color']:focus,
-textarea:focus {
-  box-shadow: 0 0 5px #999999;
-  border-color: #999999;
-}
-input[type='text']:disabled,
-input[type='password']:disabled,
-input[type='date']:disabled,
-input[type='datetime']:disabled,
-input[type='datetime-local']:disabled,
-input[type='month']:disabled,
-input[type='week']:disabled,
-input[type='email']:disabled,
-input[type='number']:disabled,
-input[type='search']:disabled,
-input[type='tel']:disabled,
-input[type='time']:disabled,
-input[type='url']:disabled,
-input[type='color']:disabled,
-textarea:disabled {
-  background-color: #dddddd;
-  cursor: default;
-}
-input[type='text'][disabled],
-input[type='text'][readonly],
-fieldset[disabled] input[type='text'],
-input[type='password'][disabled],
-input[type='password'][readonly],
-fieldset[disabled] input[type='password'],
-input[type='date'][disabled],
-input[type='date'][readonly],
-fieldset[disabled] input[type='date'],
-input[type='datetime'][disabled],
-input[type='datetime'][readonly],
-fieldset[disabled] input[type='datetime'],
-input[type='datetime-local'][disabled],
-input[type='datetime-local'][readonly],
-fieldset[disabled] input[type='datetime-local'],
-input[type='month'][disabled],
-input[type='month'][readonly],
-fieldset[disabled] input[type='month'],
-input[type='week'][disabled],
-input[type='week'][readonly],
-fieldset[disabled] input[type='week'],
-input[type='email'][disabled],
-input[type='email'][readonly],
-fieldset[disabled] input[type='email'],
-input[type='number'][disabled],
-input[type='number'][readonly],
-fieldset[disabled] input[type='number'],
-input[type='search'][disabled],
-input[type='search'][readonly],
-fieldset[disabled] input[type='search'],
-input[type='tel'][disabled],
-input[type='tel'][readonly],
-fieldset[disabled] input[type='tel'],
-input[type='time'][disabled],
-input[type='time'][readonly],
-fieldset[disabled] input[type='time'],
-input[type='url'][disabled],
-input[type='url'][readonly],
-fieldset[disabled] input[type='url'],
-input[type='color'][disabled],
-input[type='color'][readonly],
-fieldset[disabled] input[type='color'],
-textarea[disabled],
-textarea[readonly],
-fieldset[disabled] textarea {
-  background-color: #dddddd;
-  cursor: default;
-}
+  .search-button:hover:not(:disabled) {
+    color: #ffffff;
+    box-shadow: inset 0 1px 0 0 #646668;
+    cursor: pointer;
+    background-color: #0070b5;
+    background-image: -webkit-linear-gradient(#0070b5, #0070b5);
+  }
+  .search-button:focus:not(:disabled) {
+    border: none;
+    box-shadow: none;
+    color: #ffffff;
+    background-color: #0070b5;
+  }
+  button.large,
+  .button.large {
+    padding-top: 1.125rem;
+    padding-right: 2.25rem;
+    padding-bottom: 1.1875rem;
+    padding-left: 2.25rem;
+    font-size: 1.25rem;
+  }
+  button.small,
+  .button.small {
+    padding-top: 0.875rem;
+    padding-right: 1.75rem;
+    padding-bottom: 0.9375rem;
+    padding-left: 1.75rem;
+    font-size: 0.8125rem;
+  }
+  button.tiny,
+  .button.tiny {
+    padding-top: 0.625rem;
+    padding-right: 1.25rem;
+    padding-bottom: 0.6875rem;
+    padding-left: 1.25rem;
+    font-size: 0.6875rem;
+  }
+  button.expand,
+  .button.expand {
+    padding-right: 0;
+    padding-left: 0;
+    width: 100%;
+  }
+  button.left-align,
+  .button.left-align {
+    text-align: left;
+    text-indent: 0.75rem;
+  }
+  button.right-align,
+  .button.right-align {
+    text-align: right;
+    padding-right: 0.75rem;
+  }
+  button.radius,
+  .button.radius {
+    border-radius: 3px;
+  }
+  button.round,
+  .button.round {
+    border-radius: 1000px;
+  }
+  button.disabled,
+  button[disabled],
+  .button.disabled,
+  .button[disabled] {
+    background-color: #0070b5;
+    border-color: #008ccc;
+    color: #ffffff;
+    cursor: default;
+    opacity: 0.7;
+    box-shadow: none;
+  }
+  button.disabled:hover,
+  button.disabled:focus,
+  button[disabled]:hover,
+  button[disabled]:focus,
+  .button.disabled:hover,
+  .button.disabled:focus,
+  .button[disabled]:hover,
+  .button[disabled]:focus {
+    background-color: #008ccc;
+  }
+  button.disabled.secondary,
+  button[disabled].secondary,
+  .button.disabled.secondary,
+  .button[disabled].secondary {
+    background-color: #008bde;
+    border-color: #006fb2;
+    color: #ffffff;
+    cursor: default;
+    opacity: 0.7;
+    box-shadow: none;
+  }
+  button.disabled.secondary:hover,
+  button.disabled.secondary:focus,
+  button[disabled].secondary:hover,
+  button[disabled].secondary:focus,
+  .button.disabled.secondary:hover,
+  .button.disabled.secondary:focus,
+  .button[disabled].secondary:hover,
+  .button[disabled].secondary:focus {
+    background-color: #006fb2;
+  }
+  button.disabled.success,
+  button[disabled].success,
+  .button.disabled.success,
+  .button[disabled].success {
+    background-color: #43ac6a;
+    border-color: #368a55;
+    color: #ffffff;
+    cursor: default;
+    opacity: 0.7;
+    box-shadow: none;
+  }
+  button.disabled.success:hover,
+  button.disabled.success:focus,
+  button[disabled].success:hover,
+  button[disabled].success:focus,
+  .button.disabled.success:hover,
+  .button.disabled.success:focus,
+  .button[disabled].success:hover,
+  .button[disabled].success:focus {
+    background-color: #368a55;
+  }
 
-input[type='text'].radius,
-input[type='password'].radius,
-input[type='date'].radius,
-input[type='datetime'].radius,
-input[type='datetime-local'].radius,
-input[type='month'].radius,
-input[type='week'].radius,
-input[type='email'].radius,
-input[type='number'].radius,
-input[type='search'].radius,
-input[type='tel'].radius,
-input[type='time'].radius,
-input[type='url'].radius,
-input[type='color'].radius,
-textarea.radius {
-  border-radius: 3px;
-}
+  button.disabled.alert,
+  button[disabled].alert,
+  .button.disabled.alert,
+  .button[disabled].alert {
+    background-color: #f04124;
+    border-color: #cf2a0e;
+    color: #ffffff;
+    cursor: default;
+    opacity: 0.7;
+    box-shadow: none;
+  }
+  button.disabled.alert:hover,
+  button.disabled.alert:focus,
+  button[disabled].alert:hover,
+  button[disabled].alert:focus,
+  .button.disabled.alert:hover,
+  .button.disabled.alert:focus,
+  .button[disabled].alert:hover,
+  .button[disabled].alert:focus {
+    background-color: #cf2a0e;
+  }
 
-.autosuggest-in-panel
-  .origin-input-container
+  button.disabled.warning,
+  button[disabled].warning,
+  .button.disabled.warning,
+  .button[disabled].warning {
+    background-color: #f08a24;
+    border-color: #cf6e0e;
+    color: #ffffff;
+    cursor: default;
+    opacity: 0.7;
+    box-shadow: none;
+  }
+  button.disabled.warning:hover,
+  button.disabled.warning:focus,
+  button[disabled].warning:hover,
+  button[disabled].warning:focus,
+  .button.disabled.warning:hover,
+  .button.disabled.warning:focus,
+  .button[disabled].warning:hover,
+  .button[disabled].warning:focus {
+    background-color: #cf6e0e;
+  }
+
+  button.disabled.info,
+  button[disabled].info,
+  .button.disabled.info,
+  .button[disabled].info {
+    background-color: #a0d3e8;
+    border-color: #61b6d9;
+    color: #333333;
+    cursor: default;
+    opacity: 0.7;
+    box-shadow: none;
+  }
+  button.disabled.info:hover,
+  button.disabled.info:focus,
+  button[disabled].info:hover,
+  button[disabled].info:focus,
+  .button.disabled.info:hover,
+  .button.disabled.info:focus,
+  .button[disabled].info:hover,
+  .button[disabled].info:focus {
+    background-color: #a0d3e8;
+  }
+
+  button::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+
+  @media only screen and (min-width: 40.063em) {
+    button,
+    .search-button {
+      display: inline-block;
+    }
+  }
+
+  /* We use this to get basic styling on all basic form elements */
+  input[type='text'],
+  input[type='password'],
+  input[type='date'],
+  input[type='datetime'],
+  input[type='datetime-local'],
+  input[type='month'],
+  input[type='week'],
+  input[type='email'],
+  input[type='number'],
+  input[type='search'],
+  input[type='tel'],
+  input[type='time'],
+  input[type='url'],
+  input[type='color'],
+  textarea {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0px;
+    background-color: #ffffff;
+    font-family: inherit;
+    border-style: none;
+    border-width: 0;
+    border-color: #cccccc;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.75);
+    display: block;
+    font-size: 0.875rem;
+    margin: 0 0 0.5rem 0;
+    padding: 0.25rem;
+    height: 1.5625rem;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    text-shadow: none;
+    transition: box-shadow 0.45s, border-color 0.45s ease-in-out;
+  }
+  input[type='text']:focus,
+  input[type='password']:focus,
+  input[type='date']:focus,
+  input[type='datetime']:focus,
+  input[type='datetime-local']:focus,
+  input[type='month']:focus,
+  input[type='week']:focus,
+  input[type='email']:focus,
+  input[type='number']:focus,
+  input[type='search']:focus,
+  input[type='tel']:focus,
+  input[type='time']:focus,
+  input[type='url']:focus,
+  input[type='color']:focus,
+  textarea:focus {
+    box-shadow: 0 0 5px #999999;
+    border-color: #999999;
+  }
+  input[type='text']:disabled,
+  input[type='password']:disabled,
+  input[type='date']:disabled,
+  input[type='datetime']:disabled,
+  input[type='datetime-local']:disabled,
+  input[type='month']:disabled,
+  input[type='week']:disabled,
+  input[type='email']:disabled,
+  input[type='number']:disabled,
+  input[type='search']:disabled,
+  input[type='tel']:disabled,
+  input[type='time']:disabled,
+  input[type='url']:disabled,
+  input[type='color']:disabled,
+  textarea:disabled {
+    background-color: #dddddd;
+    cursor: default;
+  }
+  input[type='text'][disabled],
+  input[type='text'][readonly],
+  fieldset[disabled] input[type='text'],
+  input[type='password'][disabled],
+  input[type='password'][readonly],
+  fieldset[disabled] input[type='password'],
+  input[type='date'][disabled],
+  input[type='date'][readonly],
+  fieldset[disabled] input[type='date'],
+  input[type='datetime'][disabled],
+  input[type='datetime'][readonly],
+  fieldset[disabled] input[type='datetime'],
+  input[type='datetime-local'][disabled],
+  input[type='datetime-local'][readonly],
+  fieldset[disabled] input[type='datetime-local'],
+  input[type='month'][disabled],
+  input[type='month'][readonly],
+  fieldset[disabled] input[type='month'],
+  input[type='week'][disabled],
+  input[type='week'][readonly],
+  fieldset[disabled] input[type='week'],
+  input[type='email'][disabled],
+  input[type='email'][readonly],
+  fieldset[disabled] input[type='email'],
+  input[type='number'][disabled],
+  input[type='number'][readonly],
+  fieldset[disabled] input[type='number'],
+  input[type='search'][disabled],
+  input[type='search'][readonly],
+  fieldset[disabled] input[type='search'],
+  input[type='tel'][disabled],
+  input[type='tel'][readonly],
+  fieldset[disabled] input[type='tel'],
+  input[type='time'][disabled],
+  input[type='time'][readonly],
+  fieldset[disabled] input[type='time'],
+  input[type='url'][disabled],
+  input[type='url'][readonly],
+  fieldset[disabled] input[type='url'],
+  input[type='color'][disabled],
+  input[type='color'][readonly],
+  fieldset[disabled] input[type='color'],
+  textarea[disabled],
+  textarea[readonly],
+  fieldset[disabled] textarea {
+    background-color: #dddddd;
+    cursor: default;
+  }
+
+  input[type='text'].radius,
+  input[type='password'].radius,
+  input[type='date'].radius,
+  input[type='datetime'].radius,
+  input[type='datetime-local'].radius,
+  input[type='month'].radius,
+  input[type='week'].radius,
+  input[type='email'].radius,
+  input[type='number'].radius,
+  input[type='search'].radius,
+  input[type='tel'].radius,
+  input[type='time'].radius,
+  input[type='url'].radius,
+  input[type='color'].radius,
+  textarea.radius {
+    border-radius: 3px;
+  }
+
   .autosuggest-in-panel
-  .destination-input-container
-  .autosuggest-in-panel
-  #origin
-  .autosuggest-in-panel
-  #destination {
-  margin: 0;
-  font-size: 1rem;
-}
+    .origin-input-container
+    .autosuggest-in-panel
+    .destination-input-container
+    .autosuggest-in-panel
+    #origin
+    .autosuggest-in-panel
+    #destination {
+    margin: 0;
+    font-size: 1rem;
+  }
 
-.autosuggest-in-panel
+  .autosuggest-in-panel
+    .autosuggest-panel
+    .react-autosuggest__container
+    .react-autosuggest__suggestions-container--open {
+    top: 3rem;
+  }
+
+  /*Placeholder selectors can't be nested and need to be put 1 at a time, these are for the
+  input field Placeholder texts */
+  #origin::placeholder {
+    color: #666666;
+    opacity: 1;
+  }
+
+  #origin::-webkit-input-placeholder {
+    color: #666666;
+    opacity: 1;
+  }
+
+  #origin:-moz-placeholder {
+    color: #666666;
+    opacity: 1;
+  }
+
+  #origin::-moz-placeholder {
+    color: #666666;
+    opacity: 1;
+  }
+
+  #origin:-ms-input-placeholder {
+    color: #666666;
+    opacity: 1;
+  }
+
+  #destination::-ms-input-placeholder {
+    color: #666666;
+    opacity: 1;
+  }
+
+  #destination::-webkit-input-placeholder {
+    color: #666666;
+    opacity: 1;
+  }
+
+  #destination:-moz-placeholder {
+    color: #666666;
+    opacity: 1;
+  }
+
+  #destination::-moz-placeholder {
+    color: #666666;
+    opacity: 1;
+  }
+
+  #destination::placeholder {
+    color: #666666;
+    opacity: 1;
+  }
+
+  ul.react-autowhatever__items-list {
+    list-style-type: none;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    padding: 4px 11px;
+    overflow-y: auto;
+    width: calc(100% + 22px);
+    margin: 0 -11px;
+  }
+  ul.react-autowhatever__items-list li {
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  ul.react-autowhatever__items-list li:not(:last-child) {
+    border-bottom: solid 1px #eee;
+  }
+
+  .react-autosuggest__suggestion--highlighted {
+    color: #333;
+    font-family: Lato, Arial, Georgia, Serif;
+    font-weight: 400;
+    letter-spacing: 0;
+    background-color: #dfe5e8;
+  }
+
+  .react-autosuggest__suggestions-container {
+    background-color: white;
+  }
+  .react-autosuggest__suggestions-container .suggestion-name span .bus,
+  .react-autosuggest__suggestions-container .suggestion-name span .tram,
+  .react-autosuggest__suggestions-container .suggestion-name span .rail,
+  .react-autosuggest__suggestions-container .suggestion-name span .subway,
+  .react-autosuggest__suggestions-container .suggestion-name span .ferry,
+  .react-autosuggest__suggestions-container .suggestion-name span .airplane {
+    font-weight: 400;
+    font-family: 'PT Sans Narrow', 'Arial Condensed', Arial, Georgia, Serif;
+    font-size: 1rem;
+  }
+  .react-autosuggest__suggestions-container
+    .suggestion-name
+    span
+    .suggestion-type {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #666;
+  }
+  .react-autosuggest__suggestions-container .react-autosuggest__suggestions-list {
+    margin-top: 0em;
+    margin-bottom: 0;
+    padding-top: 0px;
+    padding-left: 0;
+    background: #ffffff;
+  }
+  .react-autosuggest__suggestions-container
+    .react-autosuggest__suggestions-list
+    li:hover {
+    background: #dfe5e8;
+  }
+
+  .react-autosuggest__suggestion {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin: 0;
+    cursor: pointer;
+    list-style: none;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    white-space: nowrap;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .react-autosuggest__suggestion .icon {
+    margin-right: 4px;
+    fill: #cbcbcb;
+  }
+
+  .autosuggestIcon {
+    color: #cbcbcb;
+    padding: 0 0.6em;
+    font-size: 1rem;
+  }
+  .autosuggestIcon svg.havePosition {
+    vertical-align: -0.15em;
+  }
+
+  .search-result {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-height: 2em;
+    overflow-x: hidden;
+  }
+  .search-result.loading:not(.CurrentLocation) svg.icon {
+    stroke: #ccc !important;
+    fill: #ccc !important;
+    background: #ccc !important;
+  }
+  .search-result.loading:not(.CurrentLocation) .suggestion-name,
+  .search-result.loading:not(.CurrentLocation) .suggestion-name *,
+  .search-result.loading:not(.CurrentLocation) .suggestion-type,
+  .search-result.loading:not(.CurrentLocation) .suggestion-type *,
+  .search-result.loading:not(.CurrentLocation) .suggestion-label,
+  .search-result.loading:not(.CurrentLocation) .suggestion-label * {
+    color: #ccc !important;
+    background: #ccc !important;
+  }
+  .search-result .havePosition {
+    color: #00afff;
+  }
+  .search-result .noPosition {
+    color: #00afff;
+  }
+  .search-result .search-position {
+    color: #00afff;
+  }
+  .search-result.favourite svg.icon {
+    stroke: #e9ab00;
+    fill: #e9ab00;
+  }
+  .search-result.CurrentLocation svg.icon {
+    color: #00afff;
+  }
+  .search-result .use-own-position,
+  .search-result .suggestion-name,
+  .search-result .suggestion-label {
+    margin: 0;
+    font-family: Lato, Arial, Georgia, Serif;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+  .search-result .suggestion-name,
+  .search-result .use-own-position {
+    font-size: 0.92rem;
+  }
+  .search-result .suggestion-name span .bus,
+  .search-result .suggestion-name span .tram,
+  .search-result .suggestion-name span .rail,
+  .search-result .suggestion-name span .subway,
+  .search-result .suggestion-name span .ferry,
+  .search-result .suggestion-name span .airplane {
+    font-weight: 400;
+    font-family: 'PT Sans Narrow', 'Arial Condensed', Arial, Georgia, Serif;
+    font-size: 1rem;
+  }
+  .search-result .suggestion-name span .suggestion-type {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #666;
+  }
+  .search-result.OldSearch p.suggestion-name,
+  .search-result.OldSearch span.suggestion-type,
+  .search-result.FavouritePlace p.suggestion-name,
+  .search-result.FavouritePlace span.suggestion-type,
+  .search-result.FavouriteStop p.suggestion-name,
+  .search-result.FavouriteStop span.suggestion-type,
+  .search-result.CurrentLocation p.suggestion-name,
+  .search-result.CurrentLocation span.suggestion-type {
+    color: #8c4799;
+  }
+  .search-result .suggestion-label {
+    font-size: 0.8rem;
+    color: #666;
+  }
+
+  .suggestion-item-stop {
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+  }
+  .suggestion-item-stop > div {
+    flex-grow: 1;
+  }
+  .suggestion-item-stop .suggestion-item-timetable {
+    margin: 1px 0px 1px 0px;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    display: flex;
+    align-items: center;
+    flex-grow: 0;
+    flex-shrink: 0;
+    border-left: 1px solid #eee;
+  }
+  .suggestion-item-stop .suggestion-item-timetable a {
+    display: flex;
+    align-items: center;
+  }
+  .suggestion-item-stop .suggestion-item-timetable span {
+    display: inline-block;
+    padding-right: 0.4em;
+    color: #008bde;
+  }
+  .suggestion-item-stop
+    .suggestion-item-timetable
+    div.suggestion-item-timetable-label {
+    display: inline-block;
+    font-weight: 700;
+    letter-spacing: 0;
+    color: #008bde;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+  }
+  .suggestion-item-stop .suggestion-item-timetable a > span > svg {
+    fill: #008bde;
+  }
+
+  .small .suggestion-item-stop > div {
+    width: 0em;
+  }
+
+  .small .suggestion-item-stop .suggestion-item-timetable {
+    width: 8em;
+  }
+
+  .autosuggest-panel.isItinerary {
+    width: 100%;
+  }
+  .autosuggest-panel.isItinerary input.react-autosuggest__input {
+    background: #ffffff;
+  }
+  .autosuggest-panel.isItinerary .clear-input {
+    border-top: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .autosuggest-panel .dark-overlay {
+    z-index: 9;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.57);
+  }
+  .autosuggest-panel .dark-overlay.hidden {
+    display: none;
+  }
+  .autosuggest-panel .dark-overlay.isItinerary {
+    position: fixed;
+  }
+
+  .autosuggest-panel .react-autosuggest__container {
+    width: 100%;
+  }
   .autosuggest-panel
-  .react-autosuggest__container
-  .react-autosuggest__suggestions-container--open {
-  top: 3rem;
-}
+    .react-autosuggest__container
+    .react-autosuggest__suggestions-container--open {
+    background: #fff;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    max-height: 60vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: absolute;
+    width: 100%;
+    top: calc(3 * 0.875rem);
+  }
 
-/*Placeholder selectors can't be nested and need to be put 1 at a time, these are for the
-input field Placeholder texts */
-#origin::placeholder {
-  color: #666666;
-  opacity: 1;
-}
+  .autosuggest-panel.small
+    .react-autosuggest__container
+    .react-autosuggest__suggestions-container--open {
+    max-height: unset;
+  }
 
-#origin::-webkit-input-placeholder {
-  color: #666666;
-  opacity: 1;
-}
+  .via-point-button-container {
+    display: flex;
+  }
+  .via-point-button-container > div:nth-child(1) {
+    order: 1;
+    border-left: none;
+  }
+  .via-point-button-container > div:nth-child(2) {
+    order: 2;
+    border-left: 1px solid rgba(151, 151, 151, 0.2);
+  }
 
-#origin:-moz-placeholder {
-  color: #666666;
-  opacity: 1;
-}
+  .itinerary-search-control {
+    align-items: center;
+    color: #008bde;
+    display: flex;
+    justify-content: center;
+    min-width: 3em;
+  }
+  .itinerary-search-control + .itinerary-search-control {
+    border-left: 1px solid rgba(151, 151, 151, 0.2);
+  }
+  .itinerary-search-control *:hover {
+    color: #0062a1;
+  }
+  .itinerary-search-control .switch {
+    font-size: 1.8em;
+  }
+  .itinerary-search-control .switch .icon {
+    transform: rotate(90deg);
+  }
+  .itinerary-search-control .add-via-point-slack > span:nth-child(2) {
+    display: inline;
+    position: relative;
+  }
+  .itinerary-search-control .add-via-point-slack > span:nth-child(2) .super-icon {
+    fill: #00afff;
+    font-size: 0.8rem;
+    position: absolute;
+    right: -0.5em;
+    top: -0.5em;
+  }
 
-#origin::-moz-placeholder {
-  color: #666666;
-  opacity: 1;
-}
+  .small.autosuggest-panel.isItinerary .autosuggest-input-container.origin,
+  .small.autosuggest-panel.isItinerary .autosuggest-input-container.destination,
+  .small.autosuggest-panel.isItinerary .autosuggest-input-container.viapoint {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
 
-#origin:-ms-input-placeholder {
-  color: #666666;
-  opacity: 1;
-}
+  .small.autosuggest-panel .autosuggest-input-container {
+    margin: 1em 1em 0 1em;
+    width: calc(100% - 2em);
+  }
 
-#destination::-ms-input-placeholder {
-  color: #666666;
-  opacity: 1;
-}
+  .small.autosuggest-panel .react-autosuggest__container {
+    width: 100%;
+    margin: 0 auto;
+  }
 
-#destination::-webkit-input-placeholder {
-  color: #666666;
-  opacity: 1;
-}
+  .autosuggest-input-icon {
+    display: block;
+    position: absolute;
+    width: 1.45em;
+    height: 1.45em;
+    margin-top: 0.6em;
+    margin-left: 0.5em;
+  }
+  .autosuggest-input-icon.destination {
+    color: #ec5188;
+    z-index: 3;
+  }
+  .autosuggest-input-icon.origin {
+    color: #64be14;
+    z-index: 3;
+  }
+  .autosuggest-input-icon .icon {
+    width: 100%;
+    height: 100%;
+  }
 
-#destination:-moz-placeholder {
-  color: #666666;
-  opacity: 1;
-}
+  .isItinerary .autosuggest-input-icon {
+    z-index: 18;
+  }
 
-#destination::-moz-placeholder {
-  color: #666666;
-  opacity: 1;
-}
+  input.react-autosuggest__input.widgetlocation {
+    padding-left: 3em;
+    background-color: #f4f4f4;
+  }
+  input.react-autosuggest__input.destination,
+  input.react-autosuggest__input.position,
+  input.react-autosuggest__input.viapoint {
+    padding-left: 3em;
+  }
 
-#destination::placeholder {
-  color: #666666;
-  opacity: 1;
-}
+  input.react-autosuggest__input {
+    background-color: #ffffff;
+    font-family: Lato, Arial, Georgia, Serif;
+    font-weight: 400;
+    letter-spacing: 0;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    height: 3em;
+    padding: 10px;
+    outline: 0;
+    appearance: none;
+    box-shadow: none;
+    z-index: 2;
+  }
 
-ul.react-autowhatever__items-list {
-  list-style-type: none;
-  background: #ffffff;
-  border: 1px solid #ddd;
-  padding: 4px 11px;
-  overflow-y: auto;
-  width: calc(100% + 22px);
-  margin: 0 -11px;
-}
-ul.react-autowhatever__items-list li {
-  white-space: nowrap;
-  overflow: hidden;
-}
-ul.react-autowhatever__items-list li:not(:last-child) {
-  border-bottom: solid 1px #eee;
-}
+  .autosuggest-input-container {
+    margin-top: 1em;
+    position: relative;
+    width: 100%;
+  }
+  .autosuggest-input-container.origin {
+    z-index: 16;
+  }
+  .autosuggest-input-container.destination {
+    z-index: 10;
+  }
 
-.react-autosuggest__suggestion--highlighted {
-  color: #333;
-  font-family: Lato, Arial, Georgia, Serif;
-  font-weight: 400;
-  letter-spacing: 0;
-  background-color: #dfe5e8;
-}
+  .isItinerary .autosuggest-input-container {
+    margin: 0;
+  }
+  .isItinerary .autosuggest-input-container input[type='text'] {
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+  }
 
-.react-autosuggest__suggestions-container {
-  background-color: white;
-}
-.react-autosuggest__suggestions-container .suggestion-name span .bus,
-.react-autosuggest__suggestions-container .suggestion-name span .tram,
-.react-autosuggest__suggestions-container .suggestion-name span .rail,
-.react-autosuggest__suggestions-container .suggestion-name span .subway,
-.react-autosuggest__suggestions-container .suggestion-name span .ferry,
-.react-autosuggest__suggestions-container .suggestion-name span .airplane {
-  font-weight: 400;
-  font-family: 'PT Sans Narrow', 'Arial Condensed', Arial, Georgia, Serif;
-  font-size: 1rem;
-}
-.react-autosuggest__suggestions-container
-  .suggestion-name
-  span
-  .suggestion-type {
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #666;
-}
-.react-autosuggest__suggestions-container .react-autosuggest__suggestions-list {
-  margin-top: 0em;
-  margin-bottom: 0;
-  padding-top: 0px;
-  padding-left: 0;
-  background: #ffffff;
-}
-.react-autosuggest__suggestions-container
-  .react-autosuggest__suggestions-list
-  li:hover {
-  background: #dfe5e8;
-}
+  .react-autosuggest__container {
+    display: flex;
+  }
 
-.react-autosuggest__suggestion {
-  padding-top: 3px;
-  padding-bottom: 3px;
-  margin: 0;
-  cursor: pointer;
-  list-style: none;
-  display: block;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  white-space: nowrap;
-  border-bottom: 1px solid #ddd;
-}
+  .react-autosuggest__container--open .react-autosuggest__input {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: none;
+    outline: none;
+    border: none;
+  }
 
-.react-autosuggest__suggestion .icon {
-  margin-right: 4px;
-  fill: #cbcbcb;
-}
+  .react-autosuggest__container input {
+    box-shadow: none;
+    outline: none;
+    transition: border 0s;
+  }
+  .react-autosuggest__container input:focus {
+    box-shadow: none;
+    /* First apply outline that is used in Edge and Firefox */
+    outline: 2px auto -webkit-focus-ring-color;
+    /* Then override outline for webkit browsers like Chrome, this has no effect on other browsers */
+    border: none;
+    background: #ffffff;
+    /* z-index: 17;*/
+  }
 
-.autosuggestIcon {
-  color: #cbcbcb;
-  padding: 0 0.6em;
-  font-size: 1rem;
-}
-.autosuggestIcon svg.havePosition {
-  vertical-align: -0.15em;
-}
+  input.react-autosuggest__input::-ms-clear {
+    display: none;
+  }
 
-.search-result {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  min-height: 2em;
-  overflow-x: hidden;
-}
-.search-result.loading:not(.CurrentLocation) svg.icon {
-  stroke: #ccc !important;
-  fill: #ccc !important;
-  background: #ccc !important;
-}
-.search-result.loading:not(.CurrentLocation) .suggestion-name,
-.search-result.loading:not(.CurrentLocation) .suggestion-name *,
-.search-result.loading:not(.CurrentLocation) .suggestion-type,
-.search-result.loading:not(.CurrentLocation) .suggestion-type *,
-.search-result.loading:not(.CurrentLocation) .suggestion-label,
-.search-result.loading:not(.CurrentLocation) .suggestion-label * {
-  color: #ccc !important;
-  background: #ccc !important;
-}
-.search-result .havePosition {
-  color: #00afff;
-}
-.search-result .noPosition {
-  color: #00afff;
-}
-.search-result .search-position {
-  color: #00afff;
-}
-.search-result.favourite svg.icon {
-  stroke: #e9ab00;
-  fill: #e9ab00;
-}
-.search-result.CurrentLocation svg.icon {
-  color: #00afff;
-}
-.search-result .use-own-position,
-.search-result .suggestion-name,
-.search-result .suggestion-label {
-  margin: 0;
-  font-family: Lato, Arial, Georgia, Serif;
-  font-weight: 400;
-  letter-spacing: 0;
-}
-.search-result .suggestion-name,
-.search-result .use-own-position {
-  font-size: 0.92rem;
-}
-.search-result .suggestion-name span .bus,
-.search-result .suggestion-name span .tram,
-.search-result .suggestion-name span .rail,
-.search-result .suggestion-name span .subway,
-.search-result .suggestion-name span .ferry,
-.search-result .suggestion-name span .airplane {
-  font-weight: 400;
-  font-family: 'PT Sans Narrow', 'Arial Condensed', Arial, Georgia, Serif;
-  font-size: 1rem;
-}
-.search-result .suggestion-name span .suggestion-type {
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #666;
-}
-.search-result.OldSearch p.suggestion-name,
-.search-result.OldSearch span.suggestion-type,
-.search-result.FavouritePlace p.suggestion-name,
-.search-result.FavouritePlace span.suggestion-type,
-.search-result.FavouriteStop p.suggestion-name,
-.search-result.FavouriteStop span.suggestion-type,
-.search-result.CurrentLocation p.suggestion-name,
-.search-result.CurrentLocation span.suggestion-type {
-  color: #8c4799;
-}
-.search-result .suggestion-label {
-  font-size: 0.8rem;
-  color: #666;
-}
+  button.clear-input {
+    display: flex;
+    background: #f4f4f4;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    align-items: center;
+    padding: 8px 12px 8px 12px;
+    margin-left: -4px;
+    font-size: 0.875rem;
+    height: 3em;
+    margin-bottom: 0px;
+    color: #666;
+    outline: none;
+  }
+  button.clear-input span {
+    font-size: 1.1rem;
+  }
+  button.clear-input:hover:not(:disabled) {
+    background: #ffffff;
+    box-shadow: none;
+    border: none;
+  }
+  button.clear-input:focus {
+    background-color: #ffffff;
+    /* First apply outline that is used in Edge and Firefox */
+    outline: 1px dotted #212121;
+    /* Then override outline for webkit browsers like Chrome, this has no effect on other browsers */
+  }
 
-.suggestion-item-stop {
-  padding: 0;
-  display: flex;
-  flex-direction: row;
-}
-.suggestion-item-stop > div {
-  flex-grow: 1;
-}
-.suggestion-item-stop .suggestion-item-timetable {
-  margin: 1px 0px 1px 0px;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  display: flex;
-  align-items: center;
-  flex-grow: 0;
-  flex-shrink: 0;
-  border-left: 1px solid #eee;
-}
-.suggestion-item-stop .suggestion-item-timetable a {
-  display: flex;
-  align-items: center;
-}
-.suggestion-item-stop .suggestion-item-timetable span {
-  display: inline-block;
-  padding-right: 0.4em;
-  color: #008bde;
-}
-.suggestion-item-stop
-  .suggestion-item-timetable
-  div.suggestion-item-timetable-label {
-  display: inline-block;
-  font-weight: 700;
-  letter-spacing: 0;
-  color: #008bde;
-  text-transform: uppercase;
-  font-size: 0.72rem;
-}
-.suggestion-item-stop .suggestion-item-timetable a > span > svg {
-  fill: #008bde;
-}
+  .react-autosuggest__container--open button.clear-input {
+    border-bottom-right-radius: 0;
+  }
 
-.small .suggestion-item-stop > div {
-  width: 0em;
-}
-
-.small .suggestion-item-stop .suggestion-item-timetable {
-  width: 8em;
-}
-
-.autosuggest-panel.isItinerary {
-  width: 100%;
-}
-.autosuggest-panel.isItinerary input.react-autosuggest__input {
-  background: #ffffff;
-}
-.autosuggest-panel.isItinerary .clear-input {
-  border-top: 1px solid #ddd;
-  border-right: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-}
-
-.autosuggest-panel .dark-overlay {
-  z-index: 9;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  left: 0;
-  top: 0;
-  background: rgba(0, 0, 0, 0.57);
-}
-.autosuggest-panel .dark-overlay.hidden {
-  display: none;
-}
-.autosuggest-panel .dark-overlay.isItinerary {
-  position: fixed;
-}
-
-.autosuggest-panel .react-autosuggest__container {
-  width: 100%;
-}
-.autosuggest-panel
-  .react-autosuggest__container
-  .react-autosuggest__suggestions-container--open {
-  background: #fff;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  max-height: 60vh;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  position: absolute;
-  width: 100%;
-  top: calc(3 * 0.875rem);
-}
-
-.autosuggest-panel.small
-  .react-autosuggest__container
-  .react-autosuggest__suggestions-container--open {
-  max-height: unset;
-}
-
-.via-point-button-container {
-  display: flex;
-}
-.via-point-button-container > div:nth-child(1) {
-  order: 1;
-  border-left: none;
-}
-.via-point-button-container > div:nth-child(2) {
-  order: 2;
-  border-left: 1px solid rgba(151, 151, 151, 0.2);
-}
-
-.itinerary-search-control {
-  align-items: center;
-  color: #008bde;
-  display: flex;
-  justify-content: center;
-  min-width: 3em;
-}
-.itinerary-search-control + .itinerary-search-control {
-  border-left: 1px solid rgba(151, 151, 151, 0.2);
-}
-.itinerary-search-control *:hover {
-  color: #0062a1;
-}
-.itinerary-search-control .switch {
-  font-size: 1.8em;
-}
-.itinerary-search-control .switch .icon {
-  transform: rotate(90deg);
-}
-.itinerary-search-control .add-via-point-slack > span:nth-child(2) {
-  display: inline;
-  position: relative;
-}
-.itinerary-search-control .add-via-point-slack > span:nth-child(2) .super-icon {
-  fill: #00afff;
-  font-size: 0.8rem;
-  position: absolute;
-  right: -0.5em;
-  top: -0.5em;
-}
-
-.small.autosuggest-panel.isItinerary .autosuggest-input-container.origin,
-.small.autosuggest-panel.isItinerary .autosuggest-input-container.destination,
-.small.autosuggest-panel.isItinerary .autosuggest-input-container.viapoint {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-
-.small.autosuggest-panel .autosuggest-input-container {
-  margin: 1em 1em 0 1em;
-  width: calc(100% - 2em);
-}
-
-.small.autosuggest-panel .react-autosuggest__container {
-  width: 100%;
-  margin: 0 auto;
-}
-
-.autosuggest-input-icon {
-  display: block;
-  position: absolute;
-  width: 1.45em;
-  height: 1.45em;
-  margin-top: 0.6em;
-  margin-left: 0.5em;
-}
-.autosuggest-input-icon.destination {
-  color: #ec5188;
-  z-index: 3;
-}
-.autosuggest-input-icon.origin {
-  color: #64be14;
-  z-index: 3;
-}
-.autosuggest-input-icon .icon {
-  width: 100%;
-  height: 100%;
-}
-
-.isItinerary .autosuggest-input-icon {
-  z-index: 18;
-}
-
-input.react-autosuggest__input.widgetlocation {
-  padding-left: 3em;
-  background-color: #f4f4f4;
-}
-input.react-autosuggest__input.destination,
-input.react-autosuggest__input.position,
-input.react-autosuggest__input.viapoint {
-  padding-left: 3em;
-}
-
-input.react-autosuggest__input {
-  background-color: #ffffff;
-  font-family: Lato, Arial, Georgia, Serif;
-  font-weight: 400;
-  letter-spacing: 0;
-  border: 1px solid #fff;
-  border-radius: 4px;
-  height: 3em;
-  padding: 10px;
-  outline: 0;
-  appearance: none;
-  box-shadow: none;
-  z-index: 2;
-}
-
-.autosuggest-input-container {
-  margin-top: 1em;
-  position: relative;
-  width: 100%;
-}
-.autosuggest-input-container.origin {
-  z-index: 16;
-}
-.autosuggest-input-container.destination {
-  z-index: 10;
-}
-
-.isItinerary .autosuggest-input-container {
-  margin: 0;
-}
-.isItinerary .autosuggest-input-container input[type='text'] {
-  border-top: 1px solid #ddd;
-  border-left: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-}
-
-.react-autosuggest__container {
-  display: flex;
-}
-
-.react-autosuggest__container--open .react-autosuggest__input {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  box-shadow: none;
-  outline: none;
-  border: none;
-}
-
-.react-autosuggest__container input {
-  box-shadow: none;
-  outline: none;
-  transition: border 0s;
-}
-.react-autosuggest__container input:focus {
-  box-shadow: none;
-  /* First apply outline that is used in Edge and Firefox */
-  outline: 2px auto -webkit-focus-ring-color;
-  /* Then override outline for webkit browsers like Chrome, this has no effect on other browsers */
-  border: none;
-  background: #ffffff;
-  /* z-index: 17;*/
-}
-
-input.react-autosuggest__input::-ms-clear {
-  display: none;
-}
-
-button.clear-input {
-  display: flex;
-  background: #f4f4f4;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-  align-items: center;
-  padding: 8px 12px 8px 12px;
-  margin-left: -4px;
-  font-size: 0.875rem;
-  height: 3em;
-  margin-bottom: 0px;
-  color: #666;
-  outline: none;
-}
-button.clear-input span {
-  font-size: 1.1rem;
-}
-button.clear-input:hover:not(:disabled) {
-  background: #ffffff;
-  box-shadow: none;
-  border: none;
-}
-button.clear-input:focus {
-  background-color: #ffffff;
-  /* First apply outline that is used in Edge and Firefox */
-  outline: 1px dotted #212121;
-  /* Then override outline for webkit browsers like Chrome, this has no effect on other browsers */
-}
-
-.react-autosuggest__container--open button.clear-input {
-  border-bottom-right-radius: 0;
-}
-
-.suggestion-is-updating {
-  visibility: hidden;
+  .suggestion-is-updating {
+    visibility: hidden;
+  }
 }

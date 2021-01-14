@@ -20,7 +20,7 @@ module.exports = {
     'react/jsx-key': 'error',
     'react/forbid-prop-types': ['warn', { forbid: ['any', 'array', 'object'] }],
     'react/require-default-props': 'warn',
-    
+
     // jsx-a11y
     'jsx-a11y/anchor-is-valid': [ 'error', {
         'components': [ 'Link' ],
@@ -29,10 +29,10 @@ module.exports = {
       }],
     'jsx-a11y/label-has-associated-control': 'error',
     'jsx-a11y/label-has-for': 'off', // deprecated in 6.1.0, does not support select tags
-    
+
     // compat
     'compat/compat': 'error',
-    
+
     // graphql
     'graphql/template-strings': ['error', {
       'env': 'relay',
