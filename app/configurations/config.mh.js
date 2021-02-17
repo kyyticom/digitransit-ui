@@ -115,6 +115,10 @@ export default configMerger(walttiConfig, {
   availableLanguages: ['fi','sv','en'],
   defaultLanguage: 'fi',
 
+  agency: {
+    show: true,
+  },
+
   /* Option to disable the "next" column of the Route panel as it can be confusing sometimes: https://github.com/mfdz/digitransit-ui/issues/167 */
   displayNextDeparture: false,
 
