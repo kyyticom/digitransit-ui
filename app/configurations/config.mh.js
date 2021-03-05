@@ -3,8 +3,8 @@ import configMerger from '../util/configMerger';
 
 const CONFIG = 'mh';
 const API_URL = 'https://matkahuolto-otp-2.kyytiapis.com';
-const APP_TITLE = 'Matkahuolto reittihaku';
-const APP_DESCRIPTION = 'Matkahuolto reittihaku';
+const APP_TITLE = 'Matkahuolto Reittiopas';
+const APP_DESCRIPTION = 'Matkahuolto Reittiopas';
 const walttiConfig = require('./config.waltti').default;
 
 const MAP_URL = 'https://api.mapbox.com';
