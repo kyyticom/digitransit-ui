@@ -37,12 +37,16 @@ class Widget extends React.Component {
 
   handleOnlick = () => {
     const time = Math.floor(new Date().getTime() / 1000);
-    const origin = `${
-      this.state.originValue
-    }::${this.state.originLatLng.reverse()}`;
-    const destination = `${
-      this.state.destinationValue
-    }::${this.state.destinationLatLng.reverse()}`;
+    const {
+      originValue,
+      destinationValue,
+      originLatLng,
+      destinationLatLng,
+    } = this.state;
+    const origin = `${originValue}::${originLatLng.slice().reverse()}`;
+    const destination = `${destinationValue}::${destinationLatLng
+      .slice()
+      .reverse()}`;
 
     const url = config.URL.APP_URL || '';
 
