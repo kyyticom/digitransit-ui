@@ -168,8 +168,8 @@ export default configMerger(walttiConfig, {
     },
 
     airplane: {
-      availableForSelection: false,
-      defaultValue: false,
+      availableForSelection: true,
+      defaultValue: true,
     },
 
     ferry: {
