@@ -169,8 +169,8 @@ class ItineraryTab extends React.Component {
                   {shouldShowAppDeepLink(config, itinerary.legs) && (
                     <div style={{ flexDirection: 'row' }}>
                       <FormattedMessage
-                        id="open-in-app-mh-mobile-info"
-                        defaultMessage="You can buy the route from Matkahuolto's app."
+                        id="open-in-app-mh-info"
+                        defaultMessage="Buy tickets for the route with Matkahuolto’s Trips and Tickets app."
                       />
                       <SecondaryButton
                         ariaLabel="open-in-app"
@@ -183,8 +183,8 @@ class ItineraryTab extends React.Component {
                   {shouldShowAppEmailLink(config, itinerary.legs) && (
                     <div style={{ flexDirection: 'row' }}>
                       <FormattedMessage
-                        id="open-in-app-mh-desktop-info"
-                        defaultMessage="You can buy the route using Matkahuolto's mobile app."
+                        id="open-in-app-mh-info"
+                        defaultMessage="Buy tickets for the route with Matkahuolto’s Trips and Tickets app."
                       />
                       <SecondaryButton
                         ariaLabel="open-in-app"
