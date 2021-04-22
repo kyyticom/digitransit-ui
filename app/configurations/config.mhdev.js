@@ -23,15 +23,15 @@ export default configMerger(walttiConfig, {
 
   // This goes to browser, so not secret. When rotating keys just make
   // sure Mapbox account panel lists deployed URLS for CORS policy
-  MAP_ACCESS_TOKEN: 'pk.eyJ1Ijoia3l5dGljb20iLCJhIjoiY2thcDdoaDMxMGw0eTJycG85N3Z1azBjMSJ9.hsIE5azenQvs2yOi7cOSCQ',
+  MAP_ACCESS_TOKEN: 'pk.eyJ1IjoibWF0a2FodW9sdG8iLCJhIjoiY2tscWt3Z3hpMWRtZzJ2bjNkNWdoeDc2aiJ9.3_Om4-kFV3PakltYWuCneA',
   URL: {
     API_URL,
     APP_URL : 'https://reittiopas-mh-test.kyyti.io',
     GEOCODING_BASE_URL: 'https://devapi.tuup.fi',
     MAP_URL,
     MAP: {
-      default: `${MAP_URL}/styles/v1/kyyticom/ckfoy6sug0kci19ql1i7vokr7/tiles/`,
-      sv: `${MAP_URL}/styles/v1/kyyticom/ckfoy6sug0kci19ql1i7vokr7/tiles/`,
+      default: `${MAP_URL}/styles/v1/matkahuolto/ckmg9r484676t17qep0fufvoz/tiles/`,
+      sv: `${MAP_URL}/styles/v1/matkahuolto/ckmg9r484676t17qep0fufvoz/tiles/`,
     },
     STOP_MAP: `${API_URL}/otp/routers/default/vectorTiles/stops,stations/`,
     CITYBIKE_MAP: null,
@@ -190,7 +190,7 @@ export default configMerger(walttiConfig, {
   shortName: 'Reittihaku',
 
   appInstallDeepLinkBase: 'https://matkahuolto.page.link/',
-  routeSearchDeepLinkBase: 'https://matkahuolto.kyyti.com/devroute-search/',
+  routeSearchDeepLinkBase: 'https://dev-mint-deeplink.matkahuolto.io/devroute-search/',
   appBundleId: 'com.kyyti.ride.matkahuolto.dev',
   appStoreId: '1496304929',
   sendAppLinkEmailRequestEndpoint: 'https://devapi.tuup.fi/users/v2/send-route',
