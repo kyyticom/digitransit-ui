@@ -1,0 +1,46 @@
+name: Build docker image and rollout update
+
+on:
+  push:
+    branches:
+      - '*-test'
+
+jobs:
+  test:
+    name: Run tests
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10'
+      - name: Install dependencies
+        run: yarn install
+      - name: eslint
+        run: yarn lint
+      - name: Set timezone
+        run: sudo timedatectl set-timezone Europe/Helsinki
+      - name: Unit tests
+        run: yarn test-unit
+
+  docker:
+    name: Build docker image
+    needs: test
+
+    runs-on: ubuntu-latest
+    env:
+      GCR_REGISTRY: eu.gcr.io
+      GCLOUD_PROJECT: open-trip-planner-260813
+      GCLOUD_ZONE: europe-north1-a
+      KUBE_CLUSTER_NAME: otp-dev
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build and publish to Registry without updating the OTP server
+        run: |
+          echo "${{ secrets.GCLOUD_SERVICE_KEY }}" | base64 --decode --ignore-garbage | docker login -u _json_key https://${GCR_REGISTRY} --password-stdin
+          docker build --pull -t "${GCR_REGISTRY}/${GCLOUD_PROJECT}/digitransit-ui-test:${{ github.sha }}" -t "${GCR_REGISTRY}/${GCLOUD_PROJECT}/digitransit-ui-test:latest" .
+          docker push "${GCR_REGISTRY}/${GCLOUD_PROJECT}/digitransit-ui-test:latest"
+          docker push "${GCR_REGISTRY}/${GCLOUD_PROJECT}/digitransit-ui-test:${{ github.sha }}"
