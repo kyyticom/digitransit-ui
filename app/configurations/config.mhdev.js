@@ -64,7 +64,7 @@ export default configMerger(walttiConfig, {
   logo: 'mhdev/mh-logo.png',
   favicon: './app/configurations/images/mhdev/mh-favicon.png',
 
-  feedIds: ['Matkahuolto'],
+  feedIds: ['Matkahuolto', 'Riihimäki'],
 
   searchParams: {
     'boundary.rect.min_lat': minLat,
@@ -223,4 +223,7 @@ export default configMerger(walttiConfig, {
       },
     ],
   },
+
+  showAllBusses: true,
+  showVehiclesOnStopPage: true,
 });
