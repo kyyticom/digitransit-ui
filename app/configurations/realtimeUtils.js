@@ -38,6 +38,18 @@ function walttiTopicResolver(
   );
 }
 
+function mhTopicResolver(
+  route, // eslint-disable-line no-unused-vars
+  direction, // eslint-disable-line no-unused-vars
+  tripStartTime, // eslint-disable-line no-unused-vars
+  headsign, // eslint-disable-line no-unused-vars
+  feedId, // eslint-disable-line no-unused-vars
+  tripId,
+  geoHash, // eslint-disable-line no-unused-vars
+) {
+  return '/' + tripId.replace('.', '/') + '/#';
+}
+
 export default {
   HSL: {
     mqttTopicResolver: function mqttTopicResolver(
@@ -232,6 +244,19 @@ export default {
     mqttTopicResolver: walttiTopicResolver,
 
     mqtt: 'wss://mqtt.waltti.fi/mqtt',
+
+    credentials: { username: 'user', password: 'userpass' },
+
+    gtfsrt: true,
+
+    routeSelector: defaultRouteSelector,
+
+    active: true,
+  },
+  Riihimäki: {
+    mqttTopicResolver: mhTopicResolver,
+
+    mqtt: 'wss://d0457135im7yxbyy98p4-ats.iot.eu-west-1.amazonaws.com/mqtt',
 
     credentials: { username: 'user', password: 'userpass' },
 
