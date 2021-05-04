@@ -47,7 +47,7 @@ function mhTopicResolver(
   tripId,
   geoHash, // eslint-disable-line no-unused-vars
 ) {
-  return '/' + tripId.replace('.', '/') + '/#';
+  return tripId.replace('.', '/') + '/#';
 }
 
 export default {
