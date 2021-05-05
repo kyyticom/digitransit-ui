@@ -42,12 +42,13 @@ function mhTopicResolver(
   route, // eslint-disable-line no-unused-vars
   direction, // eslint-disable-line no-unused-vars
   tripStartTime, // eslint-disable-line no-unused-vars
-  headsign, // eslint-disable-line no-unused-vars
+  headsign,
   feedId, // eslint-disable-line no-unused-vars
   tripId,
   geoHash, // eslint-disable-line no-unused-vars
 ) {
-  return tripId.replace('.', '/') + '/#';
+  const agency = tripId.split('.')[1] || '+';
+  return agency + '/' + headsign + '/#';
 }
 
 export default {
