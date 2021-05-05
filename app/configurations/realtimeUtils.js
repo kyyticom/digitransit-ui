@@ -47,8 +47,30 @@ function mhTopicResolver(
   tripId,
   geoHash, // eslint-disable-line no-unused-vars
 ) {
-  const agency = tripId.split('.')[1] || '+';
-  return agency + '/' + headsign + '/#';
+  // const agency = tripId.split('.')[1] || '+';
+  // return agency + '/' + headsign + '/#';
+  return (
+    route +
+    '/' +
+    direction +
+    '/' +
+    tripStartTime +
+    '/' +
+    headsign +
+    '/' +
+    feedId +
+    '/' +
+    tripId +
+    '/' +
+    geoHash[0] +
+    '/' +
+    geoHash[1] +
+    '/' +
+    geoHash[2] +
+    '/' +
+    geoHash[3] +
+    '/#'
+  );
 }
 
 export default {
