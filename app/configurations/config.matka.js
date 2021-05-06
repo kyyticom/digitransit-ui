@@ -104,7 +104,7 @@ export default {
   cityBike: {
     showCityBikes: true,
     networks: {
-      /* smoove: {
+      smoove: {
         icon: 'citybike',
         name: {
           fi: 'Helsinki ja Espoo',
@@ -113,9 +113,9 @@ export default {
         },
         type: 'citybike',
         url: {
-          fi: 'https://kaupunkipyorat.hsl.fi',
-          sv: 'https://kaupunkipyorat.hsl.fi/sv',
-          en: 'https://kaupunkipyorat.hsl.fi/en',
+          fi: 'https://www.hsl.fi/kaupunkipyorat/helsinki',
+          sv: 'https://www.hsl.fi/sv/stadscyklar/helsingfors',
+          en: 'https://www.hsl.fi/en/citybikes/helsinki',
         },
       },
       vantaa: {
@@ -127,11 +127,11 @@ export default {
         },
         type: 'citybike',
         url: {
-          fi: 'https://kaupunkipyorat.hsl.fi',
-          sv: 'https://kaupunkipyorat.hsl.fi/sv',
-          en: 'https://kaupunkipyorat.hsl.fi/en',
+          fi: 'https://www.hsl.fi/kaupunkipyorat/vantaa',
+          sv: 'https://www.hsl.fi/sv/stadscyklar/vanda',
+          en: 'https://www.hsl.fi/en/citybikes/vantaa',
         },
-      }, */
+      },
       turku: {
         icon: 'citybike',
         name: {
@@ -160,6 +160,20 @@ export default {
           en: 'https://kaupunkipyorat.kuopio.fi/?lang=2',
         },
       },
+      // lappeenranta: {
+      //   icon: 'citybike',
+      //   name: {
+      //     fi: 'Lappeenranta',
+      //     sv: 'Vilmanstrand',
+      //     en: 'Lappeenranta',
+      //   },
+      //   type: 'citybike',
+      //   url: {
+      //     fi: 'https://kaakau.fi/lappeenranta/',
+      //     sv: 'https://kaakau.fi/lappeenranta/?lang=en',
+      //     en: 'https://kaakau.fi/lappeenranta/?lang=sv',
+      //   },
+      // },
     },
   },
 

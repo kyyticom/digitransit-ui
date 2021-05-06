@@ -1,9 +1,9 @@
 /* eslint-disable prefer-template */
 import configMerger from '../util/configMerger';
 
-const CONFIG = 'tampere';
-const APP_TITLE = 'Nyssen reittiopas';
-const APP_DESCRIPTION = 'Nyssen reittiopas';
+const CONFIG = 'linjasto2021';
+const APP_TITLE = 'Linjasto 2021';
+const APP_DESCRIPTION = 'Linjasto 2021';
 
 const walttiConfig = require('./config.waltti').default;
 const tampereTimetables = require('./timetableConfigUtils').default.tampere;
@@ -13,8 +13,19 @@ const maxLat = 62.31;
 const minLon = 22.68;
 const maxLon = 24.9;
 
+const API_URL = process.env.API_URL || 'https://dev-api.digitransit.fi';
+const MAP_URL =
+  process.env.MAP_URL || 'https://digitransit-dev-cdn-origin.azureedge.net';
+
 export default configMerger(walttiConfig, {
   CONFIG,
+
+  URL: {
+    OTP:
+      process.env.OTP_URL ||
+      `${API_URL}/routing/v1/routers/linjasto2021-waltti/`,
+    STOP_MAP: `${MAP_URL}/map/v1/linjasto2021-waltti-stop-map/`,
+  },
 
   appBarLink: { name: 'Nysse', href: 'https://www.nysse.fi/' },
 
@@ -32,9 +43,9 @@ export default configMerger(walttiConfig, {
   textLogo: false, // title text instead of logo img
 
   // Navbar logo
-  logo: 'tampere/tampere-logo.png',
+  logo: 'linjasto2021/linjasto2021-logo.png',
 
-  favicon: './sass/themes/tampere/favicon.png',
+  favicon: './sass/themes/linjasto2021/favicon.png',
 
   feedIds: ['tampere', 'TampereVR', 'tampereDRT'],
 
@@ -170,21 +181,24 @@ export default configMerger(walttiConfig, {
             type: 'a',
             content:
               'Tutustu turvallisen matkustamisen ohjeisiin koronaviruksen aikana tästä linkistä',
-            href: 'https://www.nysse.fi/korona.html',
+            href:
+              'https://joukkoliikenne.tampere.fi/aikataulut-ja-reitit/poikkeusinfo/liikennetiedotteet/korona-viruksen-vaikutukset-nysse-liikenteeseen.html',
           },
         ],
         en: [
           {
             type: 'a',
             content: 'Please check instructions for safe travelling here',
-            href: 'https://www.nysse.fi/en/service-changes/coronavirus.html',
+            href:
+              'https://joukkoliikenne.tampere.fi/aikataulut-ja-reitit/poikkeusinfo/liikennetiedotteet/korona-viruksen-vaikutukset-nysse-liikenteeseen.html',
           },
         ],
         sv: [
           {
             type: 'a',
             content: 'Please check instructions for safe travelling here',
-            href: 'https://www.nysse.fi/en/service-changes/coronavirus.html',
+            href:
+              'https://joukkoliikenne.tampere.fi/aikataulut-ja-reitit/poikkeusinfo/liikennetiedotteet/korona-viruksen-vaikutukset-nysse-liikenteeseen.html',
           },
         ],
       },
@@ -256,13 +270,13 @@ export default configMerger(walttiConfig, {
       },
     ],
   },
-  showAllBusses: true,
-  showVehiclesOnStopPage: true,
+  showAllBusses: false,
+  showVehiclesOnStopPage: false,
   timetables: {
     tampere: tampereTimetables,
   },
 
-  // enable train routing for Tampere
+  // enable train and tram routing for Tampere
   transportModes: {
     rail: {
       availableForSelection: true,

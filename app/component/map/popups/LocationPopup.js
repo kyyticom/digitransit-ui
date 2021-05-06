@@ -11,7 +11,10 @@ import ZoneIcon from '../../ZoneIcon';
 import PreferencesStore from '../../../store/PreferencesStore';
 import { getLabel } from '../../../util/suggestionUtils';
 import { reverseGeocode } from '../../../util/searchUtils';
-import { getZoneLabelColor } from '../../../util/mapIconUtils';
+import {
+  getZoneLabelColor,
+  getZoneLabelSize,
+} from '../../../util/mapIconUtils';
 import { addAnalyticsEvent } from '../../../util/analyticsUtils';
 
 class LocationPopup extends React.Component {
@@ -42,11 +45,19 @@ class LocationPopup extends React.Component {
     const { lat, lon } = this.props;
     const { config } = this.context;
 
-    function parseZoneName(fullZoneName) {
-      if (fullZoneName) {
-        return fullZoneName.split(':')[1];
+    function getZoneId(propertiesZones, dataZones) {
+      function zoneFilter(zones) {
+        return Array.isArray(zones)
+          ? zones.filter(
+              zone => zone && config.feedIds.includes(zone.split(':')[0]),
+            )
+          : [];
       }
-      return undefined;
+      const filteredZones = propertiesZones
+        ? zoneFilter(propertiesZones)
+        : zoneFilter(dataZones);
+      const zone = filteredZones.length > 0 ? filteredZones[0] : undefined;
+      return zone ? zone.split(':')[1] : undefined;
     }
 
     reverseGeocode(
@@ -70,14 +81,7 @@ class LocationPopup extends React.Component {
             location: {
               ...prevState.location,
               address: getLabel(match),
-              zoneId: parseZoneName(
-                // eslint-disable-next-line no-nested-ternary
-                match.zones
-                  ? match.zones[0]
-                  : data.zones
-                    ? data.zones[0]
-                    : undefined,
-              ),
+              zoneId: getZoneId(match.zones, data.zones),
             },
           }));
           pointName = 'FreeAddress';
@@ -90,7 +94,7 @@ class LocationPopup extends React.Component {
                 id: 'location-from-map',
                 defaultMessage: 'Selected location',
               }),
-              zoneId: parseZoneName(data.zones ? data.zones[0] : undefined),
+              zoneId: getZoneId(data.zones),
             },
           }));
           pointName = 'NoAddress';
@@ -142,6 +146,7 @@ class LocationPopup extends React.Component {
             <ZoneIcon
               showTitle
               zoneId={zoneId}
+              zoneIdFontSize={getZoneLabelSize(zoneId, this.context.config)}
               zoneLabelColor={getZoneLabelColor(this.context.config)}
             />
           </CardHeader>

@@ -39,12 +39,10 @@ export default configMerger(walttiConfig, {
 
   mapLayers: {
     tooltip: {
-      fi:
-        'Uutta! Saat nyt vyöhykkeet ja lähellä olevat bussit kartalle asetuksista.',
-      en:
-        'New! You can now get zones and nearby busses on the map from the settings.',
+      fi: 'Uutta! Saat nyt lähellä olevat bussit kartalle asetuksista.',
+      en: 'New! You can now get nearby busses on the map from the settings.',
       sv:
-        'Nytt! I inställningarna kan du nu välja att se zoner och närliggande bussar på kartan.',
+        'Nytt! I inställningarna kan du nu välja att se närliggande bussar på kartan.',
     },
   },
 
@@ -161,6 +159,18 @@ export default configMerger(walttiConfig, {
       },
     ],
   },
+  geoJson: {
+    layers: [
+      {
+        name: {
+          fi: 'Vyöhykkeet',
+          sv: 'Zoner',
+          en: 'Zones',
+        },
+        url: '/assets/geojson/lahti_zone_lines_20201118.geojson',
+      },
+    ],
+  },
   zoneIdMapping: {
     1: 'A',
     2: 'B',
@@ -172,6 +182,11 @@ export default configMerger(walttiConfig, {
     8: 'G',
     9: 'H',
     10: 'I',
+  },
+  zoneIdFontSize: {
+    F1: '20px',
+    F2: '20px',
+    'B/C': '16px',
   },
   stopCard: {
     header: {

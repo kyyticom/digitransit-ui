@@ -1,5 +1,6 @@
 /* eslint-disable prefer-template */
 import safeJsonParse from '../util/safeJsonParser';
+import { BIKEAVL_WITHMAX } from '../util/citybikes';
 
 const CONFIG = process.env.CONFIG || 'default';
 const API_URL = process.env.API_URL || 'https://dev-api.digitransit.fi';
@@ -41,7 +42,6 @@ export default {
     },
     STOP_TIMETABLES: {
       HSL: `${API_URL}/timetables/v1/hsl/stops/`,
-      tampere: 'https://www.tampere.fi/ekstrat/ptdata/pdf/',
     },
   },
 
@@ -264,7 +264,7 @@ export default {
     // When should bikeshare availability be rendered in orange rather than green
     fewAvailableCount: 3,
     networks: {},
-    useSpacesAvailable: true,
+    capacity: BIKEAVL_WITHMAX,
   },
 
   // Lowest level for stops and terminals are rendered
@@ -748,6 +748,7 @@ export default {
     oulu: 'oulu',
     hameenlinna: 'hameenlinna',
     matka: 'matka',
+    linjasto2021: 'linjasto2021',
     walttiOpas: 'waltti',
     salo: 'salo',
     rovaniemi: 'rovaniemi',

@@ -1,5 +1,6 @@
 /* eslint-disable prefer-template */
 import configMerger from '../util/configMerger';
+import { BIKEAVL_BIKES } from '../util/citybikes';
 
 const CONFIG = 'kuopio';
 const APP_TITLE = 'Reittiopas Kuopio';
@@ -106,12 +107,7 @@ export default configMerger(walttiConfig, {
 
   cityBike: {
     showCityBikes: true,
-    useSpacesAvailable: false,
-    useUrl: {
-      fi: 'https://kaupunkipyorat.kuopio.fi/',
-      sv: 'https://kaupunkipyorat.kuopio.fi/?lang=2',
-      en: 'https://kaupunkipyorat.kuopio.fi/?lang=2',
-    },
+    capacity: BIKEAVL_BIKES,
     networks: {
       vilkku: {
         icon: 'citybike',
@@ -204,6 +200,18 @@ export default configMerger(walttiConfig, {
         paragraphs: [
           'Maps, streets, buildings, stop locations etc. are provided by © OpenStreetMap contributors. Address data is retrieved from the Building and Dwelling Register of the Finnish Population Register Center. Public transport routes and timetables are based on GTFS data produced by Kuopio.',
         ],
+      },
+    ],
+  },
+  geoJson: {
+    layers: [
+      {
+        name: {
+          fi: 'Vyöhykkeet',
+          sv: 'Zoner',
+          en: 'Zones',
+        },
+        url: '/assets/geojson/kuopio_zone_lines_20201119.geojson',
       },
     ],
   },

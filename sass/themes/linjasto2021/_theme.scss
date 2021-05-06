@@ -2,12 +2,11 @@
 
 /* main theme colors */
 $primary-color: #1c57cf;
-$secondary-color: darken($primary-color, 20%);
+$secondary-color: #1645a5;
 $hilight-color: $primary-color;
 $action-color: $primary-color;
-$bus-color: #1A4A8F;
+$bus-color: $primary-color;
 $tram-color: #da2128;
-$rail-color: #0E7F3C;
 $viewpoint-marker-color: $primary-color;
 $current-location-color: $primary-color;
 $selected-lang-background: #1a4a8f;
