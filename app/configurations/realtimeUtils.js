@@ -39,38 +39,19 @@ function walttiTopicResolver(
 }
 
 function mhTopicResolver(
-  route, // eslint-disable-line no-unused-vars
+  route,
   direction, // eslint-disable-line no-unused-vars
   tripStartTime, // eslint-disable-line no-unused-vars
-  headsign,
+  headsign, // eslint-disable-line no-unused-vars
   feedId, // eslint-disable-line no-unused-vars
-  tripId,
+  tripId, // eslint-disable-line no-unused-vars
   geoHash, // eslint-disable-line no-unused-vars
 ) {
-  // const agency = tripId.split('.')[1] || '+';
-  // return agency + '/' + headsign + '/#';
-  return (
-    route +
-    '/' +
-    direction +
-    '/' +
-    tripStartTime +
-    '/' +
-    headsign +
-    '/' +
-    feedId +
-    '/' +
-    tripId +
-    '/' +
-    geoHash[0] +
-    '/' +
-    geoHash[1] +
-    '/' +
-    geoHash[2] +
-    '/' +
-    geoHash[3] +
-    '/#'
-  );
+  // route id in MH GTFS has agency id in it
+  const routeInfo = route.split('.');
+  const routeId = routeInfo[0] || '+';
+  const operatorId = routeInfo[1] || '+'; // same as agency
+  return operatorId + '/' + routeId + '/#';
 }
 
 export default {
@@ -283,7 +264,7 @@ export default {
 
     credentials: { username: 'user', password: 'userpass' },
 
-    gtfsrt: true,
+    gtfsrt: false,
 
     routeSelector: defaultRouteSelector,
 
