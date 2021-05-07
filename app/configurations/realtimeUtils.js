@@ -51,7 +51,7 @@ function mhTopicResolver(
   const routeInfo = route.split('.');
   const routeId = routeInfo[0] || '+';
   const operatorId = routeInfo[1] || '+'; // same as agency
-  return operatorId + '/' + routeId + '/#';
+  return operatorId + '/' + routeId;
 }
 
 export default {
