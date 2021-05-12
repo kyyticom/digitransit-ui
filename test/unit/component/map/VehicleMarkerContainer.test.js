@@ -3,7 +3,7 @@ import React from 'react';
 import { shallowWithIntl, mountWithIntl } from '../../helpers/mock-intl-enzyme';
 import {
   Component as VehicleMarkerContainer,
-  // shouldShowVehicle,
+  shouldShowVehicle,
   getVehicleIcon,
 } from '../../../../app/component/map/VehicleMarkerContainer';
 
@@ -40,7 +40,6 @@ describe('<VehicleMarkerContainer />', () => {
     });
   });
 
-  /*
   describe('shouldShowVehicle', () => {
     it('should return false when lat is missing', () => {
       const message = {
@@ -208,7 +207,6 @@ describe('<VehicleMarkerContainer />', () => {
       expect(shouldShow).to.equal(true);
     });
   });
-   */
 
   describe('getVehicleIcon', () => {
     it('should use an appropriate icon for the given mode', () => {
