@@ -79,7 +79,7 @@ export function parseMessage(topic, message, agency) {
       id: vehid,
       route: `${agency}:${line}`,
       direction: parseInt(dir, 10) - 1,
-      tripStartTime: startTime.replace(/:/g, ''),
+      tripStartTime: startTime ? startTime.replace(/:/g, '') : undefined,
       operatingDay:
         parsedMessage.oday && parsedMessage.oday !== 'XXX'
           ? parsedMessage.oday
