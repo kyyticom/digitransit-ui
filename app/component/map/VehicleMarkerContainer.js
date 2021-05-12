@@ -82,7 +82,10 @@ if (isBrowser) {
 // if tripStartTime has been specified,
 // use only the updates for vehicles with matching startTime
 
+// eslint-disable-next-line no-unused-vars
 function shouldShowVehicle(message, direction, tripStart, pattern, headsign) {
+  return true;
+  /*
   return (
     !Number.isNaN(parseFloat(message.lat)) &&
     !Number.isNaN(parseFloat(message.long)) &&
@@ -98,6 +101,7 @@ function shouldShowVehicle(message, direction, tripStart, pattern, headsign) {
       message.tripStartTime === undefined ||
       message.tripStartTime === tripStart)
   );
+   */
 }
 
 function VehicleMarkerContainer(props) {
