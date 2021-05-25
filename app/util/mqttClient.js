@@ -61,8 +61,6 @@ export function parseMessage(topic, message, agency) {
     nextStop,
     ...rest // eslint-disable-line no-unused-vars
   ] = topic.split('/');
-
-  const vehid = `${agency}_${id}`;
   if (message instanceof Uint8Array) {
     parsedMessage = JSON.parse(message).VP;
   } else {
@@ -75,22 +73,24 @@ export function parseMessage(topic, message, agency) {
     parsedMessage.long &&
     (parsedMessage.seq === undefined || parsedMessage.seq === 1) // seq is used for hsl metro carriage sequence
   ) {
+    const vehicleId = id ? `${agency}_${id}` : `${agency}_${parsedMessage.start}_${parsedMessage.route}`;
     return {
-      id: vehid,
-      route: `${agency}:${line}`,
-      direction: parseInt(dir, 10) - 1,
-      tripStartTime: startTime ? startTime.replace(/:/g, '') : undefined,
+      id: vehicleId,
+      route: line ? `${agency}:${line}` : `${agency}:${parsedMessage.route}`,
+      direction: dir ? parseInt(dir, 10) - 1 : undefined,
+      tripStartTime: startTime ? startTime.replace(/:/g, '') : parsedMessage.start.replace(/:/g, ''),
       operatingDay:
         parsedMessage.oday && parsedMessage.oday !== 'XXX'
           ? parsedMessage.oday
           : moment().format('YYYY-MM-DD'),
       mode: getMode(mode),
-      next_stop: `${agency}:${nextStop}`,
+      next_stop: nextStop ? `${agency}:${nextStop}` : undefined,
       timestamp: parsedMessage.tsi,
       lat: ceil(parsedMessage.lat, 5),
       long: ceil(parsedMessage.long, 5),
       heading: parsedMessage.hdg,
       headsign: undefined, // in HSL data headsign from realtime data does not always match gtfs data
+      shortName: parsedMessage.desi,
     };
   }
   return undefined;
@@ -140,7 +140,8 @@ export function startMqttClient(settings, actionContext) {
       );
     }
     const client = mqtt.default.connect(settings.mqtt);
-    client.on('connect', () => client.subscribe(topics));
+    // client.on('connect', () => client.subscribe(topics));
+    client.on('connect', () => client.subscribe("#")); // TODO subscribe everything for testing
     client.on('message', (topic, message) =>
       actionContext.dispatch(
         'RealTimeClientMessage',
