@@ -140,8 +140,7 @@ export function startMqttClient(settings, actionContext) {
       );
     }
     const client = mqtt.default.connect(settings.mqtt);
-    // client.on('connect', () => client.subscribe(topics));
-    client.on('connect', () => client.subscribe("#")); // TODO subscribe everything for testing
+    client.on('connect', () => client.subscribe(topics));
     client.on('message', (topic, message) =>
       actionContext.dispatch(
         'RealTimeClientMessage',
