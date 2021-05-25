@@ -159,7 +159,6 @@ class DepartureListContainer extends Component {
   };
 
   updateClient = departures => {
-    console.log("updateClient??");
     const { client, topics } = this.context.getStore(
       'RealTimeInformationStore',
     );
@@ -172,12 +171,7 @@ class DepartureListContainer extends Component {
           client,
           oldTopics: topics,
         });
-      } else {
-        console.log("updateClient no config");
       }
-    } else {
-      console.log("updateClient no client");
-    }
   };
 
   onScroll = () => {
