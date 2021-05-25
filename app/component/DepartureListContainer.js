@@ -171,6 +171,7 @@ class DepartureListContainer extends Component {
           oldTopics: topics,
         });
       }
+    }
   };
 
   onScroll = () => {
