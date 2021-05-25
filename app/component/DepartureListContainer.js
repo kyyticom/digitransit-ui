@@ -159,18 +159,24 @@ class DepartureListContainer extends Component {
   };
 
   updateClient = departures => {
+    console.log("updateClient??");
     const { client, topics } = this.context.getStore(
       'RealTimeInformationStore',
     );
     if (client) {
       const clientConfig = this.configClient(departures);
       if (clientConfig) {
+        console.log("updateClient!!");
         this.context.executeAction(changeRealTimeClientTopics, {
           ...clientConfig,
           client,
           oldTopics: topics,
         });
+      } else {
+        console.log("updateClient no config");
       }
+    } else {
+      console.log("updateClient no client");
     }
   };
 

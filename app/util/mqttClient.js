@@ -73,12 +73,16 @@ export function parseMessage(topic, message, agency) {
     parsedMessage.long &&
     (parsedMessage.seq === undefined || parsedMessage.seq === 1) // seq is used for hsl metro carriage sequence
   ) {
-    const vehicleId = id ? `${agency}_${id}` : `${agency}_${parsedMessage.start}_${parsedMessage.route}`;
+    const vehicleId = id
+      ? `${agency}_${id}`
+      : `${agency}_${parsedMessage.start}_${parsedMessage.route}`;
     return {
       id: vehicleId,
       route: line ? `${agency}:${line}` : `${agency}:${parsedMessage.route}`,
       direction: dir ? parseInt(dir, 10) - 1 : undefined,
-      tripStartTime: startTime ? startTime.replace(/:/g, '') : parsedMessage.start.replace(/:/g, ''),
+      tripStartTime: startTime
+        ? startTime.replace(/:/g, '')
+        : parsedMessage.start.replace(/:/g, ''),
       operatingDay:
         parsedMessage.oday && parsedMessage.oday !== 'XXX'
           ? parsedMessage.oday
