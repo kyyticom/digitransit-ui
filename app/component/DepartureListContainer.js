@@ -165,7 +165,6 @@ class DepartureListContainer extends Component {
     if (client) {
       const clientConfig = this.configClient(departures);
       if (clientConfig) {
-        console.log("updateClient!!");
         this.context.executeAction(changeRealTimeClientTopics, {
           ...clientConfig,
           client,
