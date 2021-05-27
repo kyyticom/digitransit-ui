@@ -3,6 +3,14 @@ import moment from 'moment';
 import { parseFeedMQTT } from './gtfsRtParser';
 
 const standardModes = ['bus', 'tram', 'ferry'];
+const allModes = [
+  ...standardModes,
+  'train',
+  'metro',
+  'rail',
+  'subway',
+  'airplane',
+];
 
 const getMode = mode => {
   if (standardModes.includes(mode)) {
@@ -67,6 +75,14 @@ export function parseMessage(topic, message, agency) {
     parsedMessage = message.VP;
   }
 
+  // Fall-back for mode in MH topic structure
+  let parsedMode;
+  if (!mode && allModes.some(m => topic.startsWith(m))) {
+    parsedMode = topic.split('/')[0]; // eslint-disable-line prefer-destructuring
+  } else {
+    parsedMode = mode;
+  }
+
   if (
     parsedMessage &&
     parsedMessage.lat &&
@@ -87,7 +103,7 @@ export function parseMessage(topic, message, agency) {
         parsedMessage.oday && parsedMessage.oday !== 'XXX'
           ? parsedMessage.oday
           : moment().format('YYYY-MM-DD'),
-      mode: getMode(mode),
+      mode: getMode(parsedMode),
       next_stop: nextStop ? `${agency}:${nextStop}` : undefined,
       timestamp: parsedMessage.tsi,
       lat: ceil(parsedMessage.lat, 5),

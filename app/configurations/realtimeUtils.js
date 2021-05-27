@@ -38,7 +38,7 @@ function walttiTopicResolver(
   );
 }
 
-function mhTopicResolver(
+function mhTopicResolverOld(
   route,
   direction, // eslint-disable-line no-unused-vars
   tripStartTime, // eslint-disable-line no-unused-vars
@@ -52,6 +52,24 @@ function mhTopicResolver(
   const routeId = routeInfo[0] || '+';
   const operatorId = routeInfo[1] || '+'; // same as agency
   return operatorId + '/' + routeId;
+}
+
+// MH topic structure
+// <mode>/<agencyId>/<routeId>
+function mhTopicResolver(
+  route,
+  direction, // eslint-disable-line no-unused-vars
+  tripStartTime, // eslint-disable-line no-unused-vars
+  headsign, // eslint-disable-line no-unused-vars
+  feedId, // eslint-disable-line no-unused-vars
+  tripId, // eslint-disable-line no-unused-vars
+  geoHash, // eslint-disable-line no-unused-vars
+) {
+  // route id in MH GTFS has agency id in it
+  const routeInfo = route.split('.');
+  const routeId = routeInfo[0] || '+';
+  const operatorId = routeInfo[1] || '+'; // same as agency
+  return '+/' + operatorId + '/' + routeId;
 }
 
 export default {
@@ -258,9 +276,22 @@ export default {
     active: true,
   },
   Riihimäki: {
-    mqttTopicResolver: mhTopicResolver,
+    mqttTopicResolver: mhTopicResolverOld,
 
     mqtt: 'wss://d0457135im7yxbyy98p4-ats.iot.eu-west-1.amazonaws.com/mqtt',
+
+    credentials: { username: 'user', password: 'userpass' },
+
+    gtfsrt: false,
+
+    routeSelector: defaultRouteSelector,
+
+    active: true,
+  },
+  Matkahuolto: {
+    mqttTopicResolver: mhTopicResolver,
+
+    mqtt: 'wss://d06534051dwej5q9ksau1-ats.iot.eu-west-1.amazonaws.com/mqtt',
 
     credentials: { username: 'user', password: 'userpass' },
 
